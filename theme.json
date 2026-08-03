@@ -1,0 +1,175 @@
+{
+  "schema": "morphous.theme.v1",
+  "source": "Generated from a per-system Morphous manifest and prompt records. CSS variables are shadcn/tweakcn-compatible.",
+  "identity": {
+    "slug": "morphous-agate",
+    "name": "Morphous Agate",
+    "motifName": "Agate",
+    "motifCategory": "mineral",
+    "biome": "Geode Seam",
+    "motif": "agate bands"
+  },
+  "palette": [
+    {
+      "role": "Background",
+      "name": "Quartz Cream",
+      "hex": "#f7f0df",
+      "oklch": "oklch(0.956 0.024 88.2)"
+    },
+    {
+      "role": "Ink",
+      "name": "Seam Ink",
+      "hex": "#25201b",
+      "oklch": "oklch(0.247 0.012 67.2)"
+    },
+    {
+      "role": "Primary",
+      "name": "Cocoa Band",
+      "hex": "#7b563f",
+      "oklch": "oklch(0.487 0.060 52.7)"
+    },
+    {
+      "role": "Secondary",
+      "name": "Blue Chalcedony",
+      "hex": "#6f8fa7",
+      "oklch": "oklch(0.635 0.051 241.0)"
+    },
+    {
+      "role": "Accent",
+      "name": "Milky Layer",
+      "hex": "#e8dbc4",
+      "oklch": "oklch(0.896 0.034 82.0)"
+    },
+    {
+      "role": "Signal",
+      "name": "Taupe Vein",
+      "hex": "#a9896a",
+      "oklch": "oklch(0.652 0.059 65.6)"
+    },
+    {
+      "role": "Surface",
+      "name": "Pale Sand",
+      "hex": "#f0e4cf",
+      "oklch": "oklch(0.923 0.031 81.8)"
+    },
+    {
+      "role": "Muted",
+      "name": "Slate Trace",
+      "hex": "#49606f",
+      "oklch": "oklch(0.476 0.037 237.1)"
+    },
+    {
+      "role": "Depth",
+      "name": "Deep Umber",
+      "hex": "#3c2b23",
+      "oklch": "oklch(0.306 0.029 46.3)"
+    }
+  ],
+  "light": {
+    "background": "oklch(0.956 0.024 88.2)",
+    "foreground": "oklch(0.247 0.012 67.2)",
+    "card": "oklch(0.923 0.031 81.8)",
+    "card-foreground": "oklch(0.247 0.012 67.2)",
+    "popover": "oklch(0.923 0.031 81.8)",
+    "popover-foreground": "oklch(0.247 0.012 67.2)",
+    "primary": "oklch(0.487 0.060 52.7)",
+    "primary-foreground": "oklch(0.956 0.024 88.2)",
+    "secondary": "oklch(0.937 0.027 83.5)",
+    "secondary-foreground": "oklch(0.306 0.029 46.3)",
+    "muted": "oklch(0.931 0.029 82.6)",
+    "muted-foreground": "oklch(0.306 0.029 46.3)",
+    "accent": "oklch(0.896 0.034 82.0)",
+    "accent-foreground": "oklch(0.247 0.012 67.2)",
+    "destructive": "oklch(0.487 0.060 52.7)",
+    "border": "oklch(0.768 0.011 106.7)",
+    "input": "oklch(0.768 0.011 106.7)",
+    "ring": "oklch(0.635 0.051 241.0)",
+    "chart-1": "oklch(0.487 0.060 52.7)",
+    "chart-2": "oklch(0.635 0.051 241.0)",
+    "chart-3": "oklch(0.896 0.034 82.0)",
+    "chart-4": "oklch(0.652 0.059 65.6)",
+    "chart-5": "oklch(0.306 0.029 46.3)",
+    "sidebar": "oklch(0.934 0.029 84.6)",
+    "sidebar-foreground": "oklch(0.247 0.012 67.2)",
+    "sidebar-primary": "oklch(0.487 0.060 52.7)",
+    "sidebar-primary-foreground": "oklch(0.956 0.024 88.2)",
+    "sidebar-accent": "oklch(0.873 0.033 76.4)",
+    "sidebar-accent-foreground": "oklch(0.487 0.060 52.7)",
+    "sidebar-border": "oklch(0.768 0.011 106.7)",
+    "sidebar-ring": "oklch(0.635 0.051 241.0)",
+    "radius": "0.5rem"
+  },
+  "dark": {
+    "background": "oklch(0.247 0.012 67.2)",
+    "foreground": "oklch(0.956 0.024 88.2)",
+    "card": "oklch(0.286 0.023 49.7)",
+    "card-foreground": "oklch(0.956 0.024 88.2)",
+    "popover": "oklch(0.286 0.023 49.7)",
+    "popover-foreground": "oklch(0.956 0.024 88.2)",
+    "primary": "oklch(0.635 0.051 241.0)",
+    "primary-foreground": "oklch(0.247 0.012 67.2)",
+    "secondary": "oklch(0.344 0.013 41.7)",
+    "secondary-foreground": "oklch(0.956 0.024 88.2)",
+    "muted": "oklch(0.344 0.013 41.7)",
+    "muted-foreground": "oklch(0.749 0.007 174.3)",
+    "accent": "oklch(0.896 0.034 82.0)",
+    "accent-foreground": "oklch(0.247 0.012 67.2)",
+    "destructive": "oklch(0.487 0.060 52.7)",
+    "border": "oklch(1 0 0 / 12%)",
+    "input": "oklch(1 0 0 / 16%)",
+    "ring": "oklch(0.635 0.051 241.0)",
+    "chart-1": "oklch(0.635 0.051 241.0)",
+    "chart-2": "oklch(0.487 0.060 52.7)",
+    "chart-3": "oklch(0.896 0.034 82.0)",
+    "chart-4": "oklch(0.652 0.059 65.6)",
+    "chart-5": "oklch(0.476 0.037 237.1)",
+    "sidebar": "oklch(0.275 0.020 50.1)",
+    "sidebar-foreground": "oklch(0.956 0.024 88.2)",
+    "sidebar-primary": "oklch(0.635 0.051 241.0)",
+    "sidebar-primary-foreground": "oklch(0.247 0.012 67.2)",
+    "sidebar-accent": "oklch(0.344 0.013 41.7)",
+    "sidebar-accent-foreground": "oklch(0.956 0.024 88.2)",
+    "sidebar-border": "oklch(1 0 0 / 12%)",
+    "sidebar-ring": "oklch(0.635 0.051 241.0)",
+    "radius": "0.5rem"
+  },
+  "typography": "Dense English editor UI with precise numerals and Japanese guidance for structured tool panels.",
+  "layout": "Stacked 8px panels, banded contour dividers, layer chips, compact controls, and subtle mineral-grain surfaces.",
+  "tags": [
+    "agate",
+    "mineral",
+    "geode",
+    "banding",
+    "layered-editor",
+    "dark-ready"
+  ],
+  "assets": {
+    "motif": "/systems/morphous-agate/motif.png",
+    "board": "/systems/morphous-agate/design-system-light.png",
+    "darkBoard": "/systems/morphous-agate/design-system-dark.png",
+    "examples": [],
+    "themeCss": "/systems/morphous-agate/theme.css",
+    "themeJson": "/systems/morphous-agate/theme.json",
+    "promptsJson": "/systems/morphous-agate/prompts.json"
+  },
+  "prompts": [
+    {
+      "id": "transparent-motif",
+      "label": "Transparent agate bands motif",
+      "asset": "/systems/morphous-agate/motif.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: Morphous Agate transparent motif chroma-key source\nPrimary request: Create only an agate geode seam motif for a design-system catalog, isolated as one complete mineral subject on a removable chroma-key background.\nSubject: A polished slice of agate with layered bands in warm cream, translucent milky quartz, cocoa brown, taupe, smoky umber, and muted blue-gray ribbons. Include irregular concentric banding, natural geode seam cavities, mineral inclusions, waxy stone edges, and subtle crystalline sparkle. Geological accuracy, calm layered editor-system identity, no jewelry setting.\nComposition/framing: centered complete cutout with generous padding; include the full stone edge and visible agate bands without cropping. Clean studio lighting, no cast shadow.\nChroma-key background: perfectly flat solid #ff00ff background for removal. The background must be one uniform color with no shadows, gradients, texture, reflections, floor plane, or lighting variation. Do not use #ff00ff anywhere in the subject.\nConstraints: no landscape, no hand, no jewelry, no logo, no text, no watermark, no marble slab, no fantasy glow, no unrelated saturated colors."
+    },
+    {
+      "id": "light-design-system",
+      "label": "Light-mode design-system board",
+      "asset": "/systems/morphous-agate/design-system-light.png",
+      "prompt": "Use case: ui-mockup\nAsset type: Morphous Agate light-mode design-system board, final catalog source asset\nPrimary request: Generate one comprehensive light-mode design-system board for a Morphous theme named \"Morphous Agate\", derived from agate bands in a geode seam. This board is a source reference for a shadcn/tweakcn-compatible layered editor system.\nCanvas: 3840 x 2160 pixels, 16:9 UHD board, crisp readable text, clean professional UI design-system presentation, no margins cropped.\nRequired visible sections: Morphous Agate, Agate Bands, Palette, Typography, Components, Navigation, Dashboard, Forms, Table, Command/Search, Status, Texture, Radius, Spacing, Shadow, Tokens.\nReference use: Extract colors and interaction language from cream quartz, cocoa brown seams, taupe stone, muted blue-gray mineral bands, translucent milky layers, and irregular agate contour lines. The board must read as agate geode banding, not marble, woodgrain, or generic brown SaaS.\nTypography: English product UI examples with Japanese typography guidance; labels such as Geist, Display, Body, Label, Numbers, Japanese UI. Keep text short and legible.\nUI coverage: buttons, inputs, select, textarea, checkbox, radio, switch, tabs, badges, alerts, cards, table rows, search command palette, sidebar navigation, dashboard metric cards, line chart, bar chart, empty/loading/error states, spacing, radius, border, shadow, texture samples, simple icons.\nStyle: layered editor system, calm dense tool surface, 8px radius, cream backgrounds, warm brown primary actions, muted mineral-blue focus rings, banded contour dividers, stacked panels, translucent layer chips, subtle agate grain texture, precise grid.\nPalette names to show: Quartz Cream #f7f0df, Seam Ink #25201b, Cocoa Band #7b563f, Blue Chalcedony #6f8fa7, Milky Layer #e8dbc4, Taupe Vein #a9896a, Deep Umber #3c2b23, Pale Sand #f0e4cf, Slate Trace #49606f.\nConstraints: no wood, no coffee branding, no desert theme, no generic beige-only palette, no purple gradients, no neon, no unrelated saturated colors, no watermark, no random brand names, no misspelling of \"Morphous Agate\", no tiny unreadable paragraphs."
+    },
+    {
+      "id": "dark-design-system",
+      "label": "Dark-mode design-system board",
+      "asset": "/systems/morphous-agate/design-system-dark.png",
+      "prompt": "Use case: ui-mockup\nAsset type: Morphous Agate dark-mode design-system board, final catalog source asset\nPrimary request: Generate one comprehensive dark-mode design-system board for the Morphous theme named \"Morphous Agate\". It must feel like the light-mode board translated to dark mode and remain derived from agate bands in a geode seam.\nCanvas: 3840 x 2160 pixels, 16:9 UHD board, crisp readable text, clean professional UI design-system presentation, no margins cropped.\nRequired visible sections: Morphous Agate, Agate Bands, Dark Mode, Palette, Typography, Components, Navigation, Dashboard, Forms, Table, Command/Search, Status, Texture, Radius, Spacing, Shadow, Tokens.\nReference use: Preserve cream quartz foreground, cocoa seam actions, muted blue-gray focus states, taupe stone separators, deep umber surfaces, layered agate contour dividers, and calm dense editor spacing. Must read as agate geode banding, not marble, woodgrain, coffee, or generic dark SaaS.\nTypography: English product UI examples with Japanese typography guidance; labels such as Geist, Display, Body, Label, Numbers, Japanese UI. Keep text short and legible.\nUI coverage: buttons, inputs, select, textarea, checkbox, radio, switch, tabs, badges, alerts, cards, table rows, search command palette, sidebar navigation, dashboard metric cards, line chart, bar chart, empty/loading/error states, spacing, radius, border, shadow, texture samples, simple icons.\nVisual details: seam-ink dark background, deep-umber cards, quartz-cream text, cocoa-band buttons, blue-chalcedony charts and focus rings, milky-layer highlights, subtle agate speckle overlays, contour-line panel borders, stacked layer controls, 8px shadcn/tweakcn grid.\nPalette names to show: Quartz Cream #f7f0df, Seam Ink #25201b, Cocoa Band #7b563f, Blue Chalcedony #6f8fa7, Milky Layer #e8dbc4, Taupe Vein #a9896a, Deep Umber #3c2b23, Pale Sand #f0e4cf, Slate Trace #49606f.\nConstraints: no woodgrain, no coffee branding, no desert theme, no neon blue, no purple gradients, no pure-black-only flat background, no beige-only monotone look, no illegible tiny paragraphs, no watermark, no random brand names, no misspelling of \"Morphous Agate\"."
+    }
+  ]
+}
