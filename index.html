@@ -152,10 +152,10 @@
     }
 
     .passes {
-      overflow-y: auto;
-      padding: 10px 0 18px;
+      overflow: auto;
+      padding: 0;
+      max-height: 178px;
       min-height: 0;
-      flex: 1 1 auto;
     }
 
     .passes-header {
@@ -175,6 +175,18 @@
     .passes-header span {
       color: var(--muted);
       font-size: 11px;
+    }
+
+    .schedule-panel {
+      position: fixed;
+      left: 390px;
+      right: 0;
+      bottom: 0;
+      z-index: 900;
+      height: 230px;
+      background: rgba(255, 255, 255, 0.98);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.16);
     }
 
     .table-wrap { overflow-x: auto; border-top: 1px solid var(--border); }
@@ -300,6 +312,13 @@
         right: auto;
         bottom: 10px;
       }
+
+      .schedule-panel {
+        left: 0;
+        height: 230px;
+      }
+
+      .passes { max-height: 178px; }
     }
   </style>
 </head>
@@ -332,11 +351,6 @@
         </div>
       </section>
 
-      <section class="passes-header">
-        <strong>Pass Schedule</strong>
-        <span>click to zoom</span>
-      </section>
-      <section class="passes" id="passes"></section>
     </aside>
 
     <main>
@@ -352,6 +366,14 @@
         <div class="legend-row"><span class="swatch aoi-swatch"></span>AOI</div>
       </div>
     </main>
+
+    <section class="schedule-panel">
+      <div class="passes-header">
+        <strong>Pass Schedule</strong>
+        <span>click a row to zoom</span>
+      </div>
+      <section class="passes" id="passes"></section>
+    </section>
   </div>
 
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
