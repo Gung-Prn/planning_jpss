@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JPSS Planning Visual</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
   <style>
     :root {
@@ -415,26 +414,28 @@
     </main>
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
   <script src="https://unpkg.com/pmtiles@4.3.0/dist/pmtiles.js"></script>
-  <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.3/leaflet-maplibre-gl.js"></script>
   <script>
     const pmtilesProtocol = new pmtiles.Protocol();
     maplibregl.addProtocol('pmtiles', pmtilesProtocol.tile);
-    const map = L.map('map', { zoomControl: true }).setView([13.1014, 100.929], 5);
-    L.maplibreGL({
+    const map = new maplibregl.Map({
+      container: 'map',
       style: 'https://carto.elemnt.earth/2026-06-22_axolotl/style.json',
-      attribution: '&copy; CARTO &copy; OpenStreetMap contributors'
-    }).addTo(map);
+      center: [100.929, 13.1014],
+      zoom: 5,
+      attributionControl: false
+    });
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
+    map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
     const groups = {
-      swath: L.layerGroup().addTo(map),
-      track: L.layerGroup().addTo(map),
-      points: L.layerGroup().addTo(map),
-      buffer: L.layerGroup().addTo(map),
-      aoi: L.layerGroup().addTo(map),
-      station: L.layerGroup().addTo(map)
+      swath: ['swath-fill', 'swath-line'],
+      track: ['track-line'],
+      points: ['event-circle'],
+      buffer: ['buffer-fill', 'buffer-line'],
+      aoi: ['aoi-fill', 'aoi-line'],
+      station: ['station-circle']
     };
 
     const fmtTime = (value) => value ? value.replace('2026-', '').replace('T', ' ').replace('Z', 'Z') : '-';
@@ -462,74 +463,67 @@
       )).join('');
     }
 
-    function pointStyle(type) {
-      const colors = { station: '#d92d20', aos: '#00a6d6', tca: '#f2c94c', los: '#2f9e44' };
-      return {
-        radius: type === 'station' ? 7 : 6,
-        color: '#ffffff',
-        weight: 2,
-        fillColor: colors[type] || '#155eef',
-        fillOpacity: 0.95
-      };
+    function addDataLayers(geojson) {
+      map.addSource('jpss-data', { type: 'geojson', data: geojson });
+      map.addLayer({ id: 'swath-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'reference_swath'], paint: {
+        'fill-color': ['case', ['==', ['get', 'station_inside'], true], '#f76707', '#ffd43b'],
+        'fill-opacity': ['case', ['==', ['get', 'station_inside'], true], 0.28, 0.14]
+      }});
+      map.addLayer({ id: 'swath-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'reference_swath'], paint: {
+        'line-color': ['case', ['==', ['get', 'station_inside'], true], '#d9480f', '#f59f00'],
+        'line-width': ['case', ['==', ['get', 'station_inside'], true], 2, 1]
+      }});
+      map.addLayer({ id: 'track-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'visible_track'], paint: {
+        'line-color': ['match', ['get', 'direction'], 'descending', '#7f56d9', '#1f77b4'],
+        'line-width': 3, 'line-opacity': 0.9
+      }});
+      map.addLayer({ id: 'buffer-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'station_buffer'], paint: {
+        'fill-color': '#7a8798', 'fill-opacity': 0.04
+      }});
+      map.addLayer({ id: 'buffer-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'station_buffer'], paint: {
+        'line-color': '#7a8798', 'line-width': 2, 'line-dasharray': [4, 3]
+      }});
+      map.addLayer({ id: 'aoi-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'aoi'], paint: {
+        'fill-color': '#ff8787', 'fill-opacity': 0.16
+      }});
+      map.addLayer({ id: 'aoi-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'aoi'], paint: {
+        'line-color': '#e03131', 'line-width': 3, 'line-dasharray': [2, 2]
+      }});
+      map.addLayer({ id: 'station-circle', type: 'circle', source: 'jpss-data', filter: ['==', ['get', 'type'], 'station'], paint: {
+        'circle-radius': 7, 'circle-color': '#d92d20', 'circle-stroke-color': '#ffffff', 'circle-stroke-width': 2
+      }});
+      map.addLayer({ id: 'event-circle', type: 'circle', source: 'jpss-data', filter: ['in', ['get', 'type'], ['literal', ['aos', 'tca', 'los']]], paint: {
+        'circle-radius': 6,
+        'circle-color': ['match', ['get', 'type'], 'aos', '#00a6d6', 'tca', '#f2c94c', 'los', '#2f9e44', '#155eef'],
+        'circle-stroke-color': '#ffffff', 'circle-stroke-width': 2
+      }});
+
+      ['swath-fill', 'swath-line', 'track-line', 'buffer-fill', 'buffer-line', 'aoi-fill', 'aoi-line', 'station-circle', 'event-circle'].forEach((layerId) => {
+        map.on('click', layerId, (event) => {
+          const feature = event.features && event.features[0];
+          if (!feature) return;
+          new maplibregl.Popup({ closeButton: true, maxWidth: '320px' })
+            .setLngLat(event.lngLat)
+            .setHTML(popupHtml(feature.properties || {}))
+            .addTo(map);
+        });
+        map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
+      });
     }
 
-    function addFeature(feature) {
-      const props = feature.properties || {};
-      const type = props.type;
-
-      if (type === 'reference_swath') {
-        const layer = L.geoJSON(feature, {
-          style: {
-            color: props.station_inside ? '#d9480f' : '#f59f00',
-            weight: props.station_inside ? 2 : 1,
-            fillColor: props.station_inside ? '#f76707' : '#ffd43b',
-            fillOpacity: props.station_inside ? 0.28 : 0.14
-          }
-        }).bindPopup(popupHtml(props));
-        layer.addTo(groups.swath);
-        return layer;
+    function extendBounds(bounds, coordinates) {
+      if (typeof coordinates[0] === 'number') {
+        bounds[0][0] = Math.min(bounds[0][0], coordinates[0]);
+        bounds[0][1] = Math.min(bounds[0][1], coordinates[1]);
+        bounds[1][0] = Math.max(bounds[1][0], coordinates[0]);
+        bounds[1][1] = Math.max(bounds[1][1], coordinates[1]);
+        return;
       }
-
-      if (type === 'visible_track') {
-        const layer = L.geoJSON(feature, {
-          style: {
-            color: props.direction === 'descending' ? '#7f56d9' : '#1f77b4',
-            weight: 3,
-            opacity: 0.9
-          }
-        }).bindPopup(popupHtml(props));
-        layer.addTo(groups.track);
-        return layer;
-      }
-
-      if (type === 'station_buffer') {
-        const layer = L.geoJSON(feature, {
-          style: { color: '#7a8798', weight: 2, dashArray: '8 6', fillOpacity: 0.04 }
-        }).bindPopup(popupHtml(props));
-        layer.addTo(groups.buffer);
-        return layer;
-      }
-
-      if (type === 'aoi') {
-        const layer = L.geoJSON(feature, {
-          style: { color: '#e03131', weight: 3, dashArray: '5 5', fillColor: '#ff8787', fillOpacity: 0.16 }
-        }).bindPopup(popupHtml(props));
-        layer.addTo(groups.aoi);
-        return layer;
-      }
-
-      if (['station', 'aos', 'tca', 'los'].includes(type)) {
-        const layer = L.geoJSON(feature, {
-          pointToLayer: (_, latlng) => L.circleMarker(latlng, pointStyle(type))
-        }).bindPopup(popupHtml(props));
-        layer.addTo(type === 'station' ? groups.station : groups.points);
-        return layer;
-      }
-
-      return null;
+      coordinates.forEach((item) => extendBounds(bounds, item));
     }
 
-    function renderPassList(rows, trackLayers) {
+    function renderPassList(rows, trackFeatures) {
       const container = document.getElementById('passes');
       container.innerHTML = '';
       rows.forEach((row, index) => {
@@ -553,11 +547,15 @@
         button.addEventListener('click', () => {
           document.querySelectorAll('.pass').forEach((item) => item.classList.remove('active'));
           button.classList.add('active');
-          const layer = trackLayers[index];
-          if (layer) {
-            map.fitBounds(layer.getBounds(), { padding: [40, 40], maxZoom: 7 });
-            layer.openPopup();
-          }
+          const feature = trackFeatures[index];
+          if (!feature) return;
+          const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
+          extendBounds(bounds, feature.geometry.coordinates);
+          map.fitBounds(bounds, { padding: 40, maxZoom: 7 });
+          new maplibregl.Popup({ maxWidth: '320px' })
+            .setLngLat([Number(row.closest_lon), Number(row.closest_lat)])
+            .setHTML(popupHtml(row))
+            .addTo(map);
         });
         container.appendChild(button);
       });
@@ -566,11 +564,7 @@
     function setToggle(id, group) {
       const input = document.getElementById(id);
       input.addEventListener('change', () => {
-        if (input.checked) {
-          group.addTo(map);
-        } else {
-          map.removeLayer(group);
-        }
+        group.forEach((layerId) => map.setLayoutProperty(layerId, 'visibility', input.checked ? 'visible' : 'none'));
       });
     }
 
@@ -584,19 +578,10 @@
 
         const geojson = await geoRes.json();
         const passes = await passRes.json();
-        const trackLayers = [];
-        const allLayers = [];
-
-        geojson.features.forEach((feature) => {
-          const layer = addFeature(feature);
-          if (layer) {
-            allLayers.push(layer);
-            if ((feature.properties || {}).type === 'visible_track') trackLayers.push(layer);
-          }
-        });
-
-        const bounds = L.featureGroup(allLayers).getBounds();
-        if (bounds.isValid()) map.fitBounds(bounds, { padding: [24, 24] });
+        addDataLayers(geojson);
+        const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
+        geojson.features.forEach((feature) => extendBounds(bounds, feature.geometry.coordinates));
+        if (Number.isFinite(bounds[0][0])) map.fitBounds(bounds, { padding: 24 });
 
         const swaths = geojson.features.filter((feature) => (feature.properties || {}).type === 'reference_swath');
         const stationInside = swaths.filter((feature) => (feature.properties || {}).station_inside).length;
@@ -610,7 +595,7 @@
         document.getElementById('summary').textContent =
           `${swathMeta.reference_swath_sensors || 'JPSS'} planning with 5° elevation mask, 2500 km station buffer, and reference swath coverage.`;
 
-        renderPassList(passes, trackLayers);
+        renderPassList(passes, geojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track'));
         setToggle('toggleSwath', groups.swath);
         setToggle('toggleTrack', groups.track);
         setToggle('togglePoints', groups.points);
@@ -623,7 +608,7 @@
       }
     }
 
-    load();
+    map.on('load', load);
   </script>
 </body>
 </html>
