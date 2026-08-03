@@ -156,6 +156,7 @@
       padding: 0;
       max-height: 178px;
       min-height: 0;
+      position: relative;
     }
 
     .passes-header {
@@ -191,7 +192,8 @@
 
     .table-wrap { overflow-x: auto; border-top: 1px solid var(--border); }
     .pass-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 11px; white-space: nowrap; }
-    .pass-table th { position: sticky; top: 0; z-index: 2; padding: 8px 7px; background: #f8fafc; border-bottom: 1px solid var(--border); color: #475467; font-size: 10px; font-weight: 800; text-align: left; text-transform: uppercase; }
+    .pass-table thead { position: sticky; top: 0; z-index: 3; }
+    .pass-table th { position: sticky; top: 0; z-index: 3; padding: 8px 7px; background: #f8fafc; border-bottom: 1px solid var(--border); box-shadow: 0 1px 0 rgba(15, 23, 42, 0.08); color: #475467; font-size: 10px; font-weight: 800; text-align: left; text-transform: uppercase; }
     .pass-table td { padding: 9px 7px; border-bottom: 1px solid #eef1f5; color: #344054; vertical-align: middle; }
     .pass-table tbody tr { cursor: pointer; transition: background .12s ease, box-shadow .12s ease; }
     .pass-table tbody tr:nth-child(even) { background: #fbfcfe; }
