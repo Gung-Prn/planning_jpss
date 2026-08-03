@@ -1,0 +1,5 @@
+สำหรับดาวเทียม JPSS (Suomi-NPP, J01, J02) คิดว่ามาสามารถใช้ข้อมูลจาก TLE ได้ครับ โดยการ buffer ระยะ จากสถานี ออกไป 2500 km แล้วเอาจุดตัดของเส้น TLE กับ buffer นี้ มาเป็นเวลา start (สีฟ้า) แล้ว end (สีเขียว) แต่ทั้งนี้ก็มีทั้งแนว ascending และ descending
+
+
+start with| python3 -m http.server 8787
+http://127.0.0.1:8787/index.html

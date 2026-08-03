@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JPSS Planning Visual</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #17202a;
+      --muted: #667085;
+      --border: #d9dee7;
+      --track: #1f77b4;
+      --swath: #f59f00;
+      --buffer: #7a8798;
+      --aos: #00a6d6;
+      --tca: #f2c94c;
+      --los: #2f9e44;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: minmax(320px, 390px) 1fr;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    aside {
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      min-height: 0;
+      overflow: hidden;
+      z-index: 700;
+    }
+
+    header {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--border);
+      flex: 0 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      flex: 0 0 auto;
+    }
+
+    .stat {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      min-height: 70px;
+      background: #fbfcfe;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .layer-panel {
+      border-bottom: 1px solid var(--border);
+      flex: 0 0 auto;
+      max-height: 190px;
+      overflow-y: auto;
+      background: #fff;
+    }
+
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px 0;
+      color: #344054;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .panel-note {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: none;
+      white-space: nowrap;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding: 12px 18px;
+    }
+
+    label.toggle {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #26313f;
+      background: #fff;
+      user-select: none;
+    }
+
+    input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      accent-color: #155eef;
+    }
+
+    .passes {
+      overflow-y: auto;
+      padding: 10px 10px 18px;
+      min-height: 0;
+      flex: 1 1 auto;
+    }
+
+    .passes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px 0;
+      flex: 0 0 auto;
+    }
+
+    .passes-header strong {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #344054;
+    }
+
+    .passes-header span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .pass {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 8px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .pass:hover,
+    .pass.active {
+      border-color: #155eef;
+      box-shadow: 0 0 0 2px rgba(21, 94, 239, 0.12);
+    }
+
+    .pass-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 2px 7px;
+      color: #fff;
+      font-size: 11px;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    .ascending { background: #1f77b4; }
+    .descending { background: #7f56d9; }
+
+    .pass-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    main {
+      position: relative;
+      min-width: 0;
+    }
+
+    #map {
+      width: 100%;
+      height: 100vh;
+      background: #111827;
+    }
+
+    .leaflet-control-zoom a {
+      background: #1f2937;
+      border-color: #4b5563;
+      color: #f9fafb;
+    }
+
+    .leaflet-control-zoom a:hover {
+      background: #374151;
+      color: #ffffff;
+    }
+
+    .leaflet-control-attribution {
+      background: rgba(17, 24, 39, 0.82) !important;
+      color: #cbd5e1;
+    }
+
+    .leaflet-control-attribution a {
+      color: #93c5fd;
+    }
+
+    .legend {
+      position: absolute;
+      right: 14px;
+      bottom: 18px;
+      z-index: 650;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      min-width: 180px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+      font-size: 12px;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0;
+    }
+
+    .swatch {
+      width: 18px;
+      height: 4px;
+      border-radius: 4px;
+      background: var(--track);
+      flex: 0 0 auto;
+    }
+
+    .swath-swatch { background: var(--swath); }
+    .buffer-swatch { background: var(--buffer); }
+    .aos-swatch { background: var(--aos); }
+    .tca-swatch { background: var(--tca); }
+    .los-swatch { background: var(--los); }
+    .aoi-swatch { background: #e03131; }
+
+    .leaflet-popup-content {
+      min-width: 220px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .popup-title {
+      font-weight: 800;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .error {
+      position: absolute;
+      inset: 18px;
+      z-index: 800;
+      background: #fff;
+      border: 1px solid #f2b8b5;
+      color: #7a271a;
+      border-radius: 8px;
+      padding: 14px;
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        min-height: auto;
+        height: 48vh;
+        max-height: 48vh;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      body {
+        overflow: hidden;
+      }
+
+      .stats {
+        grid-template-columns: repeat(4, minmax(86px, 1fr));
+        overflow-x: auto;
+      }
+
+      .stat {
+        min-height: 58px;
+        min-width: 86px;
+      }
+
+      .stat strong {
+        font-size: 18px;
+      }
+
+      .layer-panel {
+        max-height: 124px;
+      }
+
+      #map {
+        height: 52vh;
+      }
+
+      .legend {
+        left: 10px;
+        right: auto;
+        bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <header>
+        <h1>JPSS Planning Visual</h1>
+        <div class="sub" id="summary">Loading planning results...</div>
+      </header>
+
+      <section class="stats">
+        <div class="stat"><strong id="passCount">-</strong><span>visible passes</span></div>
+        <div class="stat"><strong id="swathCount">-</strong><span>reference swaths</span></div>
+        <div class="stat"><strong id="stationInside">-</strong><span>swaths covering station</span></div>
+        <div class="stat"><strong id="maxEl">-</strong><span>best max elevation</span></div>
+      </section>
+
+      <section class="layer-panel">
+        <div class="panel-title">
+          <span>Layers</span>
+          <span class="panel-note">scrollable</span>
+        </div>
+        <div class="controls">
+          <label class="toggle"><input id="toggleSwath" type="checkbox" checked> Swath</label>
+          <label class="toggle"><input id="toggleTrack" type="checkbox" checked> Tracks</label>
+          <label class="toggle"><input id="togglePoints" type="checkbox" checked> AOS/TCA/LOS</label>
+          <label class="toggle"><input id="toggleBuffer" type="checkbox" checked> Buffer</label>
+          <label class="toggle"><input id="toggleAoi" type="checkbox" checked> AOI</label>
+        </div>
+      </section>
+
+      <section class="passes-header">
+        <strong>Pass Schedule</strong>
+        <span>click to zoom</span>
+      </section>
+      <section class="passes" id="passes"></section>
+    </aside>
+
+    <main>
+      <div id="map"></div>
+      <div class="error" id="error"></div>
+      <div class="legend">
+        <div class="legend-row"><span class="swatch swath-swatch"></span>Reference swath</div>
+        <div class="legend-row"><span class="swatch"></span>Visible track</div>
+        <div class="legend-row"><span class="swatch buffer-swatch"></span>2500 km buffer</div>
+        <div class="legend-row"><span class="swatch aos-swatch"></span>AOS</div>
+        <div class="legend-row"><span class="swatch tca-swatch"></span>TCA</div>
+        <div class="legend-row"><span class="swatch los-swatch"></span>LOS</div>
+        <div class="legend-row"><span class="swatch aoi-swatch"></span>AOI</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map', { zoomControl: true }).setView([13.1014, 100.929], 5);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 12,
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+    }).addTo(map);
+
+    const groups = {
+      swath: L.layerGroup().addTo(map),
+      track: L.layerGroup().addTo(map),
+      points: L.layerGroup().addTo(map),
+      buffer: L.layerGroup().addTo(map),
+      aoi: L.layerGroup().addTo(map),
+      station: L.layerGroup().addTo(map)
+    };
+
+    const fmtTime = (value) => value ? value.replace('2026-', '').replace('T', ' ').replace('Z', 'Z') : '-';
+    const fmtNum = (value, suffix = '') => Number.isFinite(Number(value)) ? `${Number(value).toFixed(1)}${suffix}` : '-';
+
+    function popupHtml(props) {
+      const title = props.satellite || props.satellite_name || props.type || 'Feature';
+      const rows = [
+        ['Type', props.type],
+        ['Direction', props.direction],
+        ['Sensor', props.sensor || props.reference_swath_sensors],
+        ['Product', props.product],
+        ['AOS', props.aos_utc],
+        ['TCA', props.tca_utc],
+        ['LOS', props.los_utc],
+        ['Max El', props.max_elevation_deg ? `${props.max_elevation_deg} deg` : null],
+        ['Min Dist', props.min_distance_km ? `${props.min_distance_km} km` : null],
+        ['Swath Time', props.datetime],
+        ['Station Inside', props.station_inside],
+        ['Buffer Intersects', props.station_buffer_intersects]
+      ].filter(([, value]) => value !== undefined && value !== null && value !== '');
+
+      return `<div class="popup-title">${title}</div>` + rows.map(([key, value]) => (
+        `<div><strong>${key}:</strong> ${value}</div>`
+      )).join('');
+    }
+
+    function pointStyle(type) {
+      const colors = { station: '#d92d20', aos: '#00a6d6', tca: '#f2c94c', los: '#2f9e44' };
+      return {
+        radius: type === 'station' ? 7 : 6,
+        color: '#ffffff',
+        weight: 2,
+        fillColor: colors[type] || '#155eef',
+        fillOpacity: 0.95
+      };
+    }
+
+    function addFeature(feature) {
+      const props = feature.properties || {};
+      const type = props.type;
+
+      if (type === 'reference_swath') {
+        const layer = L.geoJSON(feature, {
+          style: {
+            color: props.station_inside ? '#d9480f' : '#f59f00',
+            weight: props.station_inside ? 2 : 1,
+            fillColor: props.station_inside ? '#f76707' : '#ffd43b',
+            fillOpacity: props.station_inside ? 0.28 : 0.14
+          }
+        }).bindPopup(popupHtml(props));
+        layer.addTo(groups.swath);
+        return layer;
+      }
+
+      if (type === 'visible_track') {
+        const layer = L.geoJSON(feature, {
+          style: {
+            color: props.direction === 'descending' ? '#7f56d9' : '#1f77b4',
+            weight: 3,
+            opacity: 0.9
+          }
+        }).bindPopup(popupHtml(props));
+        layer.addTo(groups.track);
+        return layer;
+      }
+
+      if (type === 'station_buffer') {
+        const layer = L.geoJSON(feature, {
+          style: { color: '#7a8798', weight: 2, dashArray: '8 6', fillOpacity: 0.04 }
+        }).bindPopup(popupHtml(props));
+        layer.addTo(groups.buffer);
+        return layer;
+      }
+
+      if (type === 'aoi') {
+        const layer = L.geoJSON(feature, {
+          style: { color: '#e03131', weight: 3, dashArray: '5 5', fillColor: '#ff8787', fillOpacity: 0.16 }
+        }).bindPopup(popupHtml(props));
+        layer.addTo(groups.aoi);
+        return layer;
+      }
+
+      if (['station', 'aos', 'tca', 'los'].includes(type)) {
+        const layer = L.geoJSON(feature, {
+          pointToLayer: (_, latlng) => L.circleMarker(latlng, pointStyle(type))
+        }).bindPopup(popupHtml(props));
+        layer.addTo(type === 'station' ? groups.station : groups.points);
+        return layer;
+      }
+
+      return null;
+    }
+
+    function renderPassList(rows, trackLayers) {
+      const container = document.getElementById('passes');
+      container.innerHTML = '';
+      rows.forEach((row, index) => {
+        const button = document.createElement('button');
+        button.className = 'pass';
+        button.innerHTML = `
+          <div class="pass-title">
+            <span>${row.satellite}</span>
+            <span class="badge ${row.direction}">${row.direction}</span>
+          </div>
+          <div class="pass-grid">
+            <div>AOS: ${fmtTime(row.aos_utc)}</div>
+            <div>LOS: ${fmtTime(row.los_utc)}</div>
+            <div>Max El: ${fmtNum(row.max_elevation_deg, ' deg')}</div>
+            <div>Min Dist: ${fmtNum(row.min_distance_km, ' km')}</div>
+            <div>TCA Az: ${fmtNum(row.tca_azimuth_deg, ' deg')}</div>
+            <div>Duration: ${fmtNum(row.duration_minutes, ' min')}</div>
+            <div>AOI: ${row.aoi_covered ? 'covered' : 'not covered'}</div>
+          </div>
+        `;
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.pass').forEach((item) => item.classList.remove('active'));
+          button.classList.add('active');
+          const layer = trackLayers[index];
+          if (layer) {
+            map.fitBounds(layer.getBounds(), { padding: [40, 40], maxZoom: 7 });
+            layer.openPopup();
+          }
+        });
+        container.appendChild(button);
+      });
+    }
+
+    function setToggle(id, group) {
+      const input = document.getElementById(id);
+      input.addEventListener('change', () => {
+        if (input.checked) {
+          group.addTo(map);
+        } else {
+          map.removeLayer(group);
+        }
+      });
+    }
+
+    async function load() {
+      try {
+        const [geoRes, passRes] = await Promise.all([
+          fetch('outputs/jpss_passes.geojson'),
+          fetch('outputs/jpss_passes.json')
+        ]);
+        if (!geoRes.ok || !passRes.ok) throw new Error('Cannot load planning output files.');
+
+        const geojson = await geoRes.json();
+        const passes = await passRes.json();
+        const trackLayers = [];
+        const allLayers = [];
+
+        geojson.features.forEach((feature) => {
+          const layer = addFeature(feature);
+          if (layer) {
+            allLayers.push(layer);
+            if ((feature.properties || {}).type === 'visible_track') trackLayers.push(layer);
+          }
+        });
+
+        const bounds = L.featureGroup(allLayers).getBounds();
+        if (bounds.isValid()) map.fitBounds(bounds, { padding: [24, 24] });
+
+        const swaths = geojson.features.filter((feature) => (feature.properties || {}).type === 'reference_swath');
+        const stationInside = swaths.filter((feature) => (feature.properties || {}).station_inside).length;
+        const bestElevation = passes.reduce((max, row) => Math.max(max, Number(row.max_elevation_deg) || 0), 0);
+        const swathMeta = passes[0] || {};
+
+        document.getElementById('passCount').textContent = passes.length;
+        document.getElementById('swathCount').textContent = swaths.length;
+        document.getElementById('stationInside').textContent = stationInside;
+        document.getElementById('maxEl').textContent = `${bestElevation.toFixed(1)}°`;
+        document.getElementById('summary').textContent =
+          `${swathMeta.reference_swath_sensors || 'JPSS'} planning with 5° elevation mask, 2500 km station buffer, and reference swath coverage.`;
+
+        renderPassList(passes, trackLayers);
+        setToggle('toggleSwath', groups.swath);
+        setToggle('toggleTrack', groups.track);
+        setToggle('togglePoints', groups.points);
+        setToggle('toggleBuffer', groups.buffer);
+        setToggle('toggleAoi', groups.aoi);
+      } catch (error) {
+        const box = document.getElementById('error');
+        box.style.display = 'block';
+        box.textContent = `${error.message} Run this page from a local web server, not file://.`;
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>
