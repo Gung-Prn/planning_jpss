@@ -68,6 +68,30 @@
       line-height: 1.45;
     }
 
+    .date-tabs {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .date-tab {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 7px 5px;
+      background: var(--surface);
+      color: var(--muted);
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .date-tab.active {
+      background: var(--text);
+      border-color: var(--text);
+      color: var(--surface);
+    }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -354,6 +378,11 @@
       <header>
         <h1>JPSS Planning Visual</h1>
         <div class="sub" id="summary">Loading planning results...</div>
+        <div class="date-tabs" aria-label="Planning date">
+          <button class="date-tab" data-dataset="day_minus_1">เมื่อวาน<br><span>9 Aug</span></button>
+          <button class="date-tab active" data-dataset="day_current">วันนี้<br><span>10 Aug</span></button>
+          <button class="date-tab" data-dataset="day_plus_1">พรุ่งนี้<br><span>11 Aug</span></button>
+        </div>
       </header>
 
       <section class="stats">
@@ -556,39 +585,69 @@
       });
     }
 
-    async function load() {
-      try {
-        const [geoRes, passRes] = await Promise.all([
-          fetch('outputs/jpss_passes.geojson'),
-          fetch('outputs/jpss_passes.json')
-        ]);
-        if (!geoRes.ok || !passRes.ok) throw new Error('Cannot load planning output files.');
+    const datasets = {
+      day_minus_1: 'เมื่อวาน · 9 ส.ค. 2026',
+      day_current: 'วันนี้ · 10 ส.ค. 2026',
+      day_plus_1: 'พรุ่งนี้ · 11 ส.ค. 2026'
+    };
 
-        const geojson = await geoRes.json();
-        const passes = await passRes.json();
-        addDataLayers(geojson);
+    function updateSummary(passes, geojson, label) {
+      const swaths = geojson.features.filter((feature) => (feature.properties || {}).type === 'reference_swath');
+      const stationInside = swaths.filter((feature) => (feature.properties || {}).station_inside).length;
+      const bestElevation = passes.reduce((max, row) => Math.max(max, Number(row.max_elevation_deg) || 0), 0);
+      const swathMeta = passes[0] || {};
+
+      document.getElementById('passCount').textContent = passes.length;
+      document.getElementById('swathCount').textContent = swaths.length;
+      document.getElementById('stationInside').textContent = stationInside;
+      document.getElementById('maxEl').textContent = `${bestElevation.toFixed(1)}°`;
+      document.getElementById('summary').textContent =
+        `${label} · ${swathMeta.reference_swath_sensors || 'JPSS'} planning · TLE ล่าสุด · 5° elevation mask`;
+    }
+
+    async function loadDataset(datasetId, fitMap = true) {
+      const base = `outputs/${datasetId}`;
+      const [geoRes, passRes] = await Promise.all([
+        fetch(`${base}/jpss_passes.geojson`),
+        fetch(`${base}/jpss_passes.json`)
+      ]);
+      if (!geoRes.ok || !passRes.ok) throw new Error(`Cannot load ${datasetId} planning output files.`);
+
+      const geojson = await geoRes.json();
+      const passes = await passRes.json();
+      if (map.getSource('jpss-data')) map.getSource('jpss-data').setData(geojson);
+      updateSummary(passes, geojson, datasets[datasetId]);
+      renderPassList(passes, geojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track'));
+
+      if (fitMap) {
         const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
         geojson.features.forEach((feature) => extendBounds(bounds, feature.geometry.coordinates));
         if (Number.isFinite(bounds[0][0])) map.fitBounds(bounds, { padding: 24 });
+      }
+    }
 
-        const swaths = geojson.features.filter((feature) => (feature.properties || {}).type === 'reference_swath');
-        const stationInside = swaths.filter((feature) => (feature.properties || {}).station_inside).length;
-        const bestElevation = passes.reduce((max, row) => Math.max(max, Number(row.max_elevation_deg) || 0), 0);
-        const swathMeta = passes[0] || {};
-
-        document.getElementById('passCount').textContent = passes.length;
-        document.getElementById('swathCount').textContent = swaths.length;
-        document.getElementById('stationInside').textContent = stationInside;
-        document.getElementById('maxEl').textContent = `${bestElevation.toFixed(1)}°`;
-        document.getElementById('summary').textContent =
-          `${swathMeta.reference_swath_sensors || 'JPSS'} planning with 5° elevation mask, 2500 km station buffer, and reference swath coverage.`;
-
-        renderPassList(passes, geojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track'));
+    async function load() {
+      try {
+        const initialGeojson = await fetch('outputs/day_current/jpss_passes.geojson').then((response) => response.json());
+        addDataLayers(initialGeojson);
+        await loadDataset('day_current');
         setToggle('toggleSwath', groups.swath);
         setToggle('toggleTrack', groups.track);
         setToggle('togglePoints', groups.points);
         setToggle('toggleBuffer', groups.buffer);
         setToggle('toggleAoi', groups.aoi);
+        document.querySelectorAll('.date-tab').forEach((button) => {
+          button.addEventListener('click', async () => {
+            document.querySelectorAll('.date-tab').forEach((item) => item.classList.remove('active'));
+            button.classList.add('active');
+            try {
+              await loadDataset(button.dataset.dataset);
+            } catch (error) {
+              document.getElementById('error').style.display = 'block';
+              document.getElementById('error').textContent = error.message;
+            }
+          });
+        });
       } catch (error) {
         const box = document.getElementById('error');
         box.style.display = 'block';
