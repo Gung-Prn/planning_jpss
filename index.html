@@ -92,6 +92,33 @@
       color: var(--surface);
     }
 
+    .satellite-tabs {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 8px 18px 0;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .satellite-tab {
+      flex: 0 0 auto;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      padding: 4px 0 8px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .satellite-tab.active {
+      border-bottom-color: var(--buffer);
+      color: var(--text);
+    }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -427,6 +454,12 @@
         <strong>Pass Schedule</strong>
         <span>click a row to zoom</span>
       </div>
+      <div class="satellite-tabs" role="tablist" aria-label="Satellite filter">
+        <button class="satellite-tab active" data-satellite="all" role="tab">ทั้งหมด</button>
+        <button class="satellite-tab" data-satellite="NOAA 20 (JPSS-1)" role="tab">JPSS-1 / NOAA-20</button>
+        <button class="satellite-tab" data-satellite="NOAA 21 (JPSS-2)" role="tab">JPSS-2 / NOAA-21</button>
+        <button class="satellite-tab" data-satellite="SUOMI NPP" role="tab">Suomi-NPP</button>
+      </div>
       <section class="passes" id="passes"></section>
     </section>
   </div>
@@ -586,10 +619,38 @@
     }
 
     const datasets = {
-      day_minus_1: 'เมื่อวาน · 9 ส.ค. 2026',
-      day_current: 'วันนี้ · 10 ส.ค. 2026',
-      day_plus_1: 'พรุ่งนี้ · 11 ส.ค. 2026'
+      day_minus_1: { relative: 'เมื่อวาน', date: '2026-08-09' },
+      day_current: { relative: 'วันนี้', date: '2026-08-10' },
+      day_plus_1: { relative: 'พรุ่งนี้', date: '2026-08-11' }
     };
+
+    let activeSatellite = 'all';
+    let currentDataset = null;
+
+    function formatCalendarDate(dateValue) {
+      return new Intl.DateTimeFormat('th-TH-u-ca-gregory', {
+        day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Bangkok'
+      }).format(new Date(`${dateValue}T00:00:00+07:00`));
+    }
+
+    function setupDateTabs() {
+      document.querySelectorAll('.date-tab').forEach((button) => {
+        const dataset = datasets[button.dataset.dataset];
+        button.innerHTML = `${dataset.relative}<br><span>${formatCalendarDate(dataset.date)}</span>`;
+      });
+    }
+
+    function filteredGeojson(geojson) {
+      if (activeSatellite === 'all') return geojson;
+      const satelliteFeatures = new Set(['visible_track', 'aos', 'tca', 'los']);
+      return {
+        ...geojson,
+        features: geojson.features.filter((feature) => {
+          const props = feature.properties || {};
+          return !satelliteFeatures.has(props.type) || props.satellite === activeSatellite;
+        })
+      };
+    }
 
     function updateSummary(passes, geojson, label) {
       const swaths = geojson.features.filter((feature) => (feature.properties || {}).type === 'reference_swath');
@@ -605,6 +666,23 @@
         `${label} · ${swathMeta.reference_swath_sensors || 'JPSS'} planning · TLE ล่าสุด · 5° elevation mask`;
     }
 
+    function renderActiveDataset(fitMap = false) {
+      if (!currentDataset) return;
+      const visibleGeojson = filteredGeojson(currentDataset.geojson);
+      const visiblePasses = activeSatellite === 'all'
+        ? currentDataset.passes
+        : currentDataset.passes.filter((row) => row.satellite === activeSatellite);
+      map.getSource('jpss-data').setData(visibleGeojson);
+      updateSummary(visiblePasses, visibleGeojson, `${datasets[currentDataset.id].relative} · ${formatCalendarDate(datasets[currentDataset.id].date)}`);
+      renderPassList(visiblePasses, visibleGeojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track'));
+
+      if (fitMap) {
+        const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
+        visibleGeojson.features.forEach((feature) => extendBounds(bounds, feature.geometry.coordinates));
+        if (Number.isFinite(bounds[0][0])) map.fitBounds(bounds, { padding: 24 });
+      }
+    }
+
     async function loadDataset(datasetId, fitMap = true) {
       const base = `outputs/${datasetId}`;
       const [geoRes, passRes] = await Promise.all([
@@ -613,21 +691,13 @@
       ]);
       if (!geoRes.ok || !passRes.ok) throw new Error(`Cannot load ${datasetId} planning output files.`);
 
-      const geojson = await geoRes.json();
-      const passes = await passRes.json();
-      if (map.getSource('jpss-data')) map.getSource('jpss-data').setData(geojson);
-      updateSummary(passes, geojson, datasets[datasetId]);
-      renderPassList(passes, geojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track'));
-
-      if (fitMap) {
-        const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
-        geojson.features.forEach((feature) => extendBounds(bounds, feature.geometry.coordinates));
-        if (Number.isFinite(bounds[0][0])) map.fitBounds(bounds, { padding: 24 });
-      }
+      currentDataset = { id: datasetId, geojson: await geoRes.json(), passes: await passRes.json() };
+      renderActiveDataset(fitMap);
     }
 
     async function load() {
       try {
+        setupDateTabs();
         const initialGeojson = await fetch('outputs/day_current/jpss_passes.geojson').then((response) => response.json());
         addDataLayers(initialGeojson);
         await loadDataset('day_current');
@@ -645,7 +715,15 @@
             } catch (error) {
               document.getElementById('error').style.display = 'block';
               document.getElementById('error').textContent = error.message;
-            }
+              }
+          });
+        });
+        document.querySelectorAll('.satellite-tab').forEach((button) => {
+          button.addEventListener('click', () => {
+            document.querySelectorAll('.satellite-tab').forEach((item) => item.classList.remove('active'));
+            button.classList.add('active');
+            activeSatellite = button.dataset.satellite;
+            renderActiveDataset(true);
           });
         });
       } catch (error) {
