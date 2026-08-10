@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JPSS Planning Visual</title>
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
   <style>
     :root {
       --bg: #f7f0df;
@@ -68,28 +69,69 @@
       line-height: 1.45;
     }
 
-    .date-tabs {
-      display: flex;
-      gap: 6px;
+    .calendar-card {
       margin-top: 12px;
-    }
-
-    .date-tab {
-      flex: 1;
+      padding: 8px 10px 10px;
       border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 7px 5px;
+      border-radius: 9px;
       background: var(--surface);
-      color: var(--muted);
-      font: inherit;
-      font-size: 12px;
-      cursor: pointer;
     }
 
-    .date-tab.active {
-      background: var(--text);
-      border-color: var(--text);
-      color: var(--surface);
+    .calendar-label {
+      display: block;
+      margin: 0 0 5px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .selected-date {
+      margin-top: 7px;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .flatpickr-calendar.inline {
+      width: 100%;
+      max-width: none;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .flatpickr-months,
+    .flatpickr-weekdays,
+    .flatpickr-days,
+    .flatpickr-innerContainer,
+    .dayContainer {
+      width: 100%;
+      max-width: none;
+    }
+
+    .flatpickr-day {
+      max-width: none;
+      color: var(--text);
+    }
+
+    .flatpickr-day.selected,
+    .flatpickr-day.selected:hover {
+      border-color: var(--buffer);
+      background: var(--buffer);
+    }
+
+    .flatpickr-day.disabled,
+    .flatpickr-day.disabled:hover {
+      color: var(--border);
+    }
+
+    .flatpickr-current-month,
+    .flatpickr-weekday,
+    .flatpickr-monthDropdown-months,
+    .numInputWrapper {
+      color: var(--text);
+      font-weight: 700;
     }
 
     .satellite-tabs {
@@ -405,10 +447,10 @@
       <header>
         <h1>JPSS Planning Visual</h1>
         <div class="sub" id="summary">Loading planning results...</div>
-        <div class="date-tabs" aria-label="Planning date">
-          <button class="date-tab" data-dataset="day_minus_1">เมื่อวาน<br><span>9 Aug</span></button>
-          <button class="date-tab active" data-dataset="day_current">วันนี้<br><span>10 Aug</span></button>
-          <button class="date-tab" data-dataset="day_plus_1">พรุ่งนี้<br><span>11 Aug</span></button>
+        <div class="calendar-card">
+          <span class="calendar-label">Planning date</span>
+          <div id="planningCalendar" aria-label="เลือกวันที่วางแผน"></div>
+          <div class="selected-date" id="selectedDate">กำลังโหลดวันที่...</div>
         </div>
       </header>
 
@@ -466,6 +508,8 @@
 
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
   <script src="https://unpkg.com/pmtiles@4.3.0/dist/pmtiles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/th.js"></script>
   <script>
     const pmtilesProtocol = new pmtiles.Protocol();
     maplibregl.addProtocol('pmtiles', pmtilesProtocol.tile);
@@ -633,13 +677,6 @@
       }).format(new Date(`${dateValue}T00:00:00+07:00`));
     }
 
-    function setupDateTabs() {
-      document.querySelectorAll('.date-tab').forEach((button) => {
-        const dataset = datasets[button.dataset.dataset];
-        button.innerHTML = `${dataset.relative}<br><span>${formatCalendarDate(dataset.date)}</span>`;
-      });
-    }
-
     function filteredGeojson(geojson) {
       if (activeSatellite === 'all') return geojson;
       const satelliteFeatures = new Set(['visible_track', 'aos', 'tca', 'los']);
@@ -697,7 +734,26 @@
 
     async function load() {
       try {
-        setupDateTabs();
+        const availableDates = Object.values(datasets).map((dataset) => dataset.date);
+        flatpickr('#planningCalendar', {
+          inline: true,
+          locale: flatpickr.l10ns.th,
+          dateFormat: 'Y-m-d',
+          defaultDate: datasets.day_current.date,
+          enable: availableDates,
+          onChange: (selectedDates, dateStr) => {
+            const selectedDataset = Object.entries(datasets).find(([, dataset]) => dataset.date === dateStr);
+            if (!selectedDataset) return;
+            document.getElementById('selectedDate').textContent =
+              `${selectedDataset[1].relative} · ${formatCalendarDate(dateStr)}`;
+            loadDataset(selectedDataset[0]).catch((error) => {
+              document.getElementById('error').style.display = 'block';
+              document.getElementById('error').textContent = error.message;
+            });
+          }
+        });
+        document.getElementById('selectedDate').textContent =
+          `วันนี้ · ${formatCalendarDate(datasets.day_current.date)}`;
         const initialGeojson = await fetch('outputs/day_current/jpss_passes.geojson').then((response) => response.json());
         addDataLayers(initialGeojson);
         await loadDataset('day_current');
@@ -706,18 +762,6 @@
         setToggle('togglePoints', groups.points);
         setToggle('toggleBuffer', groups.buffer);
         setToggle('toggleAoi', groups.aoi);
-        document.querySelectorAll('.date-tab').forEach((button) => {
-          button.addEventListener('click', async () => {
-            document.querySelectorAll('.date-tab').forEach((item) => item.classList.remove('active'));
-            button.classList.add('active');
-            try {
-              await loadDataset(button.dataset.dataset);
-            } catch (error) {
-              document.getElementById('error').style.display = 'block';
-              document.getElementById('error').textContent = error.message;
-              }
-          });
-        });
         document.querySelectorAll('.satellite-tab').forEach((button) => {
           button.addEventListener('click', () => {
             document.querySelectorAll('.satellite-tab').forEach((item) => item.classList.remove('active'));
