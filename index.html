@@ -467,7 +467,7 @@
           <span class="panel-note">scrollable</span>
         </div>
         <div class="controls">
-          <label class="toggle"><input id="toggleSwath" type="checkbox" checked> Swath</label>
+          <label class="toggle"><input id="toggleSwath" type="checkbox"> Swath</label>
           <label class="toggle"><input id="toggleTrack" type="checkbox" checked> Tracks</label>
           <label class="toggle"><input id="togglePoints" type="checkbox" checked> AOS/TCA/LOS</label>
           <label class="toggle"><input id="toggleBuffer" type="checkbox" checked> Buffer</label>
@@ -657,6 +657,7 @@
 
     function setToggle(id, group) {
       const input = document.getElementById(id);
+      group.forEach((layerId) => map.setLayoutProperty(layerId, 'visibility', input.checked ? 'visible' : 'none'));
       input.addEventListener('change', () => {
         group.forEach((layerId) => map.setLayoutProperty(layerId, 'visibility', input.checked ? 'visible' : 'none'));
       });
