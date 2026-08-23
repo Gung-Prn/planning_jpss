@@ -1475,7 +1475,7 @@
           <span class="live-legend-symbol" aria-hidden="true">
             <svg viewBox="0 0 48 48"><path fill="currentColor" d="M3 17h12v14H3zM33 17h12v14H33z"/><rect x="17" y="15" width="14" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path fill="none" stroke="currentColor" stroke-width="3" d="M24 15V8m-4 0h8"/></svg>
           </span>
-          Current JPSS · SGP4
+          Current JPSS · live TLE track
         </div>
       </div>
     </main>
@@ -1524,6 +1524,9 @@
       aoiSoft: themeColor('--color-map-aoi-soft'),
       station: themeColor('--color-map-station'),
       orbit: themeColor('--color-map-orbit'),
+      satelliteNpp: themeColor('--color-map-satellite-npp'),
+      satelliteJpss1: themeColor('--color-map-satellite-jpss1'),
+      satelliteJpss2: themeColor('--color-map-satellite-jpss2'),
       halo: themeColor('--color-map-halo')
     };
 
@@ -1594,6 +1597,26 @@
       map.addLayer({ id: 'coverage-buffer-line', type: 'line', source: 'station-coverage', paint: {
         'line-color': MAP_COLORS.buffer, 'line-width': 2, 'line-dasharray': [4, 3], 'line-opacity': 0.9
       }});
+      map.addSource('jpss-live-tracks', {
+        type: 'geojson',
+        data: { type: 'FeatureCollection', features: [] }
+      });
+      map.addLayer({
+        id: 'live-satellite-track-line',
+        type: 'line',
+        source: 'jpss-live-tracks',
+        paint: {
+          'line-color': [
+            'match', ['get', 'satellite_id'],
+            'jpss_1', MAP_COLORS.satelliteJpss1,
+            'jpss_2', MAP_COLORS.satelliteJpss2,
+            MAP_COLORS.satelliteNpp
+          ],
+          'line-width': 2,
+          'line-opacity': 0.26,
+          'line-blur': 0.25
+        }
+      });
       map.addSource('jpss-data', { type: 'geojson', data: geojson });
       map.addLayer({ id: 'track-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'visible_track'], paint: {
         'line-color': ['match', ['get', 'direction'], 'descending', MAP_COLORS.descending, MAP_COLORS.track],
@@ -1677,9 +1700,14 @@
     const CURRENT_OMM_URL = 'satellite_data/current_omm.json';
     const LIVE_POSITION_INTERVAL_MS = 1000;
     const LIVE_POSITION_LOOKAHEAD_MS = 5000;
+    const LIVE_TRACK_PAST_MINUTES = 10;
+    const LIVE_TRACK_FUTURE_MINUTES = 100;
+    const LIVE_TRACK_STEP_SECONDS = 60;
+    const LIVE_TRACK_REFRESH_MS = 30000;
     const liveSatelliteMarkers = new Map();
     let liveSatelliteTimer = null;
     let liveSatelliteSnapshot = null;
+    let liveTrackUpdatedAt = 0;
 
     function liveSatelliteIconSvg() {
       return `
@@ -1725,6 +1753,64 @@
       const x = Math.cos(lat1) * Math.sin(lat2)
         - Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLon);
       return (toDegrees(Math.atan2(y, x)) + 360) % 360;
+    }
+
+    function splitTrackAtAntimeridian(coordinates) {
+      const segments = [];
+      let segment = [];
+      coordinates.forEach((coordinate) => {
+        const previous = segment[segment.length - 1];
+        if (previous && Math.abs(coordinate[0] - previous[0]) > 180) {
+          if (segment.length >= 2) segments.push(segment);
+          segment = [coordinate];
+        } else {
+          segment.push(coordinate);
+        }
+      });
+      if (segment.length >= 2) segments.push(segment);
+      return segments;
+    }
+
+    function buildLiveTrackFeature(tracker, centerTime) {
+      const coordinates = [];
+      const startTime = new Date(centerTime.getTime() - LIVE_TRACK_PAST_MINUTES * 60 * 1000);
+      const endTime = new Date(centerTime.getTime() + LIVE_TRACK_FUTURE_MINUTES * 60 * 1000);
+      for (
+        let timestamp = startTime.getTime();
+        timestamp <= endTime.getTime();
+        timestamp += LIVE_TRACK_STEP_SECONDS * 1000
+      ) {
+        const position = propagatedGeodetic(tracker.satrec, new Date(timestamp));
+        if (position) coordinates.push([position.longitude, position.latitude]);
+      }
+      const segments = splitTrackAtAntimeridian(coordinates);
+      if (!segments.length) return null;
+      return {
+        type: 'Feature',
+        properties: {
+          type: 'live_tle_track',
+          satellite_id: tracker.record.satellite_id,
+          satellite: tracker.record.satellite,
+          start_datetime: startTime.toISOString(),
+          end_datetime: endTime.toISOString(),
+          omm_epoch: tracker.record.epoch_utc,
+          source: 'CelesTrak OMM / SGP4'
+        },
+        geometry: segments.length === 1
+          ? { type: 'LineString', coordinates: segments[0] }
+          : { type: 'MultiLineString', coordinates: segments }
+      };
+    }
+
+    function updateLiveSatelliteTracks(centerTime) {
+      const source = map.getSource('jpss-live-tracks');
+      if (!source) return;
+      const features = [...liveSatelliteMarkers.values()]
+        .map((tracker) => buildLiveTrackFeature(tracker, centerTime))
+        .filter(Boolean);
+      source.setData({ type: 'FeatureCollection', features });
+      liveTrackUpdatedAt = centerTime.getTime();
+      document.getElementById('liveSatellitesStatus').dataset.trackCount = String(features.length);
     }
 
     function currentPositionPopup(tracker) {
@@ -1774,13 +1860,19 @@
       });
 
       const status = document.getElementById('liveSatellitesStatus');
-      status.textContent = `${validCount} live · ${now.toISOString().slice(11, 19)} UTC`;
+      if (!liveTrackUpdatedAt || now.getTime() - liveTrackUpdatedAt >= LIVE_TRACK_REFRESH_MS) {
+        updateLiveSatelliteTracks(now);
+      }
+      status.textContent = `${validCount} live · TLE · ${now.toISOString().slice(11, 19)} UTC`;
       document.getElementById('fitLiveSatellites').disabled = validCount === 0
         || !document.getElementById('toggleLiveSatellites').checked;
     }
 
     function setLiveSatellitesVisible(visible) {
       liveSatelliteMarkers.forEach((tracker) => { tracker.element.hidden = !visible; });
+      if (map.getLayer('live-satellite-track-line')) {
+        map.setLayoutProperty('live-satellite-track-line', 'visibility', visible ? 'visible' : 'none');
+      }
       document.getElementById('fitLiveSatellites').disabled = !visible || !liveSatelliteMarkers.size;
     }
 
