@@ -1351,7 +1351,7 @@
     <section class="schedule-panel">
       <div class="passes-header">
         <strong>Pass Schedule</strong>
-        <span>click a row to show next-day orbit</span>
+        <span>click row for orbit · click again to clear</span>
       </div>
       <section class="passes" id="passes"></section>
     </section>
@@ -1705,6 +1705,16 @@
       ]);
     }
 
+    function clearPlanningSelection(status = 'Orbit TLE/GIS: hidden') {
+      document.querySelectorAll('.pass-table tbody tr').forEach((item) => {
+        item.classList.remove('active');
+        item.setAttribute('aria-pressed', 'false');
+      });
+      clearPassHighlight();
+      clearOrbit(status);
+      closeActivePopup();
+    }
+
     function selectNextDayOrbit(row) {
       const targetTime = Date.parse(row.tca_utc) + 24 * 60 * 60 * 1000;
       const sameSatellite = currentDataset.orbitFeatures.filter((candidate) => {
@@ -1761,6 +1771,10 @@
           <td><span class="coverage-badge ${row.aoi_covered ? 'covered' : 'not-covered'}">${row.aoi_covered ? 'Yes' : 'No'}</span></td>
         `;
         rowElement.addEventListener('click', () => {
+          if (rowElement.getAttribute('aria-pressed') === 'true') {
+            clearPlanningSelection();
+            return;
+          }
           document.querySelectorAll('.pass-table tbody tr').forEach((item) => {
             item.classList.remove('active');
             item.setAttribute('aria-pressed', 'false');
@@ -1803,6 +1817,10 @@
     let currentDataset = null;
     let activePopup = null;
     let selectedPassId = null;
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && selectedPassId) clearPlanningSelection();
+    });
 
     function formatCalendarDate(dateValue) {
       return new Intl.DateTimeFormat('th-TH-u-ca-gregory', {
