@@ -614,6 +614,26 @@
       )).join('');
     }
 
+    function closeActivePopup() {
+      const popup = activePopup;
+      if (!popup) return;
+      activePopup = null;
+      popup.remove();
+    }
+
+    function showSinglePopup(lngLat, html, options = {}) {
+      closeActivePopup();
+      const popup = new maplibregl.Popup({ maxWidth: '320px', ...options })
+        .setLngLat(lngLat)
+        .setHTML(html)
+        .addTo(map);
+      activePopup = popup;
+      popup.on('close', () => {
+        if (activePopup === popup) activePopup = null;
+      });
+      return popup;
+    }
+
     function addDataLayers(geojson) {
       map.addSource('jpss-data', { type: 'geojson', data: geojson });
       map.addLayer({ id: 'swath-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'reference_swath'], paint: {
@@ -666,10 +686,7 @@
         map.on('click', layerId, (event) => {
           const feature = event.features && event.features[0];
           if (!feature) return;
-          new maplibregl.Popup({ closeButton: true, maxWidth: '320px' })
-            .setLngLat(event.lngLat)
-            .setHTML(popupHtml(feature.properties || {}))
-            .addTo(map);
+          showSinglePopup(event.lngLat, popupHtml(feature.properties || {}), { closeButton: true });
         });
         map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
@@ -840,7 +857,7 @@
         rowElement.addEventListener('click', () => {
           document.querySelectorAll('.pass-table tbody tr').forEach((item) => item.classList.remove('active'));
           rowElement.classList.add('active');
-          if (activePlanningPopup) activePlanningPopup.remove();
+          closeActivePopup();
           const feature = trackFeatures[index];
           if (!feature) return;
           const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
@@ -849,11 +866,7 @@
           const orbitMatch = selectNextDayOrbit(row);
           if (orbitMatch) showOrbit(row, orbitMatch.orbitFeature, orbitMatch.orbitPass);
           else clearOrbit('ไม่พบ Orbit TLE/GIS ของวันถัดไป');
-          activePlanningPopup = new maplibregl.Popup({ maxWidth: '320px' })
-            .setLngLat([Number(row.closest_lon), Number(row.closest_lat)])
-            .setHTML(popupHtml(row))
-            .addTo(map);
-          activePlanningPopup.on('close', () => { activePlanningPopup = null; });
+          showSinglePopup([Number(row.closest_lon), Number(row.closest_lat)], popupHtml(row));
         });
         body.appendChild(rowElement);
       });
@@ -875,7 +888,7 @@
 
     let activeSatellite = 'all';
     let currentDataset = null;
-    let activePlanningPopup = null;
+    let activePopup = null;
 
     function formatCalendarDate(dateValue) {
       return new Intl.DateTimeFormat('th-TH-u-ca-gregory', {
@@ -956,7 +969,7 @@
       const orbitPassRows = orbitPassRes ? await orbitPassRes.json() : [];
       const orbitFeatures = orbitGeojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track');
       currentDataset = { id: datasetId, geojson, passes, orbitFeatures, orbitPassRows };
-      if (activePlanningPopup) activePlanningPopup.remove();
+      closeActivePopup();
       clearOrbit();
       renderActiveDataset(fitMap);
     }
