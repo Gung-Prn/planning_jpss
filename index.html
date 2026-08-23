@@ -1675,7 +1675,7 @@
         map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
       });
-      map.on('click', 'live-satellite-symbol', (event) => {
+      const showLiveSatellitePopup = (event) => {
         const feature = event.features && event.features[0];
         const tracker = liveSatelliteTrackers.get((feature?.properties || {}).satellite_id);
         if (!tracker?.position) return;
@@ -1684,9 +1684,12 @@
           currentPositionPopup(tracker),
           { closeButton: true, offset: 28 }
         );
+      };
+      ['live-satellite-anchor', 'live-satellite-symbol', 'live-satellite-label'].forEach((layerId) => {
+        map.on('click', layerId, showLiveSatellitePopup);
+        map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
       });
-      map.on('mouseenter', 'live-satellite-symbol', () => { map.getCanvas().style.cursor = 'pointer'; });
-      map.on('mouseleave', 'live-satellite-symbol', () => { map.getCanvas().style.cursor = ''; });
     }
 
     function extendBounds(bounds, coordinates) {
