@@ -526,6 +526,7 @@
     button,
     [role="button"],
     label.toggle,
+    .extra-layer-toggle,
     .flatpickr-day {
       -webkit-tap-highlight-color: transparent;
     }
@@ -1066,6 +1067,117 @@
       padding-block: var(--space-2xs);
     }
 
+    .extra-layers-panel {
+      position: absolute;
+      inset-block-start: 5.25rem;
+      inset-inline-end: var(--space-md);
+      z-index: var(--z-raised);
+      inline-size: min(15rem, calc(100% - 2 * var(--space-md)));
+      overflow: hidden;
+      border: var(--rule-thin) solid var(--color-rule);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-raised);
+      box-shadow: var(--shadow-panel);
+      color: var(--color-ink-2);
+    }
+
+    .extra-layers-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-sm) var(--space-xs);
+      border-block-end: var(--rule-thin) solid var(--color-rule);
+      font-family: var(--font-display);
+    }
+
+    .extra-layers-head strong {
+      color: var(--color-ink);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    .extra-layers-head span {
+      color: var(--color-muted);
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+    }
+
+    .extra-layer-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      min-block-size: 3.5rem;
+      padding: var(--space-xs) var(--space-sm);
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .extra-layer-toggle:has(input:checked) {
+      background: var(--color-accent-soft);
+    }
+
+    .extra-layer-toggle:active {
+      background: var(--color-paper-3);
+    }
+
+    .extra-layer-toggle:has(input:checked):active {
+      background: var(--color-accent-soft);
+    }
+
+    .extra-layer-toggle:has(input:focus-visible) {
+      outline: 0.125rem solid var(--color-accent);
+      outline-offset: -0.1875rem;
+    }
+
+    .extra-layer-toggle:has(input:disabled) {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    .extra-layer-copy {
+      display: flex;
+      align-items: center;
+      min-inline-size: 0;
+      gap: var(--space-xs);
+    }
+
+    .extra-layer-copy strong,
+    .extra-layer-copy small {
+      display: block;
+    }
+
+    .extra-layer-copy strong {
+      color: var(--color-ink);
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+
+    .extra-layer-copy small {
+      margin-block-start: var(--space-3xs);
+      color: var(--color-muted);
+      font-size: 0.6875rem;
+      white-space: nowrap;
+    }
+
+    .buffer-symbol {
+      inline-size: 1.125rem;
+      block-size: 1.125rem;
+      flex: 0 0 auto;
+      border: 0.125rem dashed var(--color-map-buffer);
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--color-map-buffer) 12%, transparent);
+    }
+
+    .extra-layer-toggle input {
+      inline-size: 1.125rem;
+      block-size: 1.125rem;
+      flex: 0 0 auto;
+      margin: 0;
+      accent-color: var(--color-accent);
+    }
+
     .swatch {
       inline-size: 1rem;
       block-size: 0.1875rem;
@@ -1101,6 +1213,8 @@
 
     @media (hover: hover) and (pointer: fine) {
       label.toggle:hover { background: var(--color-paper-3); }
+      .extra-layer-toggle:hover { background: var(--color-paper-3); }
+      .extra-layer-toggle:has(input:checked):hover { background: var(--color-accent-soft); }
     }
 
     @media (max-width: 59.99rem) {
@@ -1120,6 +1234,12 @@
 
       .passes { max-block-size: calc(14rem - 3rem); }
       .legend { display: none; }
+      .extra-layers-panel {
+        inset-block-start: auto;
+        inset-block-end: calc(14rem + var(--space-md));
+        inset-inline-end: var(--space-xs);
+        inline-size: min(14rem, calc(100% - 2 * var(--space-xs)));
+      }
       .stats { grid-template-columns: repeat(4, minmax(5rem, 1fr)); overflow-x: auto; }
       .selection-meta { grid-template-columns: minmax(0, 1fr); }
     }
@@ -1139,6 +1259,8 @@
       .stat:nth-child(-n + 2) { border-block-end: var(--rule-thin) solid var(--color-rule); }
       .schedule-panel { block-size: 12.5rem; }
       .passes { max-block-size: calc(12.5rem - 3rem); }
+      .extra-layers-panel { inset-block-end: calc(12.5rem + var(--space-md)); }
+      .extra-layers-head span { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1200,6 +1322,22 @@
     <main>
       <div id="map"></div>
       <div class="error" id="error"></div>
+      <section class="extra-layers-panel" aria-labelledby="extraLayersTitle">
+        <div class="extra-layers-head">
+          <strong id="extraLayersTitle">Extra layers</strong>
+          <span>Map overlay</span>
+        </div>
+        <label class="extra-layer-toggle" for="toggleCoverage">
+          <span class="extra-layer-copy">
+            <span class="buffer-symbol" aria-hidden="true"></span>
+            <span>
+              <strong>Coverage buffer</strong>
+              <small>Station radius · 2,500 km</small>
+            </span>
+          </span>
+          <input id="toggleCoverage" type="checkbox" checked>
+        </label>
+      </section>
       <div class="legend">
         <div class="legend-row"><span class="swatch"></span>Visible track</div>
         <div class="legend-row"><span class="swatch aos-swatch"></span>AOS</div>
@@ -1257,6 +1395,7 @@
     };
 
     const groups = {
+      coverage: ['coverage-buffer-fill', 'coverage-buffer-line'],
       track: ['track-line'],
       points: ['event-circle'],
       orbit: ['orbit-corridor-fill', 'orbit-corridor-line', 'orbit-line']
@@ -1312,6 +1451,16 @@
     }
 
     function addDataLayers(geojson) {
+      map.addSource('station-coverage', {
+        type: 'geojson',
+        data: geodesicCircle(STATION_COORDINATES, COVERAGE_RADIUS_KM)
+      });
+      map.addLayer({ id: 'coverage-buffer-fill', type: 'fill', source: 'station-coverage', paint: {
+        'fill-color': MAP_COLORS.buffer, 'fill-opacity': 0.07
+      }});
+      map.addLayer({ id: 'coverage-buffer-line', type: 'line', source: 'station-coverage', paint: {
+        'line-color': MAP_COLORS.buffer, 'line-width': 2, 'line-dasharray': [4, 3], 'line-opacity': 0.9
+      }});
       map.addSource('jpss-data', { type: 'geojson', data: geojson });
       map.addLayer({ id: 'track-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'visible_track'], paint: {
         'line-color': ['match', ['get', 'direction'], 'descending', MAP_COLORS.descending, MAP_COLORS.track],
@@ -1360,6 +1509,8 @@
 
     const ORBIT_CORRIDOR_KM = 250;
     const COVERAGE_RADIUS_KM = 2500;
+    const EARTH_RADIUS_KM = 6371.0088;
+    const STATION_COORDINATES = [100.929, 13.1014];
     const PRODUCT_BY_SATELLITE = {
       'SUOMI NPP': 'JPSS Product',
       'NOAA 20 (JPSS-1)': 'JPSS Product',
@@ -1374,6 +1525,42 @@
       const lat2 = toRad(b[1]);
       const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
       return 6371 * 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
+    }
+
+    // Client-derived GeoJSON uses OGC:CRS84 coordinate order: [longitude, latitude].
+    function geodesicCircle(center, radiusKm, steps = 180) {
+      const toRad = (value) => value * Math.PI / 180;
+      const toDeg = (value) => value * 180 / Math.PI;
+      const [centerLon, centerLat] = center;
+      const lon1 = toRad(centerLon);
+      const lat1 = toRad(centerLat);
+      const angularDistance = radiusKm / EARTH_RADIUS_KM;
+      const ring = [];
+
+      for (let index = 0; index < steps; index += 1) {
+        const bearing = 2 * Math.PI * index / steps;
+        const lat2 = Math.asin(
+          Math.sin(lat1) * Math.cos(angularDistance)
+          + Math.cos(lat1) * Math.sin(angularDistance) * Math.cos(bearing)
+        );
+        const lon2 = lon1 + Math.atan2(
+          Math.sin(bearing) * Math.sin(angularDistance) * Math.cos(lat1),
+          Math.cos(angularDistance) - Math.sin(lat1) * Math.sin(lat2)
+        );
+        const normalizedLon = ((toDeg(lon2) + 540) % 360) - 180;
+        ring.push([normalizedLon, toDeg(lat2)]);
+      }
+      ring.push([...ring[0]]);
+
+      return {
+        type: 'Feature',
+        properties: {
+          type: 'station_buffer',
+          radius_km: radiusKm,
+          source: 'client_geodesic'
+        },
+        geometry: { type: 'Polygon', coordinates: [ring] }
+      };
     }
 
     function corridorPolygon(line, widthKm) {
@@ -1408,7 +1595,7 @@
     function showOrbit(row, orbitFeature, orbitPass) {
       const source = map.getSource('jpss-orbit');
       if (!source || !orbitFeature) return;
-      const station = [100.929, 13.1014];
+      const station = STATION_COORDINATES;
       const rawLine = orbitFeature.geometry.coordinates || [];
       const clippedLine = rawLine.filter((point) => distanceKm(station, point) <= COVERAGE_RADIUS_KM);
       const line = clippedLine.length >= 2 ? clippedLine : rawLine;
@@ -1663,6 +1850,7 @@
         await loadDataset(defaultDatasetId);
         setToggle('toggleTrack', groups.track);
         setToggle('togglePoints', groups.points);
+        setToggle('toggleCoverage', groups.coverage);
       } catch (error) {
         const box = document.getElementById('error');
         box.style.display = 'block';
