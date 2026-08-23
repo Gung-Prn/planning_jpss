@@ -2,6 +2,12 @@ name: Sync Vallaris JPSS STAC
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/sync_vallaris_stac.py"
+      - ".github/workflows/sync-vallaris-stac.yml"
   schedule:
     - cron: "30 0 * * *"
 
