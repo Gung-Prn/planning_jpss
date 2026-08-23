@@ -532,7 +532,7 @@
           <span>Coverage SKP: <strong>—</strong></span>
           <span>Corridor: <strong>—</strong></span>
         </div>
-        <span class="mock-badge" id="orbitStatus">Orbit mockup: hidden</span>
+        <span class="mock-badge" id="orbitStatus">Orbit TLE/GIS: hidden</span>
       </section>
 
     </aside>
@@ -549,7 +549,7 @@
         <div class="legend-row"><span class="swatch los-swatch"></span>LOS</div>
         <div class="legend-row"><span class="swatch aoi-swatch"></span>AOI</div>
         <div class="legend-row"><span class="swatch orbit-swatch"></span>JPSS orbit · +1 day</div>
-        <div class="legend-row"><span class="swatch corridor-swatch"></span>Fixed corridor · mockup</div>
+        <div class="legend-row"><span class="swatch corridor-swatch"></span>Fixed corridor · TLE/GIS</div>
       </div>
     </main>
 
@@ -687,12 +687,12 @@
       coordinates.forEach((item) => extendBounds(bounds, item));
     }
 
-    const MOCK_CORRIDOR_KM = 250;
-    const MOCK_COVERAGE_RADIUS_KM = 2500;
+    const ORBIT_CORRIDOR_KM = 250;
+    const COVERAGE_RADIUS_KM = 2500;
     const PRODUCT_BY_SATELLITE = {
-      'SUOMI NPP': 'JPSS Product · mock',
-      'NOAA 20 (JPSS-1)': 'JPSS Product · mock',
-      'NOAA 21 (JPSS-2)': 'JPSS Product · mock'
+      'SUOMI NPP': 'JPSS Product',
+      'NOAA 20 (JPSS-1)': 'JPSS Product',
+      'NOAA 21 (JPSS-2)': 'JPSS Product'
     };
 
     function distanceKm(a, b) {
@@ -723,26 +723,29 @@
       return [...left, ...right.reverse(), left[0]];
     }
 
-    function showMockOrbit(row, trackFeature) {
+    function showOrbit(row, orbitFeature, orbitPass) {
       const source = map.getSource('jpss-orbit');
-      if (!source || !trackFeature) return;
+      if (!source || !orbitFeature) return;
       const station = [100.929, 13.1014];
-      const rawLine = trackFeature.geometry.coordinates || [];
-      const clippedLine = rawLine.filter((point) => distanceKm(station, point) <= MOCK_COVERAGE_RADIUS_KM);
+      const rawLine = orbitFeature.geometry.coordinates || [];
+      const clippedLine = rawLine.filter((point) => distanceKm(station, point) <= COVERAGE_RADIUS_KM);
       const line = clippedLine.length >= 2 ? clippedLine : rawLine;
-      const orbitId = `${row.satellite || 'JPSS'}-${row.tca_utc || 'next-day'}`;
+      if (line.length < 2) return;
+      const orbitProps = orbitFeature.properties || {};
+      const orbitId = orbitProps.orbit_id || orbitProps.pass_id || `${row.satellite || 'JPSS'}-next-day`;
+      const orbitDate = orbitPass?.aos_utc?.slice(0, 10) || orbitProps.orbit_date || 'วันถัดไป';
       const geojson = {
         type: 'FeatureCollection',
         features: [
           {
             type: 'Feature',
-            properties: { type: 'orbit', orbit_id: orbitId, satellite: row.satellite, orbit_date: 'วันถัดไป' },
+            properties: { type: 'orbit', orbit_id: orbitId, satellite: orbitProps.satellite || row.satellite, orbit_date: orbitDate, source: 'TLE/GIS' },
             geometry: { type: 'LineString', coordinates: line }
           },
           {
             type: 'Feature',
-            properties: { type: 'orbit_corridor', orbit_id: orbitId, corridor_width_km: MOCK_CORRIDOR_KM, clip: 'Coverage SKP' },
-            geometry: { type: 'Polygon', coordinates: [corridorPolygon(line, MOCK_CORRIDOR_KM)] }
+            properties: { type: 'orbit_corridor', orbit_id: orbitId, corridor_width_km: ORBIT_CORRIDOR_KM, clip: 'Coverage SKP' },
+            geometry: { type: 'Polygon', coordinates: [corridorPolygon(line, ORBIT_CORRIDOR_KM)] }
           }
         ]
       };
@@ -753,16 +756,17 @@
       document.getElementById('selectionTitle').textContent = row.satellite || 'JPSS planning';
       document.getElementById('selectionMeta').innerHTML = `
         <span>Product: <strong>${row.product || PRODUCT_BY_SATELLITE[row.satellite] || 'JPSS Product'}</strong></span>
-        <span>Orbit +1 day: <strong>${fmtTime(row.tca_utc)}</strong></span>
-        <span>Coverage SKP: <strong>${MOCK_COVERAGE_RADIUS_KM.toLocaleString()} km radius</strong></span>
-        <span>Corridor: <strong>${MOCK_CORRIDOR_KM} km fixed</strong></span>`;
-      document.getElementById('orbitStatus').textContent = 'Orbit mockup: shown · clipped to Coverage SKP';
+        <span>Orbit +1 day: <strong>${orbitDate}</strong></span>
+        <span>Coverage SKP: <strong>${COVERAGE_RADIUS_KM.toLocaleString()} km radius</strong></span>
+        <span>Corridor: <strong>${ORBIT_CORRIDOR_KM} km fixed</strong></span>
+        <span>Source: <strong>TLE / GIS</strong></span>`;
+      document.getElementById('orbitStatus').textContent = 'Orbit TLE/GIS: shown · clipped to Coverage SKP';
       const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
       extendBounds(bounds, line);
       if (Number.isFinite(bounds[0][0])) map.fitBounds(bounds, { padding: 60, maxZoom: 7 });
     }
 
-    function clearMockOrbit() {
+    function clearOrbit(status = 'Orbit TLE/GIS: hidden') {
       const source = map.getSource('jpss-orbit');
       if (source) source.setData({ type: 'FeatureCollection', features: [] });
       ['orbit-line', 'orbit-corridor-fill', 'orbit-corridor-line'].forEach((id) => map.setLayoutProperty(id, 'visibility', 'none'));
@@ -772,7 +776,7 @@
         <span>Orbit +1 day: <strong>—</strong></span>
         <span>Coverage SKP: <strong>—</strong></span>
         <span>Corridor: <strong>—</strong></span>`;
-      document.getElementById('orbitStatus').textContent = 'Orbit mockup: hidden';
+      document.getElementById('orbitStatus').textContent = status;
     }
 
     function renderPassList(rows, trackFeatures) {
@@ -805,7 +809,11 @@
           const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
           extendBounds(bounds, feature.geometry.coordinates);
           map.fitBounds(bounds, { padding: 40, maxZoom: 7 });
-          showMockOrbit(row, feature);
+          const orbitFeature = currentDataset.orbitFeatures.find((candidate) => {
+            return (candidate.properties || {}).satellite === row.satellite;
+          });
+          if (orbitFeature) showOrbit(row, orbitFeature, currentDataset.orbitPasses.get(row.satellite));
+          else clearOrbit('ไม่พบ Orbit TLE/GIS ของวันถัดไป');
           new maplibregl.Popup({ maxWidth: '320px' })
             .setLngLat([Number(row.closest_lon), Number(row.closest_lat)])
             .setHTML(popupHtml(row))
@@ -860,7 +868,7 @@
       document.getElementById('stationInside').textContent = stationInside;
       document.getElementById('maxEl').textContent = `${bestElevation.toFixed(1)}°`;
       document.getElementById('summary').textContent =
-        `${label} · JPSS planning · Product metadata mockup · TLE ล่าสุด · 5° elevation mask`;
+        `${label} · JPSS planning · Product metadata · TLE ล่าสุด · 5° elevation mask`;
     }
 
     function renderActiveDataset(fitMap = false) {
@@ -880,14 +888,33 @@
 
     async function loadDataset(datasetId, fitMap = true) {
       const base = `outputs/${datasetId}`;
-      const [geoRes, passRes] = await Promise.all([
+      // The selected planning day is separate from the orbit day. For the
+      // current planning view, the orbit comes from the next-day TLE/GIS run.
+      const orbitDatasetId = datasetId === 'day_minus_1' ? 'day_current' : datasetId === 'day_current' ? 'day_plus_1' : datasetId === 'day_plus_1' ? 'day_plus_2' : null;
+      const requests = [
         fetch(`${base}/jpss_passes.geojson`),
         fetch(`${base}/jpss_passes.json`)
-      ]);
-      if (!geoRes.ok || !passRes.ok) throw new Error(`Cannot load ${datasetId} planning output files.`);
+      ];
+      if (orbitDatasetId) {
+        requests.push(fetch(`outputs/${orbitDatasetId}/jpss_passes.geojson`));
+        requests.push(fetch(`outputs/${orbitDatasetId}/jpss_passes.json`));
+      }
+      const [geoRes, passRes, orbitGeoRes, orbitPassRes] = await Promise.all(requests);
+      if (!geoRes.ok || !passRes.ok || (orbitGeoRes && !orbitGeoRes.ok) || (orbitPassRes && !orbitPassRes.ok)) {
+        throw new Error(`Cannot load ${datasetId} planning output files.`);
+      }
 
-      currentDataset = { id: datasetId, geojson: await geoRes.json(), passes: await passRes.json() };
-      clearMockOrbit();
+      const geojson = await geoRes.json();
+      const passes = await passRes.json();
+      const orbitGeojson = orbitGeoRes ? await orbitGeoRes.json() : { features: [] };
+      const orbitPassRows = orbitPassRes ? await orbitPassRes.json() : [];
+      const orbitFeatures = orbitGeojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track');
+      const orbitPasses = new Map();
+      orbitPassRows.forEach((pass) => {
+        if (!orbitPasses.has(pass.satellite)) orbitPasses.set(pass.satellite, pass);
+      });
+      currentDataset = { id: datasetId, geojson, passes, orbitFeatures, orbitPasses };
+      clearOrbit();
       renderActiveDataset(fitMap);
     }
 
