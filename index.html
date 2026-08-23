@@ -1157,7 +1157,7 @@
     <aside>
       <header>
         <h1>JPSS Planning Visual</h1>
-        <div class="sub" id="summary">Loading planning results...</div>
+        <div class="sub" id="summary">Loading Vallaris STAC planning data...</div>
         <div class="calendar-card">
           <span class="calendar-label">Planning date</span>
           <div id="planningCalendar" aria-label="เลือกวันที่วางแผน"></div>
@@ -1167,8 +1167,8 @@
 
       <section class="stats">
         <div class="stat"><strong id="passCount">-</strong><span>visible passes</span></div>
-        <div class="stat"><strong id="swathCount">-</strong><span>reference swaths</span></div>
-        <div class="stat"><strong id="stationInside">-</strong><span>swaths covering station</span></div>
+        <div class="stat"><strong id="eventCount">-</strong><span>event points</span></div>
+        <div class="stat"><strong id="satelliteCount">-</strong><span>satellites</span></div>
         <div class="stat"><strong id="maxEl">-</strong><span>best max elevation</span></div>
       </section>
 
@@ -1178,11 +1178,8 @@
           <span class="panel-note">scrollable</span>
         </div>
         <div class="controls">
-          <label class="toggle"><input id="toggleSwath" type="checkbox"> Swath</label>
           <label class="toggle"><input id="toggleTrack" type="checkbox" checked> Tracks</label>
           <label class="toggle"><input id="togglePoints" type="checkbox" checked> AOS/TCA/LOS</label>
-          <label class="toggle"><input id="toggleBuffer" type="checkbox" checked> Buffer</label>
-          <label class="toggle"><input id="toggleAoi" type="checkbox" checked> AOI</label>
         </div>
       </section>
 
@@ -1204,13 +1201,10 @@
       <div id="map"></div>
       <div class="error" id="error"></div>
       <div class="legend">
-        <div class="legend-row"><span class="swatch swath-swatch"></span>Reference swath</div>
         <div class="legend-row"><span class="swatch"></span>Visible track</div>
-        <div class="legend-row"><span class="swatch buffer-swatch"></span>2500 km buffer</div>
         <div class="legend-row"><span class="swatch aos-swatch"></span>AOS</div>
         <div class="legend-row"><span class="swatch tca-swatch"></span>TCA</div>
         <div class="legend-row"><span class="swatch los-swatch"></span>LOS</div>
-        <div class="legend-row"><span class="swatch aoi-swatch"></span>AOI</div>
         <div class="legend-row"><span class="swatch orbit-swatch"></span>JPSS orbit · +1 day</div>
         <div class="legend-row"><span class="swatch corridor-swatch"></span>Fixed corridor · TLE/GIS</div>
       </div>
@@ -1263,12 +1257,8 @@
     };
 
     const groups = {
-      swath: ['swath-fill', 'swath-line'],
       track: ['track-line'],
       points: ['event-circle'],
-      buffer: ['buffer-fill', 'buffer-line'],
-      aoi: ['aoi-fill', 'aoi-line'],
-      station: ['station-circle'],
       orbit: ['orbit-corridor-fill', 'orbit-corridor-line', 'orbit-line']
     };
 
@@ -1282,9 +1272,13 @@
         ['Direction', props.direction],
         ['Sensor', props.sensor || props.reference_swath_sensors],
         ['Product', props.product],
+        ['Planning date', props.planning_date],
+        ['Planning method', props.planning_method],
         ['AOS', props.aos_utc],
         ['TCA', props.tca_utc],
         ['LOS', props.los_utc],
+        ['TLE epoch', props.tle_epoch_utc],
+        ['TLE quality', props.tle_quality],
         ['Max El', props.max_elevation_deg ? `${props.max_elevation_deg} deg` : null],
         ['Min Dist', props.min_distance_km ? `${props.min_distance_km} km` : null],
         ['Swath Time', props.datetime],
@@ -1319,32 +1313,9 @@
 
     function addDataLayers(geojson) {
       map.addSource('jpss-data', { type: 'geojson', data: geojson });
-      map.addLayer({ id: 'swath-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'reference_swath'], paint: {
-        'fill-color': ['case', ['==', ['get', 'station_inside'], true], MAP_COLORS.swathCovered, MAP_COLORS.swath],
-        'fill-opacity': ['case', ['==', ['get', 'station_inside'], true], 0.28, 0.14]
-      }});
-      map.addLayer({ id: 'swath-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'reference_swath'], paint: {
-        'line-color': ['case', ['==', ['get', 'station_inside'], true], MAP_COLORS.swathOutline, MAP_COLORS.swathOutlineIdle],
-        'line-width': ['case', ['==', ['get', 'station_inside'], true], 2, 1]
-      }});
       map.addLayer({ id: 'track-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'visible_track'], paint: {
         'line-color': ['match', ['get', 'direction'], 'descending', MAP_COLORS.descending, MAP_COLORS.track],
         'line-width': 3, 'line-opacity': 0.9
-      }});
-      map.addLayer({ id: 'buffer-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'station_buffer'], paint: {
-        'fill-color': MAP_COLORS.buffer, 'fill-opacity': 0.04
-      }});
-      map.addLayer({ id: 'buffer-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'station_buffer'], paint: {
-        'line-color': MAP_COLORS.buffer, 'line-width': 2, 'line-dasharray': [4, 3]
-      }});
-      map.addLayer({ id: 'aoi-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'aoi'], paint: {
-        'fill-color': MAP_COLORS.aoiSoft, 'fill-opacity': 0.16
-      }});
-      map.addLayer({ id: 'aoi-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'aoi'], paint: {
-        'line-color': MAP_COLORS.aoi, 'line-width': 3, 'line-dasharray': [2, 2]
-      }});
-      map.addLayer({ id: 'station-circle', type: 'circle', source: 'jpss-data', filter: ['==', ['get', 'type'], 'station'], paint: {
-        'circle-radius': 7, 'circle-color': MAP_COLORS.station, 'circle-stroke-color': MAP_COLORS.halo, 'circle-stroke-width': 2
       }});
       map.addLayer({ id: 'event-circle', type: 'circle', source: 'jpss-data', filter: ['in', ['get', 'type'], ['literal', ['aos', 'tca', 'los']]], paint: {
         'circle-radius': 6,
@@ -1365,7 +1336,7 @@
         'line-color': MAP_COLORS.orbit, 'line-width': 3, 'line-dasharray': [1, 1]
       }});
 
-      ['swath-fill', 'swath-line', 'track-line', 'buffer-fill', 'buffer-line', 'aoi-fill', 'aoi-line', 'station-circle', 'event-circle', 'orbit-corridor-fill', 'orbit-corridor-line', 'orbit-line'].forEach((layerId) => {
+      ['track-line', 'event-circle', 'orbit-corridor-fill', 'orbit-corridor-line', 'orbit-line'].forEach((layerId) => {
         map.on('click', layerId, (event) => {
           const feature = event.features && event.features[0];
           if (!feature) return;
@@ -1551,7 +1522,7 @@
           map.fitBounds(bounds, { padding: 40, maxZoom: 7 });
           const orbitMatch = selectNextDayOrbit(row);
           if (orbitMatch) showOrbit(row, orbitMatch.orbitFeature, orbitMatch.orbitPass);
-          else clearOrbit('ไม่พบ Orbit TLE/GIS ของวันถัดไป');
+          else clearOrbit('ไม่พบ Orbit ใน STAC ของวันถัดไป');
           showSinglePopup([Number(row.closest_lon), Number(row.closest_lat)], popupHtml(row));
         });
         rowElement.addEventListener('keydown', (event) => {
@@ -1571,11 +1542,8 @@
       });
     }
 
-    const datasets = {
-      day_minus_1: { relative: 'เมื่อวาน', date: '2026-08-09' },
-      day_current: { relative: 'วันนี้', date: '2026-08-10' },
-      day_plus_1: { relative: 'พรุ่งนี้', date: '2026-08-11' }
-    };
+    const STAC_INDEX_URL = 'stac_data/index.json';
+    const datasets = {};
 
     let activeSatellite = 'all';
     let currentDataset = null;
@@ -1587,29 +1555,17 @@
       }).format(new Date(`${dateValue}T00:00:00+07:00`));
     }
 
-    function filteredGeojson(geojson) {
-      if (activeSatellite === 'all') return geojson;
-      const satelliteFeatures = new Set(['visible_track', 'aos', 'tca', 'los']);
-      return {
-        ...geojson,
-        features: geojson.features.filter((feature) => {
-          const props = feature.properties || {};
-          return !satelliteFeatures.has(props.type) || props.satellite === activeSatellite;
-        })
-      };
-    }
-
-    function updateSummary(passes, geojson, label) {
-      const swaths = geojson.features.filter((feature) => (feature.properties || {}).type === 'reference_swath');
-      const stationInside = swaths.filter((feature) => (feature.properties || {}).station_inside).length;
+    function updateSummary(passes, geojson, label, record) {
+      const events = geojson.features.filter((feature) => ['aos', 'tca', 'los'].includes((feature.properties || {}).type));
+      const satellites = new Set(passes.map((pass) => pass.satellite).filter(Boolean));
       const bestElevation = passes.reduce((max, row) => Math.max(max, Number(row.max_elevation_deg) || 0), 0);
 
       document.getElementById('passCount').textContent = passes.length;
-      document.getElementById('swathCount').textContent = swaths.length;
-      document.getElementById('stationInside').textContent = stationInside;
+      document.getElementById('eventCount').textContent = events.length;
+      document.getElementById('satelliteCount').textContent = satellites.size;
       document.getElementById('maxEl').textContent = `${bestElevation.toFixed(1)}°`;
       document.getElementById('summary').textContent =
-        `${label} · JPSS planning · Product metadata · TLE ล่าสุด · 5° elevation mask`;
+        `${label} · Vallaris STAC · ${record.stac_collection_id} · CRS84`;
     }
 
     function renderActiveDataset(fitMap = false) {
@@ -1617,7 +1573,8 @@
       const visibleGeojson = currentDataset.geojson;
       const visiblePasses = currentDataset.passes;
       map.getSource('jpss-data').setData(visibleGeojson);
-      updateSummary(visiblePasses, visibleGeojson, `${datasets[currentDataset.id].relative} · ${formatCalendarDate(datasets[currentDataset.id].date)}`);
+      const record = datasets[currentDataset.id];
+      updateSummary(visiblePasses, visibleGeojson, formatCalendarDate(record.date), record);
       const trackFeatures = visibleGeojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track');
       renderPassList(visiblePasses, trackFeatures);
 
@@ -1627,6 +1584,8 @@
         const firstPass = visiblePasses[0];
         const firstOrbitMatch = selectNextDayOrbit(firstPass);
         if (firstOrbitMatch) showOrbit(firstPass, firstOrbitMatch.orbitFeature, firstOrbitMatch.orbitPass);
+      } else {
+        clearOrbit('ยังไม่มี STAC Feature Collection ของวันถัดไป');
       }
 
       if (fitMap) {
@@ -1637,48 +1596,60 @@
     }
 
     async function loadDataset(datasetId, fitMap = true) {
-      const base = `outputs/${datasetId}`;
-      // The selected planning day is separate from the orbit day. For the
-      // current planning view, the orbit comes from the next-day TLE/GIS run.
-      const orbitDatasetId = datasetId === 'day_minus_1' ? 'day_current' : datasetId === 'day_current' ? 'day_plus_1' : datasetId === 'day_plus_1' ? 'day_plus_2' : null;
-      const requests = [
-        fetch(`${base}/jpss_passes.geojson`),
-        fetch(`${base}/jpss_passes.json`)
-      ];
-      if (orbitDatasetId) {
-        requests.push(fetch(`outputs/${orbitDatasetId}/jpss_passes.geojson`));
-        requests.push(fetch(`outputs/${orbitDatasetId}/jpss_passes.json`));
+      const record = datasets[datasetId];
+      if (!record) throw new Error(`ไม่พบ STAC dataset ${datasetId}`);
+      const nextDate = new Date(`${record.date}T00:00:00Z`);
+      nextDate.setUTCDate(nextDate.getUTCDate() + 1);
+      const nextDateKey = nextDate.toISOString().slice(0, 10);
+      const orbitRecord = Object.values(datasets).find((candidate) => candidate.date === nextDateKey);
+      const [geojson, passes] = await Promise.all([
+        fetchJson(record.feature_path),
+        fetchJson(record.passes_path)
+      ]);
+      let orbitGeojson = { type: 'FeatureCollection', features: [] };
+      let orbitPassRows = [];
+      if (orbitRecord) {
+        [orbitGeojson, orbitPassRows] = await Promise.all([
+          fetchJson(orbitRecord.feature_path),
+          fetchJson(orbitRecord.passes_path)
+        ]);
       }
-      const [geoRes, passRes, orbitGeoRes, orbitPassRes] = await Promise.all(requests);
-      if (!geoRes.ok || !passRes.ok || (orbitGeoRes && !orbitGeoRes.ok) || (orbitPassRes && !orbitPassRes.ok)) {
-        throw new Error(`Cannot load ${datasetId} planning output files.`);
-      }
-
-      const geojson = await geoRes.json();
-      const passes = await passRes.json();
-      const orbitGeojson = orbitGeoRes ? await orbitGeoRes.json() : { features: [] };
-      const orbitPassRows = orbitPassRes ? await orbitPassRes.json() : [];
       const orbitFeatures = orbitGeojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track');
-      currentDataset = { id: datasetId, geojson, passes, orbitFeatures, orbitPassRows };
+      currentDataset = { id: datasetId, geojson, passes, orbitFeatures, orbitPassRows, orbitDate: orbitRecord?.date || null };
       closeActivePopup();
       clearOrbit();
       renderActiveDataset(fitMap);
     }
 
+    async function fetchJson(url) {
+      const response = await fetch(url, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`โหลดข้อมูล STAC ไม่สำเร็จ (${response.status})`);
+      return response.json();
+    }
+
     async function load() {
       try {
-        const availableDates = Object.values(datasets).map((dataset) => dataset.date);
+        const stacIndex = await fetchJson(STAC_INDEX_URL);
+        if (!Array.isArray(stacIndex.datasets) || !stacIndex.datasets.length) {
+          throw new Error('STAC index ไม่มีข้อมูล Planning');
+        }
+        stacIndex.datasets.forEach((record) => { datasets[record.id] = record; });
+        const defaultDatasetId = datasets[stacIndex.default_dataset_id]
+          ? stacIndex.default_dataset_id
+          : stacIndex.datasets[stacIndex.datasets.length - 1].id;
+        const defaultDataset = datasets[defaultDatasetId];
+        const availableDates = stacIndex.datasets.map((dataset) => dataset.date);
         flatpickr('#planningCalendar', {
           inline: true,
           locale: flatpickr.l10ns.th,
           dateFormat: 'Y-m-d',
-          defaultDate: datasets.day_current.date,
+          defaultDate: defaultDataset.date,
           enable: availableDates,
           onChange: (selectedDates, dateStr) => {
             const selectedDataset = Object.entries(datasets).find(([, dataset]) => dataset.date === dateStr);
             if (!selectedDataset) return;
             document.getElementById('selectedDate').textContent =
-              `${selectedDataset[1].relative} · ${formatCalendarDate(dateStr)}`;
+              `${formatCalendarDate(dateStr)} · Vallaris STAC`;
             loadDataset(selectedDataset[0]).catch((error) => {
               document.getElementById('error').style.display = 'block';
               document.getElementById('error').textContent = error.message;
@@ -1686,19 +1657,16 @@
           }
         });
         document.getElementById('selectedDate').textContent =
-          `วันนี้ · ${formatCalendarDate(datasets.day_current.date)}`;
-        const initialGeojson = await fetch('outputs/day_current/jpss_passes.geojson').then((response) => response.json());
+          `${formatCalendarDate(defaultDataset.date)} · Vallaris STAC`;
+        const initialGeojson = await fetchJson(defaultDataset.feature_path);
         addDataLayers(initialGeojson);
-        await loadDataset('day_current');
-        setToggle('toggleSwath', groups.swath);
+        await loadDataset(defaultDatasetId);
         setToggle('toggleTrack', groups.track);
         setToggle('togglePoints', groups.points);
-        setToggle('toggleBuffer', groups.buffer);
-        setToggle('toggleAoi', groups.aoi);
       } catch (error) {
         const box = document.getElementById('error');
         box.style.display = 'block';
-        box.textContent = `${error.message} Run this page from a local web server, not file://.`;
+        box.textContent = `${error.message} กรุณาเปิดผ่าน web server และตรวจสอบ stac_data/index.json`;
       }
     }
 
