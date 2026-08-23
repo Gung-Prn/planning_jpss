@@ -1044,12 +1044,22 @@
       font-weight: 500;
     }
 
-    .legend {
+    .map-overlay-stack {
       position: absolute;
+      inset-block-start: 5.25rem;
       inset-inline-end: var(--space-md);
-      inset-block-start: 18.25rem;
-      inset-block-end: auto;
-      z-index: var(--z-raised);
+      z-index: var(--z-dropdown);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-sm);
+      inline-size: min(15rem, calc(100% - 2 * var(--space-md)));
+      pointer-events: none;
+    }
+
+    .legend {
+      position: static;
+      z-index: auto;
       min-inline-size: 11.5rem;
       padding: var(--space-sm);
       border: var(--rule-thin) solid var(--color-rule);
@@ -1058,6 +1068,7 @@
       box-shadow: var(--shadow-panel);
       color: var(--color-ink-2);
       font-size: var(--text-xs);
+      pointer-events: auto;
     }
 
     .legend-row {
@@ -1069,17 +1080,16 @@
     }
 
     .extra-layers-panel {
-      position: absolute;
-      inset-block-start: 5.25rem;
-      inset-inline-end: var(--space-md);
-      z-index: var(--z-dropdown);
-      inline-size: min(15rem, calc(100% - 2 * var(--space-md)));
+      position: static;
+      z-index: auto;
+      inline-size: 100%;
       overflow: hidden;
       border: var(--rule-thin) solid var(--color-rule);
       border-radius: var(--radius-lg);
       background: var(--color-surface-raised);
       box-shadow: var(--shadow-panel);
       color: var(--color-ink-2);
+      pointer-events: auto;
     }
 
     .extra-layers-head {
@@ -1287,11 +1297,14 @@
 
       .passes { max-block-size: calc(14rem - 3rem); }
       .legend { display: none; }
-      .extra-layers-panel {
+      .map-overlay-stack {
         inset-block-start: auto;
         inset-block-end: calc(14rem + var(--space-md));
         inset-inline-end: var(--space-xs);
         inline-size: min(14rem, calc(100% - 2 * var(--space-xs)));
+      }
+      .extra-layers-panel {
+        inline-size: 100%;
       }
       .stats { grid-template-columns: repeat(4, minmax(5rem, 1fr)); overflow-x: auto; }
       .selection-meta { grid-template-columns: minmax(0, 1fr); }
@@ -1312,8 +1325,12 @@
       .stat:nth-child(-n + 2) { border-block-end: var(--rule-thin) solid var(--color-rule); }
       .schedule-panel { block-size: 12.5rem; }
       .passes { max-block-size: calc(12.5rem - 3rem); }
-      .extra-layers-panel { inset-block-end: calc(12.5rem + var(--space-md)); }
+      .map-overlay-stack { inset-block-end: calc(12.5rem + var(--space-md)); }
       .extra-layers-head span { display: none; }
+    }
+
+    @media (max-height: 47.99rem) {
+      .map-overlay-stack .legend { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1375,7 +1392,8 @@
     <main>
       <div id="map"></div>
       <div class="error" id="error"></div>
-      <section class="extra-layers-panel" aria-labelledby="extraLayersTitle">
+      <div class="map-overlay-stack">
+        <section class="extra-layers-panel" aria-labelledby="extraLayersTitle">
         <div class="extra-layers-head">
           <strong id="extraLayersTitle">Extra layers</strong>
           <span>Map overlay</span>
@@ -1413,8 +1431,8 @@
           <input id="toggleLiveSatellites" type="checkbox" checked>
         </label>
         <button class="extra-layer-action" id="fitLiveSatellites" type="button" disabled>Global satellite view</button>
-      </section>
-      <div class="legend">
+        </section>
+        <div class="legend">
         <div class="legend-row"><span class="swatch"></span>Visible track</div>
         <div class="legend-row"><span class="swatch aos-swatch"></span>AOS</div>
         <div class="legend-row"><span class="swatch tca-swatch"></span>TCA</div>
@@ -1426,6 +1444,7 @@
             <svg viewBox="0 0 48 48"><path fill="currentColor" d="M3 17h12v14H3zM33 17h12v14H33z"/><rect x="17" y="15" width="14" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path fill="none" stroke="currentColor" stroke-width="3" d="M24 15V8m-4 0h8"/></svg>
           </span>
           Current JPSS · live TLE track
+        </div>
         </div>
       </div>
     </main>
