@@ -1220,6 +1220,8 @@
     .live-satellite-marker {
       --satellite-color: var(--color-map-satellite-npp);
       position: relative;
+      display: grid;
+      place-items: center;
       inline-size: 3.5rem;
       block-size: 3.5rem;
       padding: 0;
@@ -1241,7 +1243,7 @@
       display: block;
       inline-size: 2.75rem;
       block-size: 2.75rem;
-      margin-inline: auto;
+      margin: auto;
       filter: drop-shadow(0 0.1875rem 0.1875rem color-mix(in srgb, var(--color-ink) 28%, transparent));
       transform-origin: center;
       transition: transform 950ms linear;
@@ -1264,7 +1266,7 @@
 
     .live-satellite-marker__label {
       position: absolute;
-      inset-block-start: 2.5rem;
+      inset-block-start: 3rem;
       inset-inline-start: 50%;
       translate: -50% 0;
       padding: var(--space-3xs) var(--space-2xs);
@@ -1721,8 +1723,8 @@
     const LIVE_POSITION_LOOKAHEAD_MS = 5000;
     const LIVE_TRACK_PAST_MINUTES = 10;
     const LIVE_TRACK_FUTURE_MINUTES = 100;
-    const LIVE_TRACK_STEP_SECONDS = 60;
-    const LIVE_TRACK_REFRESH_MS = 30000;
+    const LIVE_TRACK_STEP_SECONDS = 15;
+    const LIVE_TRACK_REFRESH_MS = 10000;
     const liveSatelliteMarkers = new Map();
     let liveSatelliteTimer = null;
     let liveSatelliteSnapshot = null;
@@ -1930,7 +1932,7 @@
       snapshot.satellites.forEach((record) => {
         const satrec = satellite.json2satrec(record.omm);
         const element = createLiveSatelliteElement(record);
-        const marker = new maplibregl.Marker({ element, anchor: 'center' })
+        const marker = new maplibregl.Marker({ element, anchor: 'center', offset: [0, 0] })
           .setLngLat([0, 0])
           .addTo(map);
         const tracker = { record, satrec, element, marker, position: null, unwrappedBearing: null };
