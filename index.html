@@ -723,6 +723,17 @@
       return [...left, ...right.reverse(), left[0]];
     }
 
+    function formatBangkokIsoDate(value) {
+      if (!value) return null;
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return null;
+      const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Bangkok', year: 'numeric', month: '2-digit', day: '2-digit'
+      }).formatToParts(date);
+      const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+      return `${values.year}-${values.month}-${values.day}`;
+    }
+
     function showOrbit(row, orbitFeature, orbitPass) {
       const source = map.getSource('jpss-orbit');
       if (!source || !orbitFeature) return;
@@ -733,7 +744,7 @@
       if (line.length < 2) return;
       const orbitProps = orbitFeature.properties || {};
       const orbitId = orbitProps.orbit_id || orbitProps.pass_id || `${row.satellite || 'JPSS'}-next-day`;
-      const orbitDate = orbitPass?.aos_utc?.slice(0, 10) || orbitProps.orbit_date || 'วันถัดไป';
+      const orbitDate = formatBangkokIsoDate(orbitPass?.aos_utc || orbitProps.aos_utc || orbitProps.tca_utc) || orbitProps.orbit_date || 'วันถัดไป';
       const geojson = {
         type: 'FeatureCollection',
         features: [
