@@ -1217,75 +1217,6 @@
       background: var(--color-accent-soft);
     }
 
-    .live-satellite-marker {
-      --satellite-color: var(--color-map-satellite-npp);
-      position: relative;
-      display: grid;
-      place-items: center;
-      inline-size: 3.5rem;
-      block-size: 3.5rem;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: var(--satellite-color);
-      cursor: pointer;
-    }
-
-    .live-satellite-marker[data-satellite-id="jpss_1"] {
-      --satellite-color: var(--color-map-satellite-jpss1);
-    }
-
-    .live-satellite-marker[data-satellite-id="jpss_2"] {
-      --satellite-color: var(--color-map-satellite-jpss2);
-    }
-
-    .live-satellite-marker__glyph {
-      display: block;
-      inline-size: 2.75rem;
-      block-size: 2.75rem;
-      margin: auto;
-      filter: drop-shadow(0 0.1875rem 0.1875rem color-mix(in srgb, var(--color-ink) 28%, transparent));
-      transform-origin: center;
-      transition: transform 950ms linear;
-    }
-
-    .live-satellite-marker__body {
-      fill: var(--color-surface-raised);
-      stroke: var(--color-ink);
-    }
-
-    .live-satellite-marker__panel {
-      fill: currentColor;
-      stroke: var(--color-ink);
-    }
-
-    .live-satellite-marker__line {
-      fill: none;
-      stroke: var(--color-ink);
-    }
-
-    .live-satellite-marker__label {
-      position: absolute;
-      inset-block-start: 3rem;
-      inset-inline-start: 50%;
-      translate: -50% 0;
-      padding: var(--space-3xs) var(--space-2xs);
-      border: var(--rule-thin) solid var(--color-rule-strong);
-      border-radius: var(--radius-pill);
-      background: var(--color-surface-raised);
-      color: var(--color-ink);
-      box-shadow: var(--shadow-panel);
-      font-family: var(--font-data);
-      font-size: 0.625rem;
-      font-weight: 600;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .live-satellite-marker:active .live-satellite-marker__label {
-      background: var(--color-accent-soft);
-    }
-
     .live-legend-symbol {
       inline-size: 1rem;
       block-size: 1rem;
@@ -1337,7 +1268,6 @@
       .extra-layer-toggle:hover { background: var(--color-paper-3); }
       .extra-layer-toggle:has(input:checked):hover { background: var(--color-accent-soft); }
       .extra-layer-action:hover { border-color: var(--color-accent); background: var(--color-paper-3); }
-      .live-satellite-marker:hover .live-satellite-marker__label { border-color: var(--satellite-color); }
     }
 
     @media (max-width: 59.99rem) {
@@ -1547,6 +1477,8 @@
       satelliteNpp: themeColor('--color-map-satellite-npp'),
       satelliteJpss1: themeColor('--color-map-satellite-jpss1'),
       satelliteJpss2: themeColor('--color-map-satellite-jpss2'),
+      ink: themeColor('--color-ink'),
+      surfaceRaised: themeColor('--color-surface-raised'),
       halo: themeColor('--color-map-halo')
     };
 
@@ -1607,7 +1539,7 @@
       return popup;
     }
 
-    function addDataLayers(geojson) {
+    async function addDataLayers(geojson) {
       map.addSource('station-coverage', {
         type: 'geojson',
         data: geodesicCircle(STATION_COORDINATES, COVERAGE_RADIUS_KM)
@@ -1637,6 +1569,11 @@
           'line-opacity': 0.26,
           'line-blur': 0.25
         }
+      });
+      await registerLiveSatelliteImages();
+      map.addSource('jpss-live-positions', {
+        type: 'geojson',
+        data: { type: 'FeatureCollection', features: [] }
       });
       map.addSource('jpss-data', { type: 'geojson', data: geojson });
       map.addLayer({ id: 'track-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'visible_track'], paint: {
@@ -1686,6 +1623,48 @@
       map.addLayer({ id: 'orbit-line', type: 'line', source: 'jpss-orbit', filter: ['==', ['get', 'type'], 'orbit'], paint: {
         'line-color': MAP_COLORS.orbit, 'line-width': 3, 'line-dasharray': [1, 1]
       }});
+      map.addLayer({
+        id: 'live-satellite-anchor',
+        type: 'circle',
+        source: 'jpss-live-positions',
+        paint: {
+          'circle-radius': 4,
+          'circle-color': [
+            'match', ['get', 'satellite_id'],
+            'jpss_1', MAP_COLORS.satelliteJpss1,
+            'jpss_2', MAP_COLORS.satelliteJpss2,
+            MAP_COLORS.satelliteNpp
+          ],
+          'circle-stroke-color': MAP_COLORS.halo,
+          'circle-stroke-width': 1.5
+        }
+      });
+      map.addLayer({
+        id: 'live-satellite-symbol',
+        type: 'symbol',
+        source: 'jpss-live-positions',
+        layout: {
+          'icon-image': ['get', 'icon_id'],
+          'icon-size': 0.5,
+          'icon-allow-overlap': true,
+          'icon-ignore-placement': true,
+          'icon-rotate': ['get', 'bearing'],
+          'icon-rotation-alignment': 'map'
+        }
+      });
+      map.addLayer({
+        id: 'live-satellite-label',
+        type: 'symbol',
+        source: 'jpss-live-positions',
+        layout: {
+          'icon-image': ['get', 'label_icon_id'],
+          'icon-size': 0.5,
+          'icon-offset': [0, 66],
+          'icon-allow-overlap': true,
+          'icon-ignore-placement': true,
+          'icon-rotation-alignment': 'viewport'
+        }
+      });
 
       ['track-line', 'event-circle', 'orbit-corridor-fill', 'orbit-corridor-line', 'orbit-line'].forEach((layerId) => {
         map.on('click', layerId, (event) => {
@@ -1696,6 +1675,18 @@
         map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
       });
+      map.on('click', 'live-satellite-symbol', (event) => {
+        const feature = event.features && event.features[0];
+        const tracker = liveSatelliteTrackers.get((feature?.properties || {}).satellite_id);
+        if (!tracker?.position) return;
+        showSinglePopup(
+          [tracker.position.longitude, tracker.position.latitude],
+          currentPositionPopup(tracker),
+          { closeButton: true, offset: 28 }
+        );
+      });
+      map.on('mouseenter', 'live-satellite-symbol', () => { map.getCanvas().style.cursor = 'pointer'; });
+      map.on('mouseleave', 'live-satellite-symbol', () => { map.getCanvas().style.cursor = ''; });
     }
 
     function extendBounds(bounds, coordinates) {
@@ -1725,30 +1716,62 @@
     const LIVE_TRACK_FUTURE_MINUTES = 100;
     const LIVE_TRACK_STEP_SECONDS = 15;
     const LIVE_TRACK_REFRESH_MS = 10000;
-    const liveSatelliteMarkers = new Map();
+    const liveSatelliteTrackers = new Map();
     let liveSatelliteTimer = null;
     let liveSatelliteSnapshot = null;
     let liveTrackUpdatedAt = 0;
 
-    function liveSatelliteIconSvg() {
-      return `
-        <svg class="live-satellite-marker__glyph" viewBox="0 0 64 64" aria-hidden="true">
-          <path class="live-satellite-marker__panel" stroke-width="2" d="M2 22h18v20H2zM44 22h18v20H44z"/>
-          <path class="live-satellite-marker__line" stroke-width="2" d="M8 22v20m6-20v20m36-20v20m6-20v20M20 32h7m10 0h7"/>
-          <rect class="live-satellite-marker__body" x="27" y="20" width="10" height="24" rx="3" stroke-width="2.5"/>
-          <path class="live-satellite-marker__line" stroke-width="2.5" stroke-linecap="round" d="M32 20V10m-6 0h12M29 47l3 7 3-7"/>
-          <circle cx="32" cy="10" r="2.5" fill="currentColor"/>
+    function loadLiveSatelliteIcon(color) {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" viewBox="0 0 56 56">
+          <g fill="none" stroke="${MAP_COLORS.ink}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path fill="${color}" d="M2 20h17v16H2zM37 20h17v16H37z"/>
+            <path d="M7.5 20v16m6-16v16m29-16v16m6-16v16M19 28h5m8 0h5"/>
+            <path fill="${MAP_COLORS.surfaceRaised}" d="M24 17h8v22h-8z"/>
+            <path d="M28 17V8m-5 0h10M25 43l3 6 3-6"/>
+            <circle cx="28" cy="8" r="2.25" fill="${color}"/>
+          </g>
         </svg>`;
+      return new Promise((resolve, reject) => {
+        const image = new Image(112, 112);
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error('Unable to create live satellite icon'));
+        image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      });
     }
 
-    function createLiveSatelliteElement(record) {
-      const element = document.createElement('button');
-      element.type = 'button';
-      element.className = 'live-satellite-marker';
-      element.dataset.satelliteId = record.satellite_id;
-      element.setAttribute('aria-label', `${record.satellite} current calculated position`);
-      element.innerHTML = `${liveSatelliteIconSvg()}<span class="live-satellite-marker__label">${record.short_name}</span>`;
-      return element;
+    function loadLiveSatelliteLabel(label, color) {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="112" height="36" viewBox="0 0 56 18">
+          <rect x="1" y="1" width="54" height="16" rx="8" fill="${MAP_COLORS.surfaceRaised}" stroke="${color}" stroke-width="1"/>
+          <text x="28" y="12" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="${MAP_COLORS.ink}">${label}</text>
+        </svg>`;
+      return new Promise((resolve, reject) => {
+        const image = new Image(112, 36);
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error('Unable to create live satellite label'));
+        image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      });
+    }
+
+    async function registerLiveSatelliteImages() {
+      const images = {
+        suomi_npp: { color: MAP_COLORS.satelliteNpp, label: 'NPP' },
+        jpss_1: { color: MAP_COLORS.satelliteJpss1, label: 'JPSS-1' },
+        jpss_2: { color: MAP_COLORS.satelliteJpss2, label: 'JPSS-2' }
+      };
+      for (const [satelliteId, style] of Object.entries(images)) {
+        const imageId = `live-satellite-${satelliteId}`;
+        if (!map.hasImage(imageId)) {
+          const image = await loadLiveSatelliteIcon(style.color);
+          map.addImage(imageId, image);
+        }
+        const labelImageId = `live-satellite-label-${satelliteId}`;
+        if (!map.hasImage(labelImageId)) {
+          const labelImage = await loadLiveSatelliteLabel(style.label, style.color);
+          map.addImage(labelImageId, labelImage);
+        }
+      }
     }
 
     function propagatedGeodetic(satrec, date) {
@@ -1826,7 +1849,7 @@
     function updateLiveSatelliteTracks(centerTime) {
       const source = map.getSource('jpss-live-tracks');
       if (!source) return;
-      const features = [...liveSatelliteMarkers.values()]
+      const features = [...liveSatelliteTrackers.values()]
         .map((tracker) => buildLiveTrackFeature(tracker, centerTime))
         .filter(Boolean);
       source.setData({ type: 'FeatureCollection', features });
@@ -1850,16 +1873,15 @@
     }
 
     function updateLiveSatellitePositions() {
-      if (!liveSatelliteMarkers.size) return;
+      if (!liveSatelliteTrackers.size) return;
       const now = new Date();
       const ahead = new Date(now.getTime() + LIVE_POSITION_LOOKAHEAD_MS);
-      let validCount = 0;
+      const features = [];
 
-      liveSatelliteMarkers.forEach((tracker) => {
+      liveSatelliteTrackers.forEach((tracker) => {
         const current = propagatedGeodetic(tracker.satrec, now);
         const next = propagatedGeodetic(tracker.satrec, ahead);
         if (!current || !next) {
-          tracker.element.hidden = true;
           return;
         }
         const bearing = groundBearing(current, next);
@@ -1869,36 +1891,60 @@
           : ((bearing - previousBearing + 540) % 360) - 180;
         tracker.unwrappedBearing = previousBearing === null ? bearing : previousBearing + delta;
         tracker.position = { ...current, bearing, timestamp: now.toISOString() };
-        tracker.marker.setLngLat([current.longitude, current.latitude]);
-        tracker.element.hidden = !document.getElementById('toggleLiveSatellites').checked;
-        tracker.element.querySelector('.live-satellite-marker__glyph').style.transform =
-          `rotate(${tracker.unwrappedBearing}deg)`;
-        tracker.element.setAttribute(
-          'aria-label',
-          `${tracker.record.satellite}, latitude ${current.latitude.toFixed(2)}, longitude ${current.longitude.toFixed(2)}, altitude ${current.altitudeKm.toFixed(0)} kilometers`
-        );
-        validCount += 1;
+        features.push({
+          type: 'Feature',
+          id: tracker.record.satellite_id,
+          properties: {
+            type: 'live_satellite_position',
+            satellite_id: tracker.record.satellite_id,
+            satellite: tracker.record.satellite,
+            short_name: tracker.record.short_name,
+            icon_id: `live-satellite-${tracker.record.satellite_id}`,
+            label_icon_id: `live-satellite-label-${tracker.record.satellite_id}`,
+            bearing: tracker.unwrappedBearing,
+            calculated_at: now.toISOString(),
+            altitude_km: current.altitudeKm,
+            source: 'CelesTrak OMM / SGP4'
+          },
+          geometry: {
+            type: 'Point',
+            coordinates: [current.longitude, current.latitude]
+          }
+        });
       });
+
+      const positionSource = map.getSource('jpss-live-positions');
+      if (positionSource) {
+        positionSource.setData({ type: 'FeatureCollection', features });
+      }
 
       const status = document.getElementById('liveSatellitesStatus');
       if (!liveTrackUpdatedAt || now.getTime() - liveTrackUpdatedAt >= LIVE_TRACK_REFRESH_MS) {
         updateLiveSatelliteTracks(now);
       }
-      status.textContent = `${validCount} live · TLE · ${now.toISOString().slice(11, 19)} UTC`;
-      document.getElementById('fitLiveSatellites').disabled = validCount === 0
+      status.textContent = `${features.length} live · TLE · ${now.toISOString().slice(11, 19)} UTC`;
+      document.getElementById('fitLiveSatellites').disabled = features.length === 0
         || !document.getElementById('toggleLiveSatellites').checked;
     }
 
     function setLiveSatellitesVisible(visible) {
-      liveSatelliteMarkers.forEach((tracker) => { tracker.element.hidden = !visible; });
       if (map.getLayer('live-satellite-track-line')) {
         map.setLayoutProperty('live-satellite-track-line', 'visibility', visible ? 'visible' : 'none');
       }
-      document.getElementById('fitLiveSatellites').disabled = !visible || !liveSatelliteMarkers.size;
+      if (map.getLayer('live-satellite-symbol')) {
+        map.setLayoutProperty('live-satellite-symbol', 'visibility', visible ? 'visible' : 'none');
+      }
+      if (map.getLayer('live-satellite-label')) {
+        map.setLayoutProperty('live-satellite-label', 'visibility', visible ? 'visible' : 'none');
+      }
+      if (map.getLayer('live-satellite-anchor')) {
+        map.setLayoutProperty('live-satellite-anchor', 'visibility', visible ? 'visible' : 'none');
+      }
+      document.getElementById('fitLiveSatellites').disabled = !visible || !liveSatelliteTrackers.size;
     }
 
     function focusAllLiveSatellites() {
-      const positions = [...liveSatelliteMarkers.values()]
+      const positions = [...liveSatelliteTrackers.values()]
         .map((tracker) => tracker.position)
         .filter(Boolean);
       if (!positions.length) return;
@@ -1931,22 +1977,8 @@
 
       snapshot.satellites.forEach((record) => {
         const satrec = satellite.json2satrec(record.omm);
-        const element = createLiveSatelliteElement(record);
-        const marker = new maplibregl.Marker({ element, anchor: 'center', offset: [0, 0] })
-          .setLngLat([0, 0])
-          .addTo(map);
-        const tracker = { record, satrec, element, marker, position: null, unwrappedBearing: null };
-        liveSatelliteMarkers.set(record.satellite_id, tracker);
-        element.addEventListener('pointerdown', (event) => event.stopPropagation());
-        element.addEventListener('click', (event) => {
-          event.stopPropagation();
-          if (!tracker.position) return;
-          showSinglePopup(
-            [tracker.position.longitude, tracker.position.latitude],
-            currentPositionPopup(tracker),
-            { closeButton: true, offset: 28 }
-          );
-        });
+        const tracker = { record, satrec, position: null, unwrappedBearing: null };
+        liveSatelliteTrackers.set(record.satellite_id, tracker);
       });
 
       updateLiveSatellitePositions();
@@ -2354,7 +2386,7 @@
         document.getElementById('selectedDate').textContent =
           `${formatCalendarDate(defaultDataset.date)} · Vallaris STAC`;
         const initialGeojson = await fetchJson(defaultDataset.feature_path);
-        addDataLayers(initialGeojson);
+        await addDataLayers(initialGeojson);
         await loadDataset(defaultDatasetId);
         setToggle('toggleTrack', groups.track);
         setToggle('togglePoints', groups.points);
