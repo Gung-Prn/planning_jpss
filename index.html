@@ -1171,6 +1171,14 @@
       background: color-mix(in srgb, var(--color-map-buffer) 12%, transparent);
     }
 
+    .corridor-layer-symbol {
+      inline-size: 1.125rem;
+      block-size: 0.625rem;
+      flex: 0 0 auto;
+      border: var(--rule-thin) solid var(--color-map-orbit);
+      background: var(--color-map-corridor);
+    }
+
     .live-layer-symbol,
     .live-legend-symbol {
       display: inline-grid;
@@ -1450,6 +1458,16 @@
           </span>
           <input id="toggleCoverage" type="checkbox" checked>
         </label>
+        <label class="extra-layer-toggle" for="toggleCorridor">
+          <span class="extra-layer-copy">
+            <span class="corridor-layer-symbol" aria-hidden="true"></span>
+            <span>
+              <strong>Fixed corridor</strong>
+              <small>250 km · selected planning only</small>
+            </span>
+          </span>
+          <input id="toggleCorridor" type="checkbox" checked>
+        </label>
         <label class="extra-layer-toggle" for="toggleLiveSatellites">
           <span class="extra-layer-copy">
             <span class="live-layer-symbol" aria-hidden="true">
@@ -1534,7 +1552,8 @@
       coverage: ['coverage-buffer-fill', 'coverage-buffer-line'],
       track: ['track-line', 'selected-track-line'],
       points: ['event-circle', 'selected-event-circle'],
-      orbit: ['orbit-corridor-fill', 'orbit-corridor-line', 'orbit-line']
+      orbit: ['orbit-line'],
+      corridor: ['orbit-corridor-fill', 'orbit-corridor-line']
     };
 
     const fmtTime = (value) => value ? value.replace('2026-', '').replace('T', ' ').replace('Z', 'Z') : '-';
@@ -2036,8 +2055,7 @@
       };
       source.setData(geojson);
       map.setLayoutProperty('orbit-line', 'visibility', 'visible');
-      map.setLayoutProperty('orbit-corridor-fill', 'visibility', 'visible');
-      map.setLayoutProperty('orbit-corridor-line', 'visibility', 'visible');
+      applyCorridorVisibility();
       document.getElementById('selectionTitle').textContent = row.satellite || 'JPSS planning';
       document.getElementById('selectionMeta').innerHTML = `
         <span>Product: <strong>${row.product || PRODUCT_BY_SATELLITE[row.satellite] || 'JPSS Product'}</strong></span>
@@ -2062,6 +2080,20 @@
         <span>Coverage SKP: <strong>—</strong></span>
         <span>Corridor: <strong>—</strong></span>`;
       document.getElementById('orbitStatus').textContent = status;
+    }
+
+    function applyCorridorVisibility() {
+      const toggle = document.getElementById('toggleCorridor');
+      const visibility = toggle?.checked && selectedPassId ? 'visible' : 'none';
+      groups.corridor.forEach((layerId) => {
+        if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibility);
+      });
+    }
+
+    function setupCorridorToggle() {
+      const toggle = document.getElementById('toggleCorridor');
+      applyCorridorVisibility();
+      toggle.addEventListener('change', applyCorridorVisibility);
     }
 
     function clearPassHighlight() {
@@ -2243,15 +2275,11 @@
       const trackFeatures = visibleGeojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track');
       renderPassList(visiblePasses, trackFeatures);
 
-      // Show one real next-day TLE/GIS orbit as soon as a planning day is
-      // selected. Clicking another table row switches the selected satellite.
-      if (visiblePasses.length && currentDataset.orbitFeatures.length) {
-        const firstPass = visiblePasses[0];
-        const firstOrbitMatch = selectNextDayOrbit(firstPass);
-        if (firstOrbitMatch) showOrbit(firstPass, firstOrbitMatch.orbitFeature, firstOrbitMatch.orbitPass);
-      } else {
-        clearOrbit('ยังไม่มี STAC Feature Collection ของวันถัดไป');
-      }
+      clearOrbit(
+        currentDataset.orbitFeatures.length
+          ? 'เลือกแถว Planning เพื่อแสดง Orbit / Corridor'
+          : 'ยังไม่มี STAC Feature Collection ของวันถัดไป'
+      );
 
       if (fitMap) {
         const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
@@ -2329,6 +2357,7 @@
         setToggle('toggleTrack', groups.track);
         setToggle('togglePoints', groups.points);
         setToggle('toggleCoverage', groups.coverage);
+        setupCorridorToggle();
         setupLiveSatelliteControls();
         loadLiveSatellites().catch((error) => {
           document.getElementById('liveSatellitesStatus').textContent = `Unavailable · ${error.message}`;
