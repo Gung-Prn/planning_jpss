@@ -1047,7 +1047,8 @@
     .legend {
       position: absolute;
       inset-inline-end: var(--space-md);
-      inset-block-end: 18rem;
+      inset-block-start: 18.25rem;
+      inset-block-end: auto;
       z-index: var(--z-raised);
       min-inline-size: 11.5rem;
       padding: var(--space-sm);
@@ -1071,7 +1072,7 @@
       position: absolute;
       inset-block-start: 5.25rem;
       inset-inline-end: var(--space-md);
-      z-index: var(--z-raised);
+      z-index: var(--z-dropdown);
       inline-size: min(15rem, calc(100% - 2 * var(--space-md)));
       overflow: hidden;
       border: var(--rule-thin) solid var(--color-rule);
@@ -1170,6 +1171,116 @@
       background: color-mix(in srgb, var(--color-map-buffer) 12%, transparent);
     }
 
+    .live-layer-symbol,
+    .live-legend-symbol {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--color-map-satellite-npp);
+    }
+
+    .live-layer-symbol {
+      inline-size: 1.25rem;
+      block-size: 1.25rem;
+    }
+
+    .live-layer-symbol svg,
+    .live-legend-symbol svg {
+      inline-size: 100%;
+      block-size: 100%;
+    }
+
+    .extra-layer-action {
+      inline-size: calc(100% - 2 * var(--space-sm));
+      min-block-size: 2.25rem;
+      margin: 0 var(--space-sm) var(--space-sm);
+      border: var(--rule-thin) solid var(--color-rule-strong);
+      border-radius: var(--radius-sm);
+      background: var(--color-surface-raised);
+      color: var(--color-ink-2);
+      cursor: pointer;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+
+    .extra-layer-action:active {
+      border-color: var(--color-accent-active);
+      background: var(--color-accent-soft);
+    }
+
+    .live-satellite-marker {
+      --satellite-color: var(--color-map-satellite-npp);
+      position: relative;
+      inline-size: 3.5rem;
+      block-size: 3.5rem;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--satellite-color);
+      cursor: pointer;
+    }
+
+    .live-satellite-marker[data-satellite-id="jpss_1"] {
+      --satellite-color: var(--color-map-satellite-jpss1);
+    }
+
+    .live-satellite-marker[data-satellite-id="jpss_2"] {
+      --satellite-color: var(--color-map-satellite-jpss2);
+    }
+
+    .live-satellite-marker__glyph {
+      display: block;
+      inline-size: 2.75rem;
+      block-size: 2.75rem;
+      margin-inline: auto;
+      filter: drop-shadow(0 0.1875rem 0.1875rem color-mix(in srgb, var(--color-ink) 28%, transparent));
+      transform-origin: center;
+      transition: transform 950ms linear;
+    }
+
+    .live-satellite-marker__body {
+      fill: var(--color-surface-raised);
+      stroke: var(--color-ink);
+    }
+
+    .live-satellite-marker__panel {
+      fill: currentColor;
+      stroke: var(--color-ink);
+    }
+
+    .live-satellite-marker__line {
+      fill: none;
+      stroke: var(--color-ink);
+    }
+
+    .live-satellite-marker__label {
+      position: absolute;
+      inset-block-start: 2.5rem;
+      inset-inline-start: 50%;
+      translate: -50% 0;
+      padding: var(--space-3xs) var(--space-2xs);
+      border: var(--rule-thin) solid var(--color-rule-strong);
+      border-radius: var(--radius-pill);
+      background: var(--color-surface-raised);
+      color: var(--color-ink);
+      box-shadow: var(--shadow-panel);
+      font-family: var(--font-data);
+      font-size: 0.625rem;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .live-satellite-marker:active .live-satellite-marker__label {
+      background: var(--color-accent-soft);
+    }
+
+    .live-legend-symbol {
+      inline-size: 1rem;
+      block-size: 1rem;
+    }
+
     .extra-layer-toggle input {
       inline-size: 1.125rem;
       block-size: 1.125rem;
@@ -1215,6 +1326,8 @@
       label.toggle:hover { background: var(--color-paper-3); }
       .extra-layer-toggle:hover { background: var(--color-paper-3); }
       .extra-layer-toggle:has(input:checked):hover { background: var(--color-accent-soft); }
+      .extra-layer-action:hover { border-color: var(--color-accent); background: var(--color-paper-3); }
+      .live-satellite-marker:hover .live-satellite-marker__label { border-color: var(--satellite-color); }
     }
 
     @media (max-width: 59.99rem) {
@@ -1337,6 +1450,19 @@
           </span>
           <input id="toggleCoverage" type="checkbox" checked>
         </label>
+        <label class="extra-layer-toggle" for="toggleLiveSatellites">
+          <span class="extra-layer-copy">
+            <span class="live-layer-symbol" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path fill="currentColor" stroke="currentColor" stroke-width="2" d="M3 17h12v14H3zM33 17h12v14H33z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M7 17v14m4-14v14m26-14v14m4-14v14"/><rect x="17" y="15" width="14" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M24 15V8m-4 0h8M17 24H15m18 0h-2"/></svg>
+            </span>
+            <span>
+              <strong>Live JPSS positions</strong>
+              <small id="liveSatellitesStatus" aria-live="polite">Loading current OMM...</small>
+            </span>
+          </span>
+          <input id="toggleLiveSatellites" type="checkbox" checked>
+        </label>
+        <button class="extra-layer-action" id="fitLiveSatellites" type="button" disabled>Global satellite view</button>
       </section>
       <div class="legend">
         <div class="legend-row"><span class="swatch"></span>Visible track</div>
@@ -1345,6 +1471,12 @@
         <div class="legend-row"><span class="swatch los-swatch"></span>LOS</div>
         <div class="legend-row"><span class="swatch orbit-swatch"></span>JPSS orbit · +1 day</div>
         <div class="legend-row"><span class="swatch corridor-swatch"></span>Fixed corridor · TLE/GIS</div>
+        <div class="legend-row">
+          <span class="live-legend-symbol" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path fill="currentColor" d="M3 17h12v14H3zM33 17h12v14H33z"/><rect x="17" y="15" width="14" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path fill="none" stroke="currentColor" stroke-width="3" d="M24 15V8m-4 0h8"/></svg>
+          </span>
+          Current JPSS · SGP4
+        </div>
       </div>
     </main>
 
@@ -1361,6 +1493,7 @@
   <script src="https://unpkg.com/pmtiles@4.3.0/dist/pmtiles.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/th.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/satellite.js@6.0.2/dist/satellite.min.js"></script>
   <script>
     const pmtilesProtocol = new pmtiles.Protocol();
     maplibregl.addProtocol('pmtiles', pmtilesProtocol.tile);
@@ -1541,6 +1674,172 @@
       'NOAA 20 (JPSS-1)': 'JPSS Product',
       'NOAA 21 (JPSS-2)': 'JPSS Product'
     };
+    const CURRENT_OMM_URL = 'satellite_data/current_omm.json';
+    const LIVE_POSITION_INTERVAL_MS = 1000;
+    const LIVE_POSITION_LOOKAHEAD_MS = 5000;
+    const liveSatelliteMarkers = new Map();
+    let liveSatelliteTimer = null;
+    let liveSatelliteSnapshot = null;
+
+    function liveSatelliteIconSvg() {
+      return `
+        <svg class="live-satellite-marker__glyph" viewBox="0 0 64 64" aria-hidden="true">
+          <path class="live-satellite-marker__panel" stroke-width="2" d="M2 22h18v20H2zM44 22h18v20H44z"/>
+          <path class="live-satellite-marker__line" stroke-width="2" d="M8 22v20m6-20v20m36-20v20m6-20v20M20 32h7m10 0h7"/>
+          <rect class="live-satellite-marker__body" x="27" y="20" width="10" height="24" rx="3" stroke-width="2.5"/>
+          <path class="live-satellite-marker__line" stroke-width="2.5" stroke-linecap="round" d="M32 20V10m-6 0h12M29 47l3 7 3-7"/>
+          <circle cx="32" cy="10" r="2.5" fill="currentColor"/>
+        </svg>`;
+    }
+
+    function createLiveSatelliteElement(record) {
+      const element = document.createElement('button');
+      element.type = 'button';
+      element.className = 'live-satellite-marker';
+      element.dataset.satelliteId = record.satellite_id;
+      element.setAttribute('aria-label', `${record.satellite} current calculated position`);
+      element.innerHTML = `${liveSatelliteIconSvg()}<span class="live-satellite-marker__label">${record.short_name}</span>`;
+      return element;
+    }
+
+    function propagatedGeodetic(satrec, date) {
+      const state = satellite.propagate(satrec, date);
+      if (!state || !state.position) return null;
+      const geodetic = satellite.eciToGeodetic(state.position, satellite.gstime(date));
+      const longitude = satellite.degreesLong(geodetic.longitude);
+      const latitude = satellite.degreesLat(geodetic.latitude);
+      const altitudeKm = Number(geodetic.height);
+      if (!Number.isFinite(longitude) || longitude < -180 || longitude > 180) return null;
+      if (!Number.isFinite(latitude) || latitude < -90 || latitude > 90) return null;
+      if (!Number.isFinite(altitudeKm) || altitudeKm < 100 || altitudeKm > 2000) return null;
+      return { longitude, latitude, altitudeKm };
+    }
+
+    function groundBearing(from, to) {
+      const toRadians = (value) => value * Math.PI / 180;
+      const toDegrees = (value) => value * 180 / Math.PI;
+      const lat1 = toRadians(from.latitude);
+      const lat2 = toRadians(to.latitude);
+      const deltaLon = toRadians(((to.longitude - from.longitude + 540) % 360) - 180);
+      const y = Math.sin(deltaLon) * Math.cos(lat2);
+      const x = Math.cos(lat1) * Math.sin(lat2)
+        - Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLon);
+      return (toDegrees(Math.atan2(y, x)) + 360) % 360;
+    }
+
+    function currentPositionPopup(tracker) {
+      const position = tracker.position;
+      if (!position) return '';
+      return `
+        <div class="popup-title">${tracker.record.satellite}</div>
+        <div><strong>Type:</strong> Current SGP4 position</div>
+        <div><strong>Calculated UTC:</strong> ${position.timestamp}</div>
+        <div><strong>Latitude:</strong> ${position.latitude.toFixed(4)}°</div>
+        <div><strong>Longitude:</strong> ${position.longitude.toFixed(4)}°</div>
+        <div><strong>Altitude:</strong> ${position.altitudeKm.toFixed(1)} km</div>
+        <div><strong>Direction:</strong> ${position.bearing.toFixed(1)}°</div>
+        <div><strong>OMM epoch:</strong> ${tracker.record.epoch_utc}</div>
+        <div><strong>Source:</strong> CelesTrak OMM</div>`;
+    }
+
+    function updateLiveSatellitePositions() {
+      if (!liveSatelliteMarkers.size) return;
+      const now = new Date();
+      const ahead = new Date(now.getTime() + LIVE_POSITION_LOOKAHEAD_MS);
+      let validCount = 0;
+
+      liveSatelliteMarkers.forEach((tracker) => {
+        const current = propagatedGeodetic(tracker.satrec, now);
+        const next = propagatedGeodetic(tracker.satrec, ahead);
+        if (!current || !next) {
+          tracker.element.hidden = true;
+          return;
+        }
+        const bearing = groundBearing(current, next);
+        const previousBearing = tracker.unwrappedBearing;
+        const delta = previousBearing === null
+          ? 0
+          : ((bearing - previousBearing + 540) % 360) - 180;
+        tracker.unwrappedBearing = previousBearing === null ? bearing : previousBearing + delta;
+        tracker.position = { ...current, bearing, timestamp: now.toISOString() };
+        tracker.marker.setLngLat([current.longitude, current.latitude]);
+        tracker.element.hidden = !document.getElementById('toggleLiveSatellites').checked;
+        tracker.element.querySelector('.live-satellite-marker__glyph').style.transform =
+          `rotate(${tracker.unwrappedBearing}deg)`;
+        tracker.element.setAttribute(
+          'aria-label',
+          `${tracker.record.satellite}, latitude ${current.latitude.toFixed(2)}, longitude ${current.longitude.toFixed(2)}, altitude ${current.altitudeKm.toFixed(0)} kilometers`
+        );
+        validCount += 1;
+      });
+
+      const status = document.getElementById('liveSatellitesStatus');
+      status.textContent = `${validCount} live · ${now.toISOString().slice(11, 19)} UTC`;
+      document.getElementById('fitLiveSatellites').disabled = validCount === 0
+        || !document.getElementById('toggleLiveSatellites').checked;
+    }
+
+    function setLiveSatellitesVisible(visible) {
+      liveSatelliteMarkers.forEach((tracker) => { tracker.element.hidden = !visible; });
+      document.getElementById('fitLiveSatellites').disabled = !visible || !liveSatelliteMarkers.size;
+    }
+
+    function focusAllLiveSatellites() {
+      const positions = [...liveSatelliteMarkers.values()]
+        .map((tracker) => tracker.position)
+        .filter(Boolean);
+      if (!positions.length) return;
+      // A global view is intentional: the three polar satellites can be on
+      // opposite sides of the antimeridian at the same instant.
+      map.stop();
+      map.setCenter([0, 0]);
+      map.setZoom(0);
+    }
+
+    function setupLiveSatelliteControls() {
+      const toggle = document.getElementById('toggleLiveSatellites');
+      const focusButton = document.getElementById('fitLiveSatellites');
+      toggle.addEventListener('change', () => setLiveSatellitesVisible(toggle.checked));
+      focusButton.addEventListener('click', focusAllLiveSatellites);
+    }
+
+    async function loadLiveSatellites() {
+      if (!window.satellite || typeof satellite.json2satrec !== 'function') {
+        throw new Error('SGP4 library is unavailable');
+      }
+      const snapshot = await fetchJson(CURRENT_OMM_URL);
+      if (!Array.isArray(snapshot.satellites) || snapshot.satellites.length !== 3) {
+        throw new Error('Current OMM snapshot must contain 3 JPSS satellites');
+      }
+      if (snapshot.position_contract?.crs !== 'OGC:CRS84') {
+        throw new Error('Current OMM position contract is not CRS84');
+      }
+      liveSatelliteSnapshot = snapshot;
+
+      snapshot.satellites.forEach((record) => {
+        const satrec = satellite.json2satrec(record.omm);
+        const element = createLiveSatelliteElement(record);
+        const marker = new maplibregl.Marker({ element, anchor: 'center' })
+          .setLngLat([0, 0])
+          .addTo(map);
+        const tracker = { record, satrec, element, marker, position: null, unwrappedBearing: null };
+        liveSatelliteMarkers.set(record.satellite_id, tracker);
+        element.addEventListener('pointerdown', (event) => event.stopPropagation());
+        element.addEventListener('click', (event) => {
+          event.stopPropagation();
+          if (!tracker.position) return;
+          showSinglePopup(
+            [tracker.position.longitude, tracker.position.latitude],
+            currentPositionPopup(tracker),
+            { closeButton: true, offset: 28 }
+          );
+        });
+      });
+
+      updateLiveSatellitePositions();
+      if (liveSatelliteTimer) window.clearInterval(liveSatelliteTimer);
+      liveSatelliteTimer = window.setInterval(updateLiveSatellitePositions, LIVE_POSITION_INTERVAL_MS);
+    }
 
     function distanceKm(a, b) {
       const toRad = (value) => value * Math.PI / 180;
@@ -1938,6 +2237,12 @@
         setToggle('toggleTrack', groups.track);
         setToggle('togglePoints', groups.points);
         setToggle('toggleCoverage', groups.coverage);
+        setupLiveSatelliteControls();
+        loadLiveSatellites().catch((error) => {
+          document.getElementById('liveSatellitesStatus').textContent = `Unavailable · ${error.message}`;
+          document.getElementById('toggleLiveSatellites').disabled = true;
+          document.getElementById('fitLiveSatellites').disabled = true;
+        });
       } catch (error) {
         const box = document.getElementById('error');
         box.style.display = 'block';

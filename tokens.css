@@ -40,6 +40,9 @@
   --color-map-orbit: #c2410c;
   --color-map-corridor: #d47842;
   --color-map-halo: #ffffff;
+  --color-map-satellite-npp: #008ea8;
+  --color-map-satellite-jpss1: #d9500f;
+  --color-map-satellite-jpss2: #6547c7;
 
   --font-display: "Kanit", "Noto Sans Thai", ui-sans-serif, sans-serif;
   --font-body: "Noto Sans Thai", "Kanit", ui-sans-serif, sans-serif;

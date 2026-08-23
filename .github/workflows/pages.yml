@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
   workflow_run:
-    workflows: ["Sync Vallaris JPSS STAC"]
+    workflows: ["Sync Vallaris JPSS STAC", "Sync current JPSS OMM"]
     types: [completed]
 
 permissions:

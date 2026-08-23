@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-23T16:49:28Z",
+  "source": {
+    "provider": "CelesTrak",
+    "data_type": "CCSDS OMM / General Perturbations",
+    "query_template": "https://celestrak.org/NORAD/elements/gp.php?CATNR={norad_id}&FORMAT=JSON",
+    "documentation": "https://celestrak.org/NORAD/documentation/gp-data-formats.php"
+  },
+  "position_contract": {
+    "method": "Browser-side SGP4 propagation from the latest OMM",
+    "temporal_reference": "UTC",
+    "crs": "OGC:CRS84",
+    "coordinate_order": [
+      "longitude",
+      "latitude"
+    ],
+    "altitude_unit": "km",
+    "telemetry": false
+  },
+  "satellites": [
+    {
+      "satellite_id": "suomi_npp",
+      "satellite": "SUOMI NPP",
+      "short_name": "NPP",
+      "norad_id": 37849,
+      "object_id": "2011-061A",
+      "epoch_utc": "2026-08-23T07:14:55Z",
+      "age_hours_at_sync": 9.58,
+      "omm": {
+        "OBJECT_NAME": "SUOMI NPP",
+        "OBJECT_ID": "2011-061A",
+        "EPOCH": "2026-08-23T07:14:55.373856",
+        "MEAN_MOTION": 14.19529181,
+        "ECCENTRICITY": 0.00026246,
+        "INCLINATION": 98.7974,
+        "RA_OF_ASC_NODE": 175.7264,
+        "ARG_OF_PERICENTER": 114.0501,
+        "MEAN_ANOMALY": 246.095,
+        "EPHEMERIS_TYPE": 0,
+        "CLASSIFICATION_TYPE": "U",
+        "NORAD_CAT_ID": 37849,
+        "ELEMENT_SET_NO": 999,
+        "REV_AT_EPOCH": 76796,
+        "BSTAR": 4.437322e-05,
+        "MEAN_MOTION_DOT": 4.9e-07,
+        "MEAN_MOTION_DDOT": 0
+      }
+    },
+    {
+      "satellite_id": "jpss_1",
+      "satellite": "NOAA 20 (JPSS-1)",
+      "short_name": "JPSS-1",
+      "norad_id": 43013,
+      "object_id": "2017-073A",
+      "epoch_utc": "2026-08-23T05:52:54Z",
+      "age_hours_at_sync": 10.94,
+      "omm": {
+        "OBJECT_NAME": "NOAA 20 (JPSS-1)",
+        "OBJECT_ID": "2017-073A",
+        "EPOCH": "2026-08-23T05:52:54.934464",
+        "MEAN_MOTION": 14.19522326,
+        "ECCENTRICITY": 0.00020063,
+        "INCLINATION": 98.7788,
+        "RA_OF_ASC_NODE": 174.1174,
+        "ARG_OF_PERICENTER": 77.7191,
+        "MEAN_ANOMALY": 282.421,
+        "EPHEMERIS_TYPE": 0,
+        "CLASSIFICATION_TYPE": "U",
+        "NORAD_CAT_ID": 43013,
+        "ELEMENT_SET_NO": 999,
+        "REV_AT_EPOCH": 45398,
+        "BSTAR": 3.4450278e-05,
+        "MEAN_MOTION_DOT": 2.8e-07,
+        "MEAN_MOTION_DDOT": 0
+      }
+    },
+    {
+      "satellite_id": "jpss_2",
+      "satellite": "NOAA 21 (JPSS-2)",
+      "short_name": "JPSS-2",
+      "norad_id": 54234,
+      "object_id": "2022-150A",
+      "epoch_utc": "2026-08-23T06:38:31Z",
+      "age_hours_at_sync": 10.18,
+      "omm": {
+        "OBJECT_NAME": "NOAA 21 (JPSS-2)",
+        "OBJECT_ID": "2022-150A",
+        "EPOCH": "2026-08-23T06:38:31.305408",
+        "MEAN_MOTION": 14.19546261,
+        "ECCENTRICITY": 0.0002269,
+        "INCLINATION": 98.7072,
+        "RA_OF_ASC_NODE": 172.9418,
+        "ARG_OF_PERICENTER": 34.8433,
+        "MEAN_ANOMALY": 325.2892,
+        "EPHEMERIS_TYPE": 0,
+        "CLASSIFICATION_TYPE": "U",
+        "NORAD_CAT_ID": 54234,
+        "ELEMENT_SET_NO": 999,
+        "REV_AT_EPOCH": 19606,
+        "BSTAR": 3.4872085e-05,
+        "MEAN_MOTION_DOT": 3e-07,
+        "MEAN_MOTION_DDOT": 0
+      }
+    }
+  ]
+}
