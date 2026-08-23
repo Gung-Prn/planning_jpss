@@ -20,20 +20,36 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Check sync credential
+        id: credential
+        env:
+          VALLARIS_API_KEY: ${{ secrets.VALLARIS_API_KEY }}
+        run: |
+          if [ -n "$VALLARIS_API_KEY" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::VALLARIS_API_KEY is not configured; keeping the current public snapshot"
+          fi
+
       - name: Set up Python
+        if: steps.credential.outputs.available == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install sync dependency
+        if: steps.credential.outputs.available == 'true'
         run: python3 -m pip install "requests==2.32.3"
 
       - name: Sync STAC Feature assets
+        if: steps.credential.outputs.available == 'true'
         env:
           VALLARIS_API_KEY: ${{ secrets.VALLARIS_API_KEY }}
         run: python3 scripts/sync_vallaris_stac.py --output-dir stac_data
 
       - name: Publish changed snapshot
+        if: steps.credential.outputs.available == 'true'
         run: |
           if git diff --quiet -- stac_data; then
             echo "STAC snapshot is already current"
