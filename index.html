@@ -877,7 +877,18 @@
       const visiblePasses = currentDataset.passes;
       map.getSource('jpss-data').setData(visibleGeojson);
       updateSummary(visiblePasses, visibleGeojson, `${datasets[currentDataset.id].relative} · ${formatCalendarDate(datasets[currentDataset.id].date)}`);
-      renderPassList(visiblePasses, visibleGeojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track'));
+      const trackFeatures = visibleGeojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track');
+      renderPassList(visiblePasses, trackFeatures);
+
+      // Show one real next-day TLE/GIS orbit as soon as a planning day is
+      // selected. Clicking another table row switches the selected satellite.
+      if (visiblePasses.length && currentDataset.orbitFeatures.length) {
+        const firstPass = visiblePasses[0];
+        const firstOrbit = currentDataset.orbitFeatures.find((feature) => {
+          return (feature.properties || {}).satellite === firstPass.satellite;
+        });
+        if (firstOrbit) showOrbit(firstPass, firstOrbit, currentDataset.orbitPasses.get(firstPass.satellite));
+      }
 
       if (fitMap) {
         const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
