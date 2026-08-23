@@ -1811,1756 +1811,6 @@
       "type": "Feature",
       "properties": {
         "satellite": "NOAA 21 (JPSS-2)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T06:38:31Z",
-        "tle_age_hours": -289.27,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T05:22:31Z",
-        "los_utc": "2026-08-11T05:31:56Z",
-        "tca_utc": "2026-08-11T05:27:30Z",
-        "max_elevation_utc": "2026-08-11T05:27:00Z",
-        "duration_minutes": 9.41,
-        "min_distance_km": 1771.82,
-        "max_elevation_deg": 15.53,
-        "tca_azimuth_deg": 69.6,
-        "tca_elevation_deg": 15.53,
-        "tca_slant_range_km": 2056.15,
-        "closest_lon": 116.658538,
-        "closest_lat": 18.063195,
-        "aos_lon": 120.668211,
-        "aos_lat": 0.635884,
-        "aos_azimuth_deg": 120.78,
-        "los_lon": 112.564659,
-        "los_lat": 33.615199,
-        "los_azimuth_deg": 25.3,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "visible_track"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            120.66821143653397,
-            0.6358836947173441
-          ],
-          [
-            120.29859437752322,
-            2.2813240691247163
-          ],
-          [
-            119.90398031681832,
-            4.03511181413914
-          ],
-          [
-            119.50817888126124,
-            5.788940509225756
-          ],
-          [
-            119.11067098273998,
-            7.542768359871485
-          ],
-          [
-            118.71092461852902,
-            9.29655246072546
-          ],
-          [
-            118.30839068572283,
-            11.050248477594256
-          ],
-          [
-            117.902498518887,
-            12.803810307500859
-          ],
-          [
-            117.49265107327153,
-            14.557189711257598
-          ],
-          [
-            117.0782196656105,
-            16.31033591128877
-          ],
-          [
-            116.65853817172979,
-            18.06319514658751
-          ],
-          [
-            116.23289656397662,
-            19.815710175832912
-          ],
-          [
-            115.80053365180237,
-            21.567819717620278
-          ],
-          [
-            115.36062886025996,
-            23.319457814981707
-          ],
-          [
-            114.91229285947821,
-            25.070553108467628
-          ],
-          [
-            114.45455680236267,
-            26.8210279994066
-          ],
-          [
-            113.9863598947208,
-            28.57079768066807
-          ],
-          [
-            113.50653495020828,
-            30.31976900689136
-          ],
-          [
-            113.01379150726791,
-            32.06783917034767
-          ],
-          [
-            112.5646587754195,
-            33.615199139734294
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 21 (JPSS-2)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T06:38:31Z",
-        "tle_age_hours": -289.27,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T05:22:31Z",
-        "los_utc": "2026-08-11T05:31:56Z",
-        "tca_utc": "2026-08-11T05:27:30Z",
-        "max_elevation_utc": "2026-08-11T05:27:00Z",
-        "duration_minutes": 9.41,
-        "min_distance_km": 1771.82,
-        "max_elevation_deg": 15.53,
-        "tca_azimuth_deg": 69.6,
-        "tca_elevation_deg": 15.53,
-        "tca_slant_range_km": 2056.15,
-        "closest_lon": 116.658538,
-        "closest_lat": 18.063195,
-        "aos_lon": 120.668211,
-        "aos_lat": 0.635884,
-        "aos_azimuth_deg": 120.78,
-        "los_lon": 112.564659,
-        "los_lat": 33.615199,
-        "los_azimuth_deg": 25.3,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "aos",
-        "color": "cyan"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          120.66821143653397,
-          0.6358836947173441
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 21 (JPSS-2)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T06:38:31Z",
-        "tle_age_hours": -289.27,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T05:22:31Z",
-        "los_utc": "2026-08-11T05:31:56Z",
-        "tca_utc": "2026-08-11T05:27:30Z",
-        "max_elevation_utc": "2026-08-11T05:27:00Z",
-        "duration_minutes": 9.41,
-        "min_distance_km": 1771.82,
-        "max_elevation_deg": 15.53,
-        "tca_azimuth_deg": 69.6,
-        "tca_elevation_deg": 15.53,
-        "tca_slant_range_km": 2056.15,
-        "closest_lon": 116.658538,
-        "closest_lat": 18.063195,
-        "aos_lon": 120.668211,
-        "aos_lat": 0.635884,
-        "aos_azimuth_deg": 120.78,
-        "los_lon": 112.564659,
-        "los_lat": 33.615199,
-        "los_azimuth_deg": 25.3,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "tca",
-        "color": "yellow"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          116.65853817172979,
-          18.06319514658751
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 21 (JPSS-2)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T06:38:31Z",
-        "tle_age_hours": -289.27,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T05:22:31Z",
-        "los_utc": "2026-08-11T05:31:56Z",
-        "tca_utc": "2026-08-11T05:27:30Z",
-        "max_elevation_utc": "2026-08-11T05:27:00Z",
-        "duration_minutes": 9.41,
-        "min_distance_km": 1771.82,
-        "max_elevation_deg": 15.53,
-        "tca_azimuth_deg": 69.6,
-        "tca_elevation_deg": 15.53,
-        "tca_slant_range_km": 2056.15,
-        "closest_lon": 116.658538,
-        "closest_lat": 18.063195,
-        "aos_lon": 120.668211,
-        "aos_lat": 0.635884,
-        "aos_azimuth_deg": 120.78,
-        "los_lon": 112.564659,
-        "los_lat": 33.615199,
-        "los_azimuth_deg": 25.3,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "los",
-        "color": "green"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          112.5646587754195,
-          33.615199139734294
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "SUOMI NPP",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T07:14:55Z",
-        "tle_age_hours": -289.3,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T05:57:06Z",
-        "los_utc": "2026-08-11T06:08:48Z",
-        "tca_utc": "2026-08-11T06:03:00Z",
-        "max_elevation_utc": "2026-08-11T06:03:00Z",
-        "duration_minutes": 11.69,
-        "min_distance_km": 1099.46,
-        "max_elevation_deg": 30.24,
-        "tca_azimuth_deg": 73.98,
-        "tca_elevation_deg": 30.24,
-        "tca_slant_range_km": 1435.49,
-        "closest_lon": 110.814905,
-        "closest_lat": 15.561771,
-        "aos_lon": 115.543182,
-        "aos_lat": -5.057978,
-        "aos_azimuth_deg": 140.31,
-        "los_lon": 105.403595,
-        "los_lat": 35.869161,
-        "los_azimuth_deg": 9.27,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "visible_track"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            115.54318233276263,
-            -5.057978170397611
-          ],
-          [
-            115.23712864583587,
-            -3.7111599720590593
-          ],
-          [
-            114.84014506981197,
-            -1.9593145844008362
-          ],
-          [
-            114.443710443864,
-            -0.20729845979662867
-          ],
-          [
-            114.04731633902952,
-            1.5448484792012709
-          ],
-          [
-            113.65045456875839,
-            3.297086206220933
-          ],
-          [
-            113.2526134241719,
-            5.049374301288513
-          ],
-          [
-            112.85327384928866,
-            6.801671656849911
-          ],
-          [
-            112.45190550304937,
-            8.553936174554147
-          ],
-          [
-            112.04796264200701,
-            10.306124448163873
-          ],
-          [
-            111.64087975612722,
-            12.058191426682933
-          ],
-          [
-            111.23006688274586,
-            13.81009005235211
-          ],
-          [
-            110.81490451497575,
-            15.561770866089638
-          ],
-          [
-            110.39473800905569,
-            17.31318157348483
-          ],
-          [
-            109.96887138114528,
-            19.064266561953936
-          ],
-          [
-            109.53656036225863,
-            20.814966358994578
-          ],
-          [
-            109.09700456676728,
-            22.565217019615993
-          ],
-          [
-            108.64933858503287,
-            24.314949427711493
-          ],
-          [
-            108.19262162275459,
-            26.06408849476252
-          ],
-          [
-            107.72582643195057,
-            27.812552233978987
-          ],
-          [
-            107.24782469498695,
-            29.560250684720984
-          ],
-          [
-            106.75737183550933,
-            31.30708465500503
-          ],
-          [
-            106.25308825657578,
-            33.052944243396745
-          ],
-          [
-            105.73343742253883,
-            34.79770709134565
-          ],
-          [
-            105.4035952471603,
-            35.86916086939965
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "SUOMI NPP",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T07:14:55Z",
-        "tle_age_hours": -289.3,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T05:57:06Z",
-        "los_utc": "2026-08-11T06:08:48Z",
-        "tca_utc": "2026-08-11T06:03:00Z",
-        "max_elevation_utc": "2026-08-11T06:03:00Z",
-        "duration_minutes": 11.69,
-        "min_distance_km": 1099.46,
-        "max_elevation_deg": 30.24,
-        "tca_azimuth_deg": 73.98,
-        "tca_elevation_deg": 30.24,
-        "tca_slant_range_km": 1435.49,
-        "closest_lon": 110.814905,
-        "closest_lat": 15.561771,
-        "aos_lon": 115.543182,
-        "aos_lat": -5.057978,
-        "aos_azimuth_deg": 140.31,
-        "los_lon": 105.403595,
-        "los_lat": 35.869161,
-        "los_azimuth_deg": 9.27,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "aos",
-        "color": "cyan"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          115.54318233276263,
-          -5.057978170397611
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "SUOMI NPP",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T07:14:55Z",
-        "tle_age_hours": -289.3,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T05:57:06Z",
-        "los_utc": "2026-08-11T06:08:48Z",
-        "tca_utc": "2026-08-11T06:03:00Z",
-        "max_elevation_utc": "2026-08-11T06:03:00Z",
-        "duration_minutes": 11.69,
-        "min_distance_km": 1099.46,
-        "max_elevation_deg": 30.24,
-        "tca_azimuth_deg": 73.98,
-        "tca_elevation_deg": 30.24,
-        "tca_slant_range_km": 1435.49,
-        "closest_lon": 110.814905,
-        "closest_lat": 15.561771,
-        "aos_lon": 115.543182,
-        "aos_lat": -5.057978,
-        "aos_azimuth_deg": 140.31,
-        "los_lon": 105.403595,
-        "los_lat": 35.869161,
-        "los_azimuth_deg": 9.27,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "tca",
-        "color": "yellow"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          110.81490451497575,
-          15.561770866089638
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "SUOMI NPP",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T07:14:55Z",
-        "tle_age_hours": -289.3,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T05:57:06Z",
-        "los_utc": "2026-08-11T06:08:48Z",
-        "tca_utc": "2026-08-11T06:03:00Z",
-        "max_elevation_utc": "2026-08-11T06:03:00Z",
-        "duration_minutes": 11.69,
-        "min_distance_km": 1099.46,
-        "max_elevation_deg": 30.24,
-        "tca_azimuth_deg": 73.98,
-        "tca_elevation_deg": 30.24,
-        "tca_slant_range_km": 1435.49,
-        "closest_lon": 110.814905,
-        "closest_lat": 15.561771,
-        "aos_lon": 115.543182,
-        "aos_lat": -5.057978,
-        "aos_azimuth_deg": 140.31,
-        "los_lon": 105.403595,
-        "los_lat": 35.869161,
-        "los_azimuth_deg": 9.27,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "los",
-        "color": "green"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          105.4035952471603,
-          35.86916086939965
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 20 (JPSS-1)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T05:52:54Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T06:15:34Z",
-        "los_utc": "2026-08-11T06:28:17Z",
-        "tca_utc": "2026-08-11T06:22:00Z",
-        "max_elevation_utc": "2026-08-11T06:22:00Z",
-        "duration_minutes": 12.71,
-        "min_distance_km": 431.63,
-        "max_elevation_deg": 58.89,
-        "tca_azimuth_deg": 73.09,
-        "tca_elevation_deg": 58.89,
-        "tca_slant_range_km": 949.19,
-        "closest_lon": 104.779532,
-        "closest_lat": 14.13266,
-        "aos_lon": 109.915003,
-        "aos_lat": -8.360091,
-        "aos_azimuth_deg": 156.86,
-        "los_lon": 98.95362,
-        "los_lat": 36.144187,
-        "los_azimuth_deg": 355.97,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "visible_track"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            109.91500327223872,
-            -8.360091444968209
-          ],
-          [
-            109.58068676241686,
-            -6.899006631470634
-          ],
-          [
-            109.18188178117043,
-            -5.146994901687798
-          ],
-          [
-            108.78456049426597,
-            -3.3947326731456595
-          ],
-          [
-            108.38820533295097,
-            -1.6422607783912555
-          ],
-          [
-            107.9923053556862,
-            0.11038036874669563
-          ],
-          [
-            107.59635310622787,
-            1.8631504805772423
-          ],
-          [
-            107.19984068292149,
-            3.616009107137952
-          ],
-          [
-            106.80225596637297,
-            5.368915347320528
-          ],
-          [
-            106.40307878551556,
-            7.121827554862017
-          ],
-          [
-            106.00177695212255,
-            8.874703034455626
-          ],
-          [
-            105.5978021067346,
-            10.627497722862062
-          ],
-          [
-            105.19058530404732,
-            12.380165849380317
-          ],
-          [
-            104.77953226184616,
-            14.132659569916294
-          ],
-          [
-            104.36401818779353,
-            15.884928567484291
-          ],
-          [
-            103.94338208617421,
-            17.63691961160275
-          ],
-          [
-            103.51692043146613,
-            19.388576067349597
-          ],
-          [
-            103.08388007681623,
-            21.139837343538506
-          ],
-          [
-            102.64345023821556,
-            22.890638267609148
-          ],
-          [
-            102.19475337505918,
-            24.640908371893904
-          ],
-          [
-            101.73683473388792,
-            26.39057107376631
-          ],
-          [
-            101.26865029179771,
-            28.13954272696502
-          ],
-          [
-            100.7890527670437,
-            29.88773151844604
-          ],
-          [
-            100.29677529389511,
-            31.63503617672377
-          ],
-          [
-            99.79041226399761,
-            33.38134445216834
-          ],
-          [
-            99.26839671735786,
-            35.12653131795738
-          ],
-          [
-            98.95361989857093,
-            36.144187119350875
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 20 (JPSS-1)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T05:52:54Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T06:15:34Z",
-        "los_utc": "2026-08-11T06:28:17Z",
-        "tca_utc": "2026-08-11T06:22:00Z",
-        "max_elevation_utc": "2026-08-11T06:22:00Z",
-        "duration_minutes": 12.71,
-        "min_distance_km": 431.63,
-        "max_elevation_deg": 58.89,
-        "tca_azimuth_deg": 73.09,
-        "tca_elevation_deg": 58.89,
-        "tca_slant_range_km": 949.19,
-        "closest_lon": 104.779532,
-        "closest_lat": 14.13266,
-        "aos_lon": 109.915003,
-        "aos_lat": -8.360091,
-        "aos_azimuth_deg": 156.86,
-        "los_lon": 98.95362,
-        "los_lat": 36.144187,
-        "los_azimuth_deg": 355.97,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "aos",
-        "color": "cyan"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          109.91500327223872,
-          -8.360091444968209
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 20 (JPSS-1)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T05:52:54Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T06:15:34Z",
-        "los_utc": "2026-08-11T06:28:17Z",
-        "tca_utc": "2026-08-11T06:22:00Z",
-        "max_elevation_utc": "2026-08-11T06:22:00Z",
-        "duration_minutes": 12.71,
-        "min_distance_km": 431.63,
-        "max_elevation_deg": 58.89,
-        "tca_azimuth_deg": 73.09,
-        "tca_elevation_deg": 58.89,
-        "tca_slant_range_km": 949.19,
-        "closest_lon": 104.779532,
-        "closest_lat": 14.13266,
-        "aos_lon": 109.915003,
-        "aos_lat": -8.360091,
-        "aos_azimuth_deg": 156.86,
-        "los_lon": 98.95362,
-        "los_lat": 36.144187,
-        "los_azimuth_deg": 355.97,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "tca",
-        "color": "yellow"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          104.77953226184616,
-          14.132659569916294
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 20 (JPSS-1)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T05:52:54Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T06:15:34Z",
-        "los_utc": "2026-08-11T06:28:17Z",
-        "tca_utc": "2026-08-11T06:22:00Z",
-        "max_elevation_utc": "2026-08-11T06:22:00Z",
-        "duration_minutes": 12.71,
-        "min_distance_km": 431.63,
-        "max_elevation_deg": 58.89,
-        "tca_azimuth_deg": 73.09,
-        "tca_elevation_deg": 58.89,
-        "tca_slant_range_km": 949.19,
-        "closest_lon": 104.779532,
-        "closest_lat": 14.13266,
-        "aos_lon": 109.915003,
-        "aos_lat": -8.360091,
-        "aos_azimuth_deg": 156.86,
-        "los_lon": 98.95362,
-        "los_lat": 36.144187,
-        "los_azimuth_deg": 355.97,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "los",
-        "color": "green"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          98.95361989857093,
-          36.144187119350875
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 21 (JPSS-2)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T06:38:31Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:01:01Z",
-        "los_utc": "2026-08-11T07:13:09Z",
-        "tca_utc": "2026-08-11T07:07:00Z",
-        "max_elevation_utc": "2026-08-11T07:07:00Z",
-        "duration_minutes": 12.14,
-        "min_distance_km": 898.67,
-        "max_elevation_deg": 36.83,
-        "tca_azimuth_deg": 256.73,
-        "tca_elevation_deg": 36.83,
-        "tca_slant_range_km": 1262.81,
-        "closest_lon": 92.932171,
-        "closest_lat": 11.056744,
-        "aos_lon": 97.673912,
-        "aos_lat": -9.895741,
-        "aos_azimuth_deg": 188.19,
-        "los_lon": 87.469001,
-        "los_lat": 32.653799,
-        "los_azimuth_deg": 330.11,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "visible_track"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            97.67391184552054,
-            -9.895741284318575
-          ],
-          [
-            97.29356954391847,
-            -8.231804412178722
-          ],
-          [
-            96.89542058798622,
-            -6.479111041683365
-          ],
-          [
-            96.49914218743345,
-            -4.726133042168158
-          ],
-          [
-            96.10421187190957,
-            -2.972911667998581
-          ],
-          [
-            95.71011737056301,
-            -1.2194875434518422
-          ],
-          [
-            95.31635257418873,
-            0.534099043363272
-          ],
-          [
-            94.92241375922924,
-            2.287807853993742
-          ],
-          [
-            94.52779585319422,
-            4.041598416235645
-          ],
-          [
-            94.13198867389485,
-            5.795429739225317
-          ],
-          [
-            93.73447309062317,
-            7.549260022282145
-          ],
-          [
-            93.33471704344964,
-            9.303046352818296
-          ],
-          [
-            92.93217135629914,
-            11.05674438815007
-          ],
-          [
-            92.52626527340027,
-            12.810308015594828
-          ],
-          [
-            92.11640164101232,
-            14.563688984903877
-          ],
-          [
-            91.70195164641149,
-            16.31683650578907
-          ],
-          [
-            91.28224901367673,
-            18.069696802988414
-          ],
-          [
-            90.85658353658289,
-            19.822212618939744
-          ],
-          [
-            90.4241938182256,
-            21.5743226538724
-          ],
-          [
-            89.98425904560901,
-            23.32596092992849
-          ],
-          [
-            89.53588961207356,
-            25.077056063886648
-          ],
-          [
-            89.07811635114632,
-            26.827530430192525
-          ],
-          [
-            88.6098780994314,
-            28.57729919083281
-          ],
-          [
-            88.13000724326247,
-            30.326269165127506
-          ],
-          [
-            87.63721282564842,
-            32.0743375047431
-          ],
-          [
-            87.46900091611701,
-            32.653798657785934
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 21 (JPSS-2)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T06:38:31Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:01:01Z",
-        "los_utc": "2026-08-11T07:13:09Z",
-        "tca_utc": "2026-08-11T07:07:00Z",
-        "max_elevation_utc": "2026-08-11T07:07:00Z",
-        "duration_minutes": 12.14,
-        "min_distance_km": 898.67,
-        "max_elevation_deg": 36.83,
-        "tca_azimuth_deg": 256.73,
-        "tca_elevation_deg": 36.83,
-        "tca_slant_range_km": 1262.81,
-        "closest_lon": 92.932171,
-        "closest_lat": 11.056744,
-        "aos_lon": 97.673912,
-        "aos_lat": -9.895741,
-        "aos_azimuth_deg": 188.19,
-        "los_lon": 87.469001,
-        "los_lat": 32.653799,
-        "los_azimuth_deg": 330.11,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "aos",
-        "color": "cyan"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          97.67391184552054,
-          -9.895741284318575
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 21 (JPSS-2)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T06:38:31Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:01:01Z",
-        "los_utc": "2026-08-11T07:13:09Z",
-        "tca_utc": "2026-08-11T07:07:00Z",
-        "max_elevation_utc": "2026-08-11T07:07:00Z",
-        "duration_minutes": 12.14,
-        "min_distance_km": 898.67,
-        "max_elevation_deg": 36.83,
-        "tca_azimuth_deg": 256.73,
-        "tca_elevation_deg": 36.83,
-        "tca_slant_range_km": 1262.81,
-        "closest_lon": 92.932171,
-        "closest_lat": 11.056744,
-        "aos_lon": 97.673912,
-        "aos_lat": -9.895741,
-        "aos_azimuth_deg": 188.19,
-        "los_lon": 87.469001,
-        "los_lat": 32.653799,
-        "los_azimuth_deg": 330.11,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "tca",
-        "color": "yellow"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.93217135629914,
-          11.05674438815007
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 21 (JPSS-2)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T06:38:31Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:01:01Z",
-        "los_utc": "2026-08-11T07:13:09Z",
-        "tca_utc": "2026-08-11T07:07:00Z",
-        "max_elevation_utc": "2026-08-11T07:07:00Z",
-        "duration_minutes": 12.14,
-        "min_distance_km": 898.67,
-        "max_elevation_deg": 36.83,
-        "tca_azimuth_deg": 256.73,
-        "tca_elevation_deg": 36.83,
-        "tca_slant_range_km": 1262.81,
-        "closest_lon": 92.932171,
-        "closest_lat": 11.056744,
-        "aos_lon": 97.673912,
-        "aos_lat": -9.895741,
-        "aos_azimuth_deg": 188.19,
-        "los_lon": 87.469001,
-        "los_lat": 32.653799,
-        "los_azimuth_deg": 330.11,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "los",
-        "color": "green"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          87.46900091611701,
-          32.653798657785934
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "SUOMI NPP",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T07:14:55Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:37:48Z",
-        "los_utc": "2026-08-11T07:48:08Z",
-        "tca_utc": "2026-08-11T07:43:00Z",
-        "max_elevation_utc": "2026-08-11T07:43:00Z",
-        "duration_minutes": 10.33,
-        "min_distance_km": 1582.65,
-        "max_elevation_deg": 19.0,
-        "tca_azimuth_deg": 260.5,
-        "tca_elevation_deg": 19.0,
-        "tca_slant_range_km": 1872.64,
-        "closest_lon": 86.673087,
-        "closest_lat": 10.308626,
-        "aos_lon": 90.809715,
-        "aos_lat": -7.864558,
-        "aos_azimuth_deg": 206.28,
-        "los_lon": 82.210379,
-        "los_lat": 28.328657,
-        "los_azimuth_deg": 314.15,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "visible_track"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            90.80971489760896,
-            -7.864557618897162
-          ],
-          [
-            90.65993445157244,
-            -7.2116947398534705
-          ],
-          [
-            90.26031019312165,
-            -5.4603098538402
-          ],
-          [
-            89.86226686371162,
-            -3.708673498627265
-          ],
-          [
-            89.46528418495546,
-            -1.956826265425297
-          ],
-          [
-            89.06884971916543,
-            -0.2048082642650568
-          ],
-          [
-            88.67245503923857,
-            1.547340580655394
-          ],
-          [
-            88.27559195593028,
-            3.2995802408510717
-          ],
-          [
-            87.8777487507333,
-            5.051870293764937
-          ],
-          [
-            87.47840635284746,
-            6.804169628652126
-          ],
-          [
-            87.07703440048158,
-            8.556436143526506
-          ],
-          [
-            86.67308712323978,
-            10.308626427906356
-          ],
-          [
-            86.26599897748122,
-            12.060695425973837
-          ],
-          [
-            85.85517995973072,
-            13.812596074516078
-          ],
-          [
-            85.44001051486646,
-            15.56427890833978
-          ],
-          [
-            85.01983594079036,
-            17.315691626098225
-          ],
-          [
-            84.59396018652023,
-            19.066778607496627
-          ],
-          [
-            84.16163890590019,
-            20.81748037147796
-          ],
-          [
-            83.72207162235424,
-            22.567732963294645
-          ],
-          [
-            83.2743926534676,
-            24.317467256038512
-          ],
-          [
-            82.81766158830101,
-            26.066608149023036
-          ],
-          [
-            82.35085053479162,
-            27.815073641722655
-          ],
-          [
-            82.21037853992402,
-            28.32865728681692
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "SUOMI NPP",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T07:14:55Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:37:48Z",
-        "los_utc": "2026-08-11T07:48:08Z",
-        "tca_utc": "2026-08-11T07:43:00Z",
-        "max_elevation_utc": "2026-08-11T07:43:00Z",
-        "duration_minutes": 10.33,
-        "min_distance_km": 1582.65,
-        "max_elevation_deg": 19.0,
-        "tca_azimuth_deg": 260.5,
-        "tca_elevation_deg": 19.0,
-        "tca_slant_range_km": 1872.64,
-        "closest_lon": 86.673087,
-        "closest_lat": 10.308626,
-        "aos_lon": 90.809715,
-        "aos_lat": -7.864558,
-        "aos_azimuth_deg": 206.28,
-        "los_lon": 82.210379,
-        "los_lat": 28.328657,
-        "los_azimuth_deg": 314.15,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "aos",
-        "color": "cyan"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          90.80971489760896,
-          -7.864557618897162
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "SUOMI NPP",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T07:14:55Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:37:48Z",
-        "los_utc": "2026-08-11T07:48:08Z",
-        "tca_utc": "2026-08-11T07:43:00Z",
-        "max_elevation_utc": "2026-08-11T07:43:00Z",
-        "duration_minutes": 10.33,
-        "min_distance_km": 1582.65,
-        "max_elevation_deg": 19.0,
-        "tca_azimuth_deg": 260.5,
-        "tca_elevation_deg": 19.0,
-        "tca_slant_range_km": 1872.64,
-        "closest_lon": 86.673087,
-        "closest_lat": 10.308626,
-        "aos_lon": 90.809715,
-        "aos_lat": -7.864558,
-        "aos_azimuth_deg": 206.28,
-        "los_lon": 82.210379,
-        "los_lat": 28.328657,
-        "los_azimuth_deg": 314.15,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "tca",
-        "color": "yellow"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          86.67308712323978,
-          10.308626427906356
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "SUOMI NPP",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T07:14:55Z",
-        "tle_age_hours": -287.62,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:37:48Z",
-        "los_utc": "2026-08-11T07:48:08Z",
-        "tca_utc": "2026-08-11T07:43:00Z",
-        "max_elevation_utc": "2026-08-11T07:43:00Z",
-        "duration_minutes": 10.33,
-        "min_distance_km": 1582.65,
-        "max_elevation_deg": 19.0,
-        "tca_azimuth_deg": 260.5,
-        "tca_elevation_deg": 19.0,
-        "tca_slant_range_km": 1872.64,
-        "closest_lon": 86.673087,
-        "closest_lat": 10.308626,
-        "aos_lon": 90.809715,
-        "aos_lat": -7.864558,
-        "aos_azimuth_deg": 206.28,
-        "los_lon": 82.210379,
-        "los_lat": 28.328657,
-        "los_azimuth_deg": 314.15,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "los",
-        "color": "green"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          82.21037853992402,
-          28.32865728681692
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 20 (JPSS-1)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T05:52:54Z",
-        "tle_age_hours": -285.9,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:58:55Z",
-        "los_utc": "2026-08-11T08:05:14Z",
-        "tca_utc": "2026-08-11T08:02:00Z",
-        "max_elevation_utc": "2026-08-11T08:02:00Z",
-        "duration_minutes": 6.32,
-        "min_distance_km": 2264.39,
-        "max_elevation_deg": 8.61,
-        "tca_azimuth_deg": 260.32,
-        "tca_elevation_deg": 8.61,
-        "tca_slant_range_km": 2534.96,
-        "closest_lon": 80.627017,
-        "closest_lat": 8.875567,
-        "aos_lon": 83.069696,
-        "aos_lat": -1.890098,
-        "aos_azimuth_deg": 231.22,
-        "los_lon": 77.927091,
-        "los_lat": 20.259148,
-        "los_azimuth_deg": 291.25,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "visible_track"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            83.06969648375662,
-            -1.8900980608924451
-          ],
-          [
-            83.01345125524591,
-            -1.6414112196497783
-          ],
-          [
-            82.61755101979531,
-            0.11123230443475035
-          ],
-          [
-            82.22159826065513,
-            1.8640048025910672
-          ],
-          [
-            81.8250850733429,
-            3.616865822301895
-          ],
-          [
-            81.42749933465336,
-            5.369774459755387
-          ],
-          [
-            81.028320866331,
-            7.122689065821449
-          ],
-          [
-            80.62701747134628,
-            8.875566942156642
-          ],
-          [
-            80.22304077923627,
-            10.628364022230013
-          ],
-          [
-            79.81582183130388,
-            12.381034531885557
-          ],
-          [
-            79.40476632934076,
-            14.133530623383454
-          ],
-          [
-            78.98924946215755,
-            15.885801975844442
-          ],
-          [
-            78.56861021248699,
-            17.63779535455845
-          ],
-          [
-            78.14214502827758,
-            19.389454120191544
-          ],
-          [
-            77.92709105745894,
-            20.25914848161341
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 20 (JPSS-1)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T05:52:54Z",
-        "tle_age_hours": -285.9,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:58:55Z",
-        "los_utc": "2026-08-11T08:05:14Z",
-        "tca_utc": "2026-08-11T08:02:00Z",
-        "max_elevation_utc": "2026-08-11T08:02:00Z",
-        "duration_minutes": 6.32,
-        "min_distance_km": 2264.39,
-        "max_elevation_deg": 8.61,
-        "tca_azimuth_deg": 260.32,
-        "tca_elevation_deg": 8.61,
-        "tca_slant_range_km": 2534.96,
-        "closest_lon": 80.627017,
-        "closest_lat": 8.875567,
-        "aos_lon": 83.069696,
-        "aos_lat": -1.890098,
-        "aos_azimuth_deg": 231.22,
-        "los_lon": 77.927091,
-        "los_lat": 20.259148,
-        "los_azimuth_deg": 291.25,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "aos",
-        "color": "cyan"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          83.06969648375662,
-          -1.8900980608924451
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 20 (JPSS-1)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T05:52:54Z",
-        "tle_age_hours": -285.9,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:58:55Z",
-        "los_utc": "2026-08-11T08:05:14Z",
-        "tca_utc": "2026-08-11T08:02:00Z",
-        "max_elevation_utc": "2026-08-11T08:02:00Z",
-        "duration_minutes": 6.32,
-        "min_distance_km": 2264.39,
-        "max_elevation_deg": 8.61,
-        "tca_azimuth_deg": 260.32,
-        "tca_elevation_deg": 8.61,
-        "tca_slant_range_km": 2534.96,
-        "closest_lon": 80.627017,
-        "closest_lat": 8.875567,
-        "aos_lon": 83.069696,
-        "aos_lat": -1.890098,
-        "aos_azimuth_deg": 231.22,
-        "los_lon": 77.927091,
-        "los_lat": 20.259148,
-        "los_azimuth_deg": 291.25,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "tca",
-        "color": "yellow"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          80.62701747134628,
-          8.875566942156642
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 20 (JPSS-1)",
-        "direction": "ascending",
-        "planning_method": "topocentric_elevation_access",
-        "min_elevation_deg": 5.0,
-        "tle_epoch_utc": "2026-08-23T05:52:54Z",
-        "tle_age_hours": -285.9,
-        "tle_quality": "medium",
-        "aos_utc": "2026-08-11T07:58:55Z",
-        "los_utc": "2026-08-11T08:05:14Z",
-        "tca_utc": "2026-08-11T08:02:00Z",
-        "max_elevation_utc": "2026-08-11T08:02:00Z",
-        "duration_minutes": 6.32,
-        "min_distance_km": 2264.39,
-        "max_elevation_deg": 8.61,
-        "tca_azimuth_deg": 260.32,
-        "tca_elevation_deg": 8.61,
-        "tca_slant_range_km": 2534.96,
-        "closest_lon": 80.627017,
-        "closest_lat": 8.875567,
-        "aos_lon": 83.069696,
-        "aos_lat": -1.890098,
-        "aos_azimuth_deg": 231.22,
-        "los_lon": 77.927091,
-        "los_lat": 20.259148,
-        "los_azimuth_deg": 291.25,
-        "confidence": "medium",
-        "aoi_covered": false,
-        "aoi_points_inside": 0,
-        "reference_swath_file": "swath_jpss.geojson",
-        "reference_swath_source_count": 20,
-        "reference_swath_station_inside_count": 5,
-        "reference_swath_buffer_intersects_count": 20,
-        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
-        "reference_swath_sensors": "VIIRS",
-        "reference_swath_time_min": "2026-06-17T06:52:26Z",
-        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
-        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
-        "type": "los",
-        "color": "green"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.92709105745894,
-          20.25914848161341
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "satellite": "NOAA 21 (JPSS-2)",
         "direction": "descending",
         "planning_method": "topocentric_elevation_access",
         "min_elevation_deg": 5.0,
@@ -5047,6 +3297,1760 @@
         "coordinates": [
           79.54852389903004,
           3.597286945786767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 21 (JPSS-2)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T06:38:31Z",
+        "tle_age_hours": -265.55,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:05:30Z",
+        "los_utc": "2026-08-12T05:11:44Z",
+        "tca_utc": "2026-08-12T05:08:30Z",
+        "max_elevation_utc": "2026-08-12T05:08:30Z",
+        "duration_minutes": 6.23,
+        "min_distance_km": 2260.32,
+        "max_elevation_deg": 8.59,
+        "tca_azimuth_deg": 72.78,
+        "tca_elevation_deg": 8.59,
+        "tca_slant_range_km": 2533.85,
+        "closest_lon": 121.390438,
+        "closest_lat": 18.154478,
+        "aos_lon": 123.837761,
+        "aos_lat": 7.660649,
+        "aos_azimuth_deg": 101.11,
+        "los_lon": 118.491103,
+        "los_lat": 29.479076,
+        "los_azimuth_deg": 41.96,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "visible_track"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.83776118237341,
+            7.660648954225577
+          ],
+          [
+            123.44397372086519,
+            9.387730139441121
+          ],
+          [
+            123.041274128096,
+            11.14145382963252
+          ],
+          [
+            122.63518592167384,
+            12.89504020495836
+          ],
+          [
+            122.22511052116499,
+            14.64844087057568
+          ],
+          [
+            121.81041741796219,
+            16.401604871773117
+          ],
+          [
+            121.3904383440605,
+            18.15447824658884
+          ],
+          [
+            120.96446076940072,
+            19.907003525888125
+          ],
+          [
+            120.53172042829084,
+            21.659119170049326
+          ],
+          [
+            120.0913937168545,
+            23.410758929023725
+          ],
+          [
+            119.64258724457687,
+            25.16185111027081
+          ],
+          [
+            119.18432766631014,
+            26.912317735735108
+          ],
+          [
+            118.71554898750634,
+            28.662073564874063
+          ],
+          [
+            118.49110256968726,
+            29.47907581284144
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 21 (JPSS-2)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T06:38:31Z",
+        "tle_age_hours": -265.55,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:05:30Z",
+        "los_utc": "2026-08-12T05:11:44Z",
+        "tca_utc": "2026-08-12T05:08:30Z",
+        "max_elevation_utc": "2026-08-12T05:08:30Z",
+        "duration_minutes": 6.23,
+        "min_distance_km": 2260.32,
+        "max_elevation_deg": 8.59,
+        "tca_azimuth_deg": 72.78,
+        "tca_elevation_deg": 8.59,
+        "tca_slant_range_km": 2533.85,
+        "closest_lon": 121.390438,
+        "closest_lat": 18.154478,
+        "aos_lon": 123.837761,
+        "aos_lat": 7.660649,
+        "aos_azimuth_deg": 101.11,
+        "los_lon": 118.491103,
+        "los_lat": 29.479076,
+        "los_azimuth_deg": 41.96,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "aos",
+        "color": "cyan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.83776118237341,
+          7.660648954225577
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 21 (JPSS-2)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T06:38:31Z",
+        "tle_age_hours": -265.55,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:05:30Z",
+        "los_utc": "2026-08-12T05:11:44Z",
+        "tca_utc": "2026-08-12T05:08:30Z",
+        "max_elevation_utc": "2026-08-12T05:08:30Z",
+        "duration_minutes": 6.23,
+        "min_distance_km": 2260.32,
+        "max_elevation_deg": 8.59,
+        "tca_azimuth_deg": 72.78,
+        "tca_elevation_deg": 8.59,
+        "tca_slant_range_km": 2533.85,
+        "closest_lon": 121.390438,
+        "closest_lat": 18.154478,
+        "aos_lon": 123.837761,
+        "aos_lat": 7.660649,
+        "aos_azimuth_deg": 101.11,
+        "los_lon": 118.491103,
+        "los_lat": 29.479076,
+        "los_azimuth_deg": 41.96,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "tca",
+        "color": "yellow"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.3904383440605,
+          18.15447824658884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 21 (JPSS-2)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T06:38:31Z",
+        "tle_age_hours": -265.55,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:05:30Z",
+        "los_utc": "2026-08-12T05:11:44Z",
+        "tca_utc": "2026-08-12T05:08:30Z",
+        "max_elevation_utc": "2026-08-12T05:08:30Z",
+        "duration_minutes": 6.23,
+        "min_distance_km": 2260.32,
+        "max_elevation_deg": 8.59,
+        "tca_azimuth_deg": 72.78,
+        "tca_elevation_deg": 8.59,
+        "tca_slant_range_km": 2533.85,
+        "closest_lon": 121.390438,
+        "closest_lat": 18.154478,
+        "aos_lon": 123.837761,
+        "aos_lat": 7.660649,
+        "aos_azimuth_deg": 101.11,
+        "los_lon": 118.491103,
+        "los_lat": 29.479076,
+        "los_azimuth_deg": 41.96,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "los",
+        "color": "green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.49110256968726,
+          29.47907581284144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "SUOMI NPP",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T07:14:55Z",
+        "tle_age_hours": -265.6,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:39:13Z",
+        "los_utc": "2026-08-12T05:49:24Z",
+        "tca_utc": "2026-08-12T05:44:30Z",
+        "max_elevation_utc": "2026-08-12T05:44:30Z",
+        "duration_minutes": 10.19,
+        "min_distance_km": 1596.15,
+        "max_elevation_deg": 18.67,
+        "tca_azimuth_deg": 70.72,
+        "tca_elevation_deg": 18.67,
+        "tca_slant_range_km": 1889.15,
+        "closest_lon": 115.146052,
+        "closest_lat": 17.348649,
+        "aos_lon": 119.419286,
+        "aos_lat": -1.160653,
+        "aos_azimuth_deg": 126.31,
+        "los_lon": 110.582539,
+        "los_lat": 34.497862,
+        "los_azimuth_deg": 20.57,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "visible_track"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            119.41928588127678,
+            -1.1606530676692737
+          ],
+          [
+            119.1956110269283,
+            -0.17211663215829992
+          ],
+          [
+            118.7992086039099,
+            1.580057897867011
+          ],
+          [
+            118.40232808657811,
+            3.3323235718060573
+          ],
+          [
+            118.00445763504302,
+            5.084639931933692
+          ],
+          [
+            117.60507798268884,
+            6.8369658256204255
+          ],
+          [
+            117.20365849445915,
+            8.589259102006485
+          ],
+          [
+            116.79965304542753,
+            10.34147629436119
+          ],
+          [
+            116.39249564858551,
+            12.093572283012534
+          ],
+          [
+            115.98159559576203,
+            13.845499932523303
+          ],
+          [
+            115.56633302691586,
+            15.597209696563883
+          ],
+          [
+            115.14605231754581,
+            17.348649182928593
+          ],
+          [
+            114.7200565331479,
+            19.099762669539448
+          ],
+          [
+            114.28760030064552,
+            20.85049056151442
+          ],
+          [
+            113.84788195342043,
+            22.60076877673204
+          ],
+          [
+            113.40003460086791,
+            24.350528045537917
+          ],
+          [
+            112.94311590552473,
+            26.099693106817433
+          ],
+          [
+            112.4760963060753,
+            27.84818177947579
+          ],
+          [
+            111.99784536474124,
+            29.59590388332015
+          ],
+          [
+            111.50711585606615,
+            31.34275997735317
+          ],
+          [
+            111.00252510749027,
+            33.08863987660932
+          ],
+          [
+            110.58253854627696,
+            34.49786239421726
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "SUOMI NPP",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T07:14:55Z",
+        "tle_age_hours": -265.6,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:39:13Z",
+        "los_utc": "2026-08-12T05:49:24Z",
+        "tca_utc": "2026-08-12T05:44:30Z",
+        "max_elevation_utc": "2026-08-12T05:44:30Z",
+        "duration_minutes": 10.19,
+        "min_distance_km": 1596.15,
+        "max_elevation_deg": 18.67,
+        "tca_azimuth_deg": 70.72,
+        "tca_elevation_deg": 18.67,
+        "tca_slant_range_km": 1889.15,
+        "closest_lon": 115.146052,
+        "closest_lat": 17.348649,
+        "aos_lon": 119.419286,
+        "aos_lat": -1.160653,
+        "aos_azimuth_deg": 126.31,
+        "los_lon": 110.582539,
+        "los_lat": 34.497862,
+        "los_azimuth_deg": 20.57,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "aos",
+        "color": "cyan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.41928588127678,
+          -1.1606530676692737
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "SUOMI NPP",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T07:14:55Z",
+        "tle_age_hours": -265.6,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:39:13Z",
+        "los_utc": "2026-08-12T05:49:24Z",
+        "tca_utc": "2026-08-12T05:44:30Z",
+        "max_elevation_utc": "2026-08-12T05:44:30Z",
+        "duration_minutes": 10.19,
+        "min_distance_km": 1596.15,
+        "max_elevation_deg": 18.67,
+        "tca_azimuth_deg": 70.72,
+        "tca_elevation_deg": 18.67,
+        "tca_slant_range_km": 1889.15,
+        "closest_lon": 115.146052,
+        "closest_lat": 17.348649,
+        "aos_lon": 119.419286,
+        "aos_lat": -1.160653,
+        "aos_azimuth_deg": 126.31,
+        "los_lon": 110.582539,
+        "los_lat": 34.497862,
+        "los_azimuth_deg": 20.57,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "tca",
+        "color": "yellow"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.14605231754581,
+          17.348649182928593
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "SUOMI NPP",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T07:14:55Z",
+        "tle_age_hours": -265.6,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:39:13Z",
+        "los_utc": "2026-08-12T05:49:24Z",
+        "tca_utc": "2026-08-12T05:44:30Z",
+        "max_elevation_utc": "2026-08-12T05:44:30Z",
+        "duration_minutes": 10.19,
+        "min_distance_km": 1596.15,
+        "max_elevation_deg": 18.67,
+        "tca_azimuth_deg": 70.72,
+        "tca_elevation_deg": 18.67,
+        "tca_slant_range_km": 1889.15,
+        "closest_lon": 115.146052,
+        "closest_lat": 17.348649,
+        "aos_lon": 119.419286,
+        "aos_lat": -1.160653,
+        "aos_azimuth_deg": 126.31,
+        "los_lon": 110.582539,
+        "los_lat": 34.497862,
+        "los_azimuth_deg": 20.57,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "los",
+        "color": "green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.58253854627696,
+          34.49786239421726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 20 (JPSS-1)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T05:52:54Z",
+        "tle_age_hours": -263.93,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:57:13Z",
+        "los_utc": "2026-08-12T06:09:16Z",
+        "tca_utc": "2026-08-12T06:03:30Z",
+        "max_elevation_utc": "2026-08-12T06:03:30Z",
+        "duration_minutes": 12.03,
+        "min_distance_km": 934.57,
+        "max_elevation_deg": 35.42,
+        "tca_azimuth_deg": 69.1,
+        "tca_elevation_deg": 35.42,
+        "tca_slant_range_km": 1296.51,
+        "closest_lon": 109.117213,
+        "closest_lat": 15.897416,
+        "aos_lon": 114.148709,
+        "aos_lat": -6.072564,
+        "aos_azimuth_deg": 144.67,
+        "los_lon": 103.732787,
+        "los_lat": 36.069921,
+        "los_azimuth_deg": 5.8,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "visible_track"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            114.14870875406564,
+            -6.072564142951816
+          ],
+          [
+            113.9352813993217,
+            -5.134910402891632
+          ],
+          [
+            113.53796378894418,
+            -3.3826148781587277
+          ],
+          [
+            113.1416085504568,
+            -1.6301095211062528
+          ],
+          [
+            112.74570492401489,
+            0.1225652236052653
+          ],
+          [
+            112.34974543986652,
+            1.8753690349507823
+          ],
+          [
+            111.95322215562607,
+            3.6282614272386007
+          ],
+          [
+            111.55562288529626,
+            5.381201461110362
+          ],
+          [
+            111.15642736155951,
+            7.134147449629062
+          ],
+          [
+            110.75510327075114,
+            8.887056654228127
+          ],
+          [
+            110.35110209642068,
+            10.639884965670843
+          ],
+          [
+            109.94385470225393,
+            12.392586564471216
+          ],
+          [
+            109.53276657843611,
+            14.145113554637268
+          ],
+          [
+            109.1172126628129,
+            15.897415563998353
+          ],
+          [
+            108.69653164588965,
+            17.64943930320943
+          ],
+          [
+            108.2700196370526,
+            19.40112807441021
+          ],
+          [
+            107.83692306644377,
+            21.152421218982038
+          ],
+          [
+            107.39643066311311,
+            22.903253491739015
+          ],
+          [
+            106.94766415517881,
+            24.653554346620016
+          ],
+          [
+            106.48966847652002,
+            26.40324711569197
+          ],
+          [
+            106.02139868734855,
+            28.152248059777015
+          ],
+          [
+            105.54170664079413,
+            29.90046526364757
+          ],
+          [
+            105.04932447008548,
+            31.647797343133444
+          ],
+          [
+            104.5428454038456,
+            33.39413192321856
+          ],
+          [
+            104.02070113025911,
+            35.139343836712555
+          ],
+          [
+            103.73278692403744,
+            36.069920534398385
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 20 (JPSS-1)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T05:52:54Z",
+        "tle_age_hours": -263.93,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:57:13Z",
+        "los_utc": "2026-08-12T06:09:16Z",
+        "tca_utc": "2026-08-12T06:03:30Z",
+        "max_elevation_utc": "2026-08-12T06:03:30Z",
+        "duration_minutes": 12.03,
+        "min_distance_km": 934.57,
+        "max_elevation_deg": 35.42,
+        "tca_azimuth_deg": 69.1,
+        "tca_elevation_deg": 35.42,
+        "tca_slant_range_km": 1296.51,
+        "closest_lon": 109.117213,
+        "closest_lat": 15.897416,
+        "aos_lon": 114.148709,
+        "aos_lat": -6.072564,
+        "aos_azimuth_deg": 144.67,
+        "los_lon": 103.732787,
+        "los_lat": 36.069921,
+        "los_azimuth_deg": 5.8,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "aos",
+        "color": "cyan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.14870875406564,
+          -6.072564142951816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 20 (JPSS-1)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T05:52:54Z",
+        "tle_age_hours": -263.93,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:57:13Z",
+        "los_utc": "2026-08-12T06:09:16Z",
+        "tca_utc": "2026-08-12T06:03:30Z",
+        "max_elevation_utc": "2026-08-12T06:03:30Z",
+        "duration_minutes": 12.03,
+        "min_distance_km": 934.57,
+        "max_elevation_deg": 35.42,
+        "tca_azimuth_deg": 69.1,
+        "tca_elevation_deg": 35.42,
+        "tca_slant_range_km": 1296.51,
+        "closest_lon": 109.117213,
+        "closest_lat": 15.897416,
+        "aos_lon": 114.148709,
+        "aos_lat": -6.072564,
+        "aos_azimuth_deg": 144.67,
+        "los_lon": 103.732787,
+        "los_lat": 36.069921,
+        "los_azimuth_deg": 5.8,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "tca",
+        "color": "yellow"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.1172126628129,
+          15.897415563998353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 20 (JPSS-1)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T05:52:54Z",
+        "tle_age_hours": -263.93,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T05:57:13Z",
+        "los_utc": "2026-08-12T06:09:16Z",
+        "tca_utc": "2026-08-12T06:03:30Z",
+        "max_elevation_utc": "2026-08-12T06:03:30Z",
+        "duration_minutes": 12.03,
+        "min_distance_km": 934.57,
+        "max_elevation_deg": 35.42,
+        "tca_azimuth_deg": 69.1,
+        "tca_elevation_deg": 35.42,
+        "tca_slant_range_km": 1296.51,
+        "closest_lon": 109.117213,
+        "closest_lat": 15.897416,
+        "aos_lon": 114.148709,
+        "aos_lat": -6.072564,
+        "aos_azimuth_deg": 144.67,
+        "los_lon": 103.732787,
+        "los_lat": 36.069921,
+        "los_azimuth_deg": 5.8,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "los",
+        "color": "green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.73278692403744,
+          36.069920534398385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 21 (JPSS-2)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T06:38:31Z",
+        "tle_age_hours": -263.94,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T06:41:56Z",
+        "los_utc": "2026-08-12T06:54:42Z",
+        "tca_utc": "2026-08-12T06:48:30Z",
+        "max_elevation_utc": "2026-08-12T06:48:30Z",
+        "duration_minutes": 12.75,
+        "min_distance_km": 398.25,
+        "max_elevation_deg": 61.08,
+        "tca_azimuth_deg": 268.42,
+        "tca_elevation_deg": 61.08,
+        "tca_slant_range_km": 930.01,
+        "closest_lon": 97.258945,
+        "closest_lat": 12.901578,
+        "aos_lon": 102.468761,
+        "aos_lat": -10.073997,
+        "aos_azimuth_deg": 176.15,
+        "los_lon": 91.646055,
+        "los_lat": 34.615716,
+        "los_azimuth_deg": 340.28,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "visible_track"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            102.46876098218183,
+            -10.07399678347425
+          ],
+          [
+            102.42719242673195,
+            -9.893435596866135
+          ],
+          [
+            102.02676892770273,
+            -8.141012489678559
+          ],
+          [
+            101.62872412981051,
+            -6.388265055552773
+          ],
+          [
+            101.23252247068217,
+            -4.635235468924357
+          ],
+          [
+            100.83764223667976,
+            -2.88196498323873
+          ],
+          [
+            100.44357154241379,
+            -1.1284942368263085
+          ],
+          [
+            100.04980446715956,
+            0.6251364535436572
+          ],
+          [
+            99.65583728375759,
+            2.378886806444572
+          ],
+          [
+            99.26116472123704,
+            4.132716292566611
+          ],
+          [
+            98.8652762029426,
+            5.886583849427754
+          ],
+          [
+            98.46765200112628,
+            7.640447589953197
+          ],
+          [
+            98.0677592469176,
+            9.394264499530921
+          ],
+          [
+            97.66504773098876,
+            11.147990116960669
+          ],
+          [
+            97.25894542142561,
+            12.901578193257734
+          ],
+          [
+            96.84885362721627,
+            14.654980322415817
+          ],
+          [
+            96.4341417093936,
+            16.408145537043314
+          ],
+          [
+            96.01414124520704,
+            18.16101986079719
+          ],
+          [
+            95.58813952458178,
+            19.91354580821462
+          ],
+          [
+            95.15537207275253,
+            21.665661821170804
+          ],
+          [
+            94.71501504373424,
+            23.417301628587918
+          ],
+          [
+            94.26617476706747,
+            25.168393514063677
+          ],
+          [
+            93.8078775740828,
+            26.918859472296727
+          ],
+          [
+            93.33905709664413,
+            28.668614231661707
+          ],
+          [
+            92.8585396954769,
+            30.41756411449961
+          ],
+          [
+            92.365027428681,
+            32.16560570099144
+          ],
+          [
+            91.8570780222733,
+            33.912624253372115
+          ],
+          [
+            91.64605529938149,
+            34.61571578452997
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 21 (JPSS-2)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T06:38:31Z",
+        "tle_age_hours": -263.94,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T06:41:56Z",
+        "los_utc": "2026-08-12T06:54:42Z",
+        "tca_utc": "2026-08-12T06:48:30Z",
+        "max_elevation_utc": "2026-08-12T06:48:30Z",
+        "duration_minutes": 12.75,
+        "min_distance_km": 398.25,
+        "max_elevation_deg": 61.08,
+        "tca_azimuth_deg": 268.42,
+        "tca_elevation_deg": 61.08,
+        "tca_slant_range_km": 930.01,
+        "closest_lon": 97.258945,
+        "closest_lat": 12.901578,
+        "aos_lon": 102.468761,
+        "aos_lat": -10.073997,
+        "aos_azimuth_deg": 176.15,
+        "los_lon": 91.646055,
+        "los_lat": 34.615716,
+        "los_azimuth_deg": 340.28,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "aos",
+        "color": "cyan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.46876098218183,
+          -10.07399678347425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 21 (JPSS-2)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T06:38:31Z",
+        "tle_age_hours": -263.94,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T06:41:56Z",
+        "los_utc": "2026-08-12T06:54:42Z",
+        "tca_utc": "2026-08-12T06:48:30Z",
+        "max_elevation_utc": "2026-08-12T06:48:30Z",
+        "duration_minutes": 12.75,
+        "min_distance_km": 398.25,
+        "max_elevation_deg": 61.08,
+        "tca_azimuth_deg": 268.42,
+        "tca_elevation_deg": 61.08,
+        "tca_slant_range_km": 930.01,
+        "closest_lon": 97.258945,
+        "closest_lat": 12.901578,
+        "aos_lon": 102.468761,
+        "aos_lat": -10.073997,
+        "aos_azimuth_deg": 176.15,
+        "los_lon": 91.646055,
+        "los_lat": 34.615716,
+        "los_azimuth_deg": 340.28,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "tca",
+        "color": "yellow"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.25894542142561,
+          12.901578193257734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 21 (JPSS-2)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T06:38:31Z",
+        "tle_age_hours": -263.94,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T06:41:56Z",
+        "los_utc": "2026-08-12T06:54:42Z",
+        "tca_utc": "2026-08-12T06:48:30Z",
+        "max_elevation_utc": "2026-08-12T06:48:30Z",
+        "duration_minutes": 12.75,
+        "min_distance_km": 398.25,
+        "max_elevation_deg": 61.08,
+        "tca_azimuth_deg": 268.42,
+        "tca_elevation_deg": 61.08,
+        "tca_slant_range_km": 930.01,
+        "closest_lon": 97.258945,
+        "closest_lat": 12.901578,
+        "aos_lon": 102.468761,
+        "aos_lat": -10.073997,
+        "aos_azimuth_deg": 176.15,
+        "los_lon": 91.646055,
+        "los_lat": 34.615716,
+        "los_azimuth_deg": 340.28,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "los",
+        "color": "green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.64605529938149,
+          34.61571578452997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "SUOMI NPP",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T07:14:55Z",
+        "tle_age_hours": -263.94,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T07:18:17Z",
+        "los_utc": "2026-08-12T07:30:06Z",
+        "tca_utc": "2026-08-12T07:24:00Z",
+        "max_elevation_utc": "2026-08-12T07:24:00Z",
+        "duration_minutes": 11.82,
+        "min_distance_km": 1079.09,
+        "max_elevation_deg": 30.97,
+        "tca_azimuth_deg": 254.93,
+        "tca_elevation_deg": 30.97,
+        "tca_slant_range_km": 1414.14,
+        "closest_lon": 91.424769,
+        "closest_lat": 10.344028,
+        "aos_lon": 95.976733,
+        "aos_lat": -9.634699,
+        "aos_azimuth_deg": 192.52,
+        "los_lon": 86.015377,
+        "los_lat": 31.749149,
+        "los_azimuth_deg": 326.23,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "visible_track"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            95.97673282799087,
+            -9.634699222910369
+          ],
+          [
+            95.8134489742153,
+            -8.927688366493419
+          ],
+          [
+            95.41175634117434,
+            -7.176570673957611
+          ],
+          [
+            95.01216574812065,
+            -5.425159701532755
+          ],
+          [
+            94.61414538353023,
+            -3.673496828089583
+          ],
+          [
+            94.21717515086402,
+            -1.9216226538927508
+          ],
+          [
+            93.82074271608633,
+            -0.16957730545912614
+          ],
+          [
+            93.42433967641409,
+            1.5825992693923714
+          ],
+          [
+            93.02745778992175,
+            3.3348670114044867
+          ],
+          [
+            92.62958520719872,
+            5.087185460080973
+          ],
+          [
+            92.23020264632936,
+            6.839513459491393
+          ],
+          [
+            91.82877945141496,
+            8.591808854883057
+          ],
+          [
+            91.42476946845738,
+            10.344028175164606
+          ],
+          [
+            91.01760650928463,
+            12.09612629563458
+          ],
+          [
+            90.60670032775545,
+            13.848056075205669
+          ],
+          [
+            90.19143050964544,
+            15.599767961224247
+          ],
+          [
+            89.77114153978954,
+            17.35120955433706
+          ],
+          [
+            89.34513641496522,
+            19.102325124544215
+          ],
+          [
+            88.91266968219031,
+            20.853055068105995
+          ],
+          [
+            88.4729395822585,
+            22.60333529297086
+          ],
+          [
+            88.02507911749774,
+            24.35309651832761
+          ],
+          [
+            87.56814582718403,
+            26.102263470597496
+          ],
+          [
+            87.10111000563165,
+            27.850753954624437
+          ],
+          [
+            86.62284105109921,
+            29.598477774313174
+          ],
+          [
+            86.13209154610507,
+            31.34533547068435
+          ],
+          [
+            86.01537698256652,
+            31.74914948626983
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "SUOMI NPP",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T07:14:55Z",
+        "tle_age_hours": -263.94,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T07:18:17Z",
+        "los_utc": "2026-08-12T07:30:06Z",
+        "tca_utc": "2026-08-12T07:24:00Z",
+        "max_elevation_utc": "2026-08-12T07:24:00Z",
+        "duration_minutes": 11.82,
+        "min_distance_km": 1079.09,
+        "max_elevation_deg": 30.97,
+        "tca_azimuth_deg": 254.93,
+        "tca_elevation_deg": 30.97,
+        "tca_slant_range_km": 1414.14,
+        "closest_lon": 91.424769,
+        "closest_lat": 10.344028,
+        "aos_lon": 95.976733,
+        "aos_lat": -9.634699,
+        "aos_azimuth_deg": 192.52,
+        "los_lon": 86.015377,
+        "los_lat": 31.749149,
+        "los_azimuth_deg": 326.23,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "aos",
+        "color": "cyan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95.97673282799087,
+          -9.634699222910369
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "SUOMI NPP",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T07:14:55Z",
+        "tle_age_hours": -263.94,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T07:18:17Z",
+        "los_utc": "2026-08-12T07:30:06Z",
+        "tca_utc": "2026-08-12T07:24:00Z",
+        "max_elevation_utc": "2026-08-12T07:24:00Z",
+        "duration_minutes": 11.82,
+        "min_distance_km": 1079.09,
+        "max_elevation_deg": 30.97,
+        "tca_azimuth_deg": 254.93,
+        "tca_elevation_deg": 30.97,
+        "tca_slant_range_km": 1414.14,
+        "closest_lon": 91.424769,
+        "closest_lat": 10.344028,
+        "aos_lon": 95.976733,
+        "aos_lat": -9.634699,
+        "aos_azimuth_deg": 192.52,
+        "los_lon": 86.015377,
+        "los_lat": 31.749149,
+        "los_azimuth_deg": 326.23,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "tca",
+        "color": "yellow"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.42476946845738,
+          10.344028175164606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "SUOMI NPP",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T07:14:55Z",
+        "tle_age_hours": -263.94,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T07:18:17Z",
+        "los_utc": "2026-08-12T07:30:06Z",
+        "tca_utc": "2026-08-12T07:24:00Z",
+        "max_elevation_utc": "2026-08-12T07:24:00Z",
+        "duration_minutes": 11.82,
+        "min_distance_km": 1079.09,
+        "max_elevation_deg": 30.97,
+        "tca_azimuth_deg": 254.93,
+        "tca_elevation_deg": 30.97,
+        "tca_slant_range_km": 1414.14,
+        "closest_lon": 91.424769,
+        "closest_lat": 10.344028,
+        "aos_lon": 95.976733,
+        "aos_lat": -9.634699,
+        "aos_azimuth_deg": 192.52,
+        "los_lon": 86.015377,
+        "los_lat": 31.749149,
+        "los_azimuth_deg": 326.23,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "los",
+        "color": "green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.01537698256652,
+          31.74914948626983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 20 (JPSS-1)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T05:52:54Z",
+        "tle_age_hours": -262.24,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T07:38:30Z",
+        "los_utc": "2026-08-12T07:48:06Z",
+        "tca_utc": "2026-08-12T07:43:30Z",
+        "max_elevation_utc": "2026-08-12T07:43:30Z",
+        "duration_minutes": 9.6,
+        "min_distance_km": 1756.96,
+        "max_elevation_deg": 15.87,
+        "tca_azimuth_deg": 263.03,
+        "tca_elevation_deg": 15.87,
+        "tca_slant_range_km": 2038.85,
+        "closest_lon": 84.976334,
+        "closest_lat": 10.640791,
+        "aos_lon": 88.950596,
+        "aos_lat": -6.847754,
+        "aos_azimuth_deg": 211.6,
+        "los_lon": 81.014515,
+        "los_lat": 26.778984,
+        "los_azimuth_deg": 309.38,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "visible_track"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            88.95059610551363,
+            -6.847753921254093
+          ],
+          [
+            88.56052095463974,
+            -5.134026051348419
+          ],
+          [
+            88.16320360391575,
+            -3.381728118182903
+          ],
+          [
+            87.76684836357543,
+            -1.6292203431937549
+          ],
+          [
+            87.37094447428296,
+            0.12345682671731757
+          ],
+          [
+            86.97498446531063,
+            1.8762630681391173
+          ],
+          [
+            86.57846039135052,
+            3.6291578927734194
+          ],
+          [
+            86.18086006148314,
+            5.382100358529821
+          ],
+          [
+            85.78166320141395,
+            7.135048775514755
+          ],
+          [
+            85.38033748833294,
+            8.887960402038951
+          ],
+          [
+            84.97633439480416,
+            10.640791125561735
+          ],
+          [
+            84.56908476965015,
+            12.393495123074308
+          ],
+          [
+            84.15799408642079,
+            14.146024494827783
+          ],
+          [
+            83.74243726427545,
+            15.898328864673411
+          ],
+          [
+            83.32175297032597,
+            17.650354939017372
+          ],
+          [
+            82.8952372873207,
+            19.402046015450367
+          ],
+          [
+            82.4621366145679,
+            21.153341430494052
+          ],
+          [
+            82.02163947741337,
+            22.90417593371705
+          ],
+          [
+            81.57286806722806,
+            24.654478973373696
+          ],
+          [
+            81.11486676622758,
+            26.404173875375996
+          ],
+          [
+            81.01451549975923,
+            26.7789841610465
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 20 (JPSS-1)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T05:52:54Z",
+        "tle_age_hours": -262.24,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T07:38:30Z",
+        "los_utc": "2026-08-12T07:48:06Z",
+        "tca_utc": "2026-08-12T07:43:30Z",
+        "max_elevation_utc": "2026-08-12T07:43:30Z",
+        "duration_minutes": 9.6,
+        "min_distance_km": 1756.96,
+        "max_elevation_deg": 15.87,
+        "tca_azimuth_deg": 263.03,
+        "tca_elevation_deg": 15.87,
+        "tca_slant_range_km": 2038.85,
+        "closest_lon": 84.976334,
+        "closest_lat": 10.640791,
+        "aos_lon": 88.950596,
+        "aos_lat": -6.847754,
+        "aos_azimuth_deg": 211.6,
+        "los_lon": 81.014515,
+        "los_lat": 26.778984,
+        "los_azimuth_deg": 309.38,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "aos",
+        "color": "cyan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.95059610551363,
+          -6.847753921254093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 20 (JPSS-1)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T05:52:54Z",
+        "tle_age_hours": -262.24,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T07:38:30Z",
+        "los_utc": "2026-08-12T07:48:06Z",
+        "tca_utc": "2026-08-12T07:43:30Z",
+        "max_elevation_utc": "2026-08-12T07:43:30Z",
+        "duration_minutes": 9.6,
+        "min_distance_km": 1756.96,
+        "max_elevation_deg": 15.87,
+        "tca_azimuth_deg": 263.03,
+        "tca_elevation_deg": 15.87,
+        "tca_slant_range_km": 2038.85,
+        "closest_lon": 84.976334,
+        "closest_lat": 10.640791,
+        "aos_lon": 88.950596,
+        "aos_lat": -6.847754,
+        "aos_azimuth_deg": 211.6,
+        "los_lon": 81.014515,
+        "los_lat": 26.778984,
+        "los_azimuth_deg": 309.38,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "tca",
+        "color": "yellow"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          84.97633439480416,
+          10.640791125561735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "NOAA 20 (JPSS-1)",
+        "direction": "ascending",
+        "planning_method": "topocentric_elevation_access",
+        "min_elevation_deg": 5.0,
+        "tle_epoch_utc": "2026-08-23T05:52:54Z",
+        "tle_age_hours": -262.24,
+        "tle_quality": "medium",
+        "aos_utc": "2026-08-12T07:38:30Z",
+        "los_utc": "2026-08-12T07:48:06Z",
+        "tca_utc": "2026-08-12T07:43:30Z",
+        "max_elevation_utc": "2026-08-12T07:43:30Z",
+        "duration_minutes": 9.6,
+        "min_distance_km": 1756.96,
+        "max_elevation_deg": 15.87,
+        "tca_azimuth_deg": 263.03,
+        "tca_elevation_deg": 15.87,
+        "tca_slant_range_km": 2038.85,
+        "closest_lon": 84.976334,
+        "closest_lat": 10.640791,
+        "aos_lon": 88.950596,
+        "aos_lat": -6.847754,
+        "aos_azimuth_deg": 211.6,
+        "los_lon": 81.014515,
+        "los_lat": 26.778984,
+        "los_azimuth_deg": 309.38,
+        "confidence": "medium",
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "reference_swath_file": "swath_jpss.geojson",
+        "reference_swath_source_count": 20,
+        "reference_swath_station_inside_count": 5,
+        "reference_swath_buffer_intersects_count": 20,
+        "reference_swath_satellites": "JPSS-1 (NOAA-20)",
+        "reference_swath_sensors": "VIIRS",
+        "reference_swath_time_min": "2026-06-17T06:52:26Z",
+        "reference_swath_time_max": "2026-06-22T06:58:49.5Z",
+        "reference_swath_note": "sample footprint only; not time-matched to this planning pass",
+        "type": "los",
+        "color": "green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.01451549975923,
+          26.7789841610465
         ]
       }
     }

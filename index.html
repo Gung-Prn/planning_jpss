@@ -779,6 +779,31 @@
       document.getElementById('orbitStatus').textContent = status;
     }
 
+    function selectNextDayOrbit(row) {
+      const targetTime = Date.parse(row.tca_utc) + 24 * 60 * 60 * 1000;
+      const sameSatellite = currentDataset.orbitFeatures.filter((candidate) => {
+        return (candidate.properties || {}).satellite === row.satellite;
+      });
+      const sameDirection = sameSatellite.filter((candidate) => {
+        return (candidate.properties || {}).direction === row.direction;
+      });
+      const candidates = sameDirection.length ? sameDirection : sameSatellite;
+      const orbitFeature = candidates.reduce((best, candidate) => {
+        const candidateTime = Date.parse((candidate.properties || {}).tca_utc);
+        const candidateDelta = Math.abs(candidateTime - targetTime);
+        const bestDelta = best ? Math.abs(Date.parse((best.properties || {}).tca_utc) - targetTime) : Infinity;
+        return candidateDelta < bestDelta ? candidate : best;
+      }, null);
+      if (!orbitFeature) return null;
+      const orbitProps = orbitFeature.properties || {};
+      const orbitPass = currentDataset.orbitPassRows.find((pass) => {
+        return pass.satellite === orbitProps.satellite &&
+          pass.direction === orbitProps.direction &&
+          pass.tca_utc === orbitProps.tca_utc;
+      });
+      return { orbitFeature, orbitPass };
+    }
+
     function renderPassList(rows, trackFeatures) {
       const container = document.getElementById('passes');
       container.innerHTML = `
@@ -809,10 +834,8 @@
           const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
           extendBounds(bounds, feature.geometry.coordinates);
           map.fitBounds(bounds, { padding: 40, maxZoom: 7 });
-          const orbitFeature = currentDataset.orbitFeatures.find((candidate) => {
-            return (candidate.properties || {}).satellite === row.satellite;
-          });
-          if (orbitFeature) showOrbit(row, orbitFeature, currentDataset.orbitPasses.get(row.satellite));
+          const orbitMatch = selectNextDayOrbit(row);
+          if (orbitMatch) showOrbit(row, orbitMatch.orbitFeature, orbitMatch.orbitPass);
           else clearOrbit('ไม่พบ Orbit TLE/GIS ของวันถัดไป');
           new maplibregl.Popup({ maxWidth: '320px' })
             .setLngLat([Number(row.closest_lon), Number(row.closest_lat)])
@@ -884,10 +907,8 @@
       // selected. Clicking another table row switches the selected satellite.
       if (visiblePasses.length && currentDataset.orbitFeatures.length) {
         const firstPass = visiblePasses[0];
-        const firstOrbit = currentDataset.orbitFeatures.find((feature) => {
-          return (feature.properties || {}).satellite === firstPass.satellite;
-        });
-        if (firstOrbit) showOrbit(firstPass, firstOrbit, currentDataset.orbitPasses.get(firstPass.satellite));
+        const firstOrbitMatch = selectNextDayOrbit(firstPass);
+        if (firstOrbitMatch) showOrbit(firstPass, firstOrbitMatch.orbitFeature, firstOrbitMatch.orbitPass);
       }
 
       if (fitMap) {
@@ -920,11 +941,7 @@
       const orbitGeojson = orbitGeoRes ? await orbitGeoRes.json() : { features: [] };
       const orbitPassRows = orbitPassRes ? await orbitPassRes.json() : [];
       const orbitFeatures = orbitGeojson.features.filter((feature) => (feature.properties || {}).type === 'visible_track');
-      const orbitPasses = new Map();
-      orbitPassRows.forEach((pass) => {
-        if (!orbitPasses.has(pass.satellite)) orbitPasses.set(pass.satellite, pass);
-      });
-      currentDataset = { id: datasetId, geojson, passes, orbitFeatures, orbitPasses };
+      currentDataset = { id: datasetId, geojson, passes, orbitFeatures, orbitPassRows };
       clearOrbit();
       renderActiveDataset(fitMap);
     }
