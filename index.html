@@ -1396,8 +1396,8 @@
 
     const groups = {
       coverage: ['coverage-buffer-fill', 'coverage-buffer-line'],
-      track: ['track-line'],
-      points: ['event-circle'],
+      track: ['track-line', 'selected-track-line'],
+      points: ['event-circle', 'selected-event-circle'],
       orbit: ['orbit-corridor-fill', 'orbit-corridor-line', 'orbit-line']
     };
 
@@ -1471,6 +1471,31 @@
         'circle-color': ['match', ['get', 'type'], 'aos', MAP_COLORS.aos, 'tca', MAP_COLORS.tca, 'los', MAP_COLORS.los, MAP_COLORS.track],
         'circle-stroke-color': MAP_COLORS.halo, 'circle-stroke-width': 2
       }});
+      map.addLayer({
+        id: 'selected-track-line',
+        type: 'line',
+        source: 'jpss-data',
+        filter: ['==', ['get', 'pass_id'], '__no_selected_pass__'],
+        paint: {
+          'line-color': ['match', ['get', 'direction'], 'descending', MAP_COLORS.descending, MAP_COLORS.track],
+          'line-width': 6,
+          'line-opacity': 1
+        }
+      });
+      map.addLayer({
+        id: 'selected-event-circle',
+        type: 'circle',
+        source: 'jpss-data',
+        filter: ['==', ['get', 'pass_id'], '__no_selected_pass__'],
+        paint: {
+          'circle-radius': 9,
+          'circle-color': ['match', ['get', 'type'], 'aos', MAP_COLORS.aos, 'tca', MAP_COLORS.tca, 'los', MAP_COLORS.los, MAP_COLORS.track],
+          'circle-opacity': 1,
+          'circle-stroke-color': MAP_COLORS.halo,
+          'circle-stroke-width': 3,
+          'circle-stroke-opacity': 1
+        }
+      });
       map.addSource('jpss-orbit', {
         type: 'geojson',
         data: { type: 'FeatureCollection', features: [] }
@@ -1648,6 +1673,38 @@
       document.getElementById('orbitStatus').textContent = status;
     }
 
+    function clearPassHighlight() {
+      selectedPassId = null;
+      if (!map.getLayer('track-line')) return;
+      map.setPaintProperty('track-line', 'line-opacity', 0.9);
+      map.setPaintProperty('event-circle', 'circle-opacity', 1);
+      map.setPaintProperty('event-circle', 'circle-stroke-opacity', 1);
+      map.setFilter('selected-track-line', ['==', ['get', 'pass_id'], '__no_selected_pass__']);
+      map.setFilter('selected-event-circle', ['==', ['get', 'pass_id'], '__no_selected_pass__']);
+    }
+
+    function highlightPass(passId) {
+      if (!passId || !map.getLayer('track-line')) {
+        clearPassHighlight();
+        return;
+      }
+      selectedPassId = passId;
+      const passMatch = ['==', ['get', 'pass_id'], passId];
+      map.setPaintProperty('track-line', 'line-opacity', 0.16);
+      map.setPaintProperty('event-circle', 'circle-opacity', 0.22);
+      map.setPaintProperty('event-circle', 'circle-stroke-opacity', 0.25);
+      map.setFilter('selected-track-line', [
+        'all',
+        ['==', ['get', 'type'], 'visible_track'],
+        passMatch
+      ]);
+      map.setFilter('selected-event-circle', [
+        'all',
+        ['in', ['get', 'type'], ['literal', ['aos', 'tca', 'los']]],
+        passMatch
+      ]);
+    }
+
     function selectNextDayOrbit(row) {
       const targetTime = Date.parse(row.tca_utc) + 24 * 60 * 60 * 1000;
       const sameSatellite = currentDataset.orbitFeatures.filter((candidate) => {
@@ -1683,10 +1740,15 @@
           </table>
         </div>`;
       const body = container.querySelector('tbody');
+      const trackByPassId = new Map(trackFeatures.map((feature) => [
+        (feature.properties || {}).pass_id,
+        feature
+      ]));
       rows.forEach((row, index) => {
         const rowElement = document.createElement('tr');
         rowElement.tabIndex = 0;
         rowElement.setAttribute('role', 'button');
+        rowElement.setAttribute('aria-pressed', 'false');
         rowElement.setAttribute('aria-label', `${row.satellite} ${fmtTime(row.aos_utc)} ${row.direction}`);
         rowElement.innerHTML = `
           <td class="time-cell">${fmtTime(row.aos_utc)}</td>
@@ -1699,10 +1761,15 @@
           <td><span class="coverage-badge ${row.aoi_covered ? 'covered' : 'not-covered'}">${row.aoi_covered ? 'Yes' : 'No'}</span></td>
         `;
         rowElement.addEventListener('click', () => {
-          document.querySelectorAll('.pass-table tbody tr').forEach((item) => item.classList.remove('active'));
+          document.querySelectorAll('.pass-table tbody tr').forEach((item) => {
+            item.classList.remove('active');
+            item.setAttribute('aria-pressed', 'false');
+          });
           rowElement.classList.add('active');
+          rowElement.setAttribute('aria-pressed', 'true');
           closeActivePopup();
-          const feature = trackFeatures[index];
+          highlightPass(row.pass_id);
+          const feature = trackByPassId.get(row.pass_id) || trackFeatures[index];
           if (!feature) return;
           const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
           extendBounds(bounds, feature.geometry.coordinates);
@@ -1735,6 +1802,7 @@
     let activeSatellite = 'all';
     let currentDataset = null;
     let activePopup = null;
+    let selectedPassId = null;
 
     function formatCalendarDate(dateValue) {
       return new Intl.DateTimeFormat('th-TH-u-ca-gregory', {
@@ -1757,6 +1825,7 @@
 
     function renderActiveDataset(fitMap = false) {
       if (!currentDataset) return;
+      clearPassHighlight();
       const visibleGeojson = currentDataset.geojson;
       const visiblePasses = currentDataset.passes;
       map.getSource('jpss-data').setData(visibleGeojson);
