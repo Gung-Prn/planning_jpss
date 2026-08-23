@@ -1,0 +1,11 @@
+{
+  "date": "2026-08-23",
+  "target": "index.html",
+  "framework": "vanilla-html",
+  "reference": "nsdc-frontend-dev.zip",
+  "reference_framework": "Next.js 16 + Tailwind CSS 4",
+  "font_stack": ["Kanit", "Noto Sans Thai", "Poppins"],
+  "palette": "cool-white neutrals with cobalt blue accent",
+  "motion": "restrained interface transitions",
+  "preserved": ["MapLibre", "Flatpickr", "planning workflow", "orbit interaction", "data layers"]
+}

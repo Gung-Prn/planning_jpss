@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>JPSS Planning Visual</title>
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
-  <style>
+  <link rel="stylesheet" href="tokens.css">
+  <style media="not all">
     :root {
       --bg: #f7f0df;
       --panel: #f0e4cf;
@@ -488,6 +489,668 @@
       .passes { max-height: 178px; }
     }
   </style>
+  <style>
+    /* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V4 */
+    /* Hallmark · genre: modern-minimal · macrostructure: Workbench · theme: studied NSDC DNA · enrichment: none · nav: floating utility panel · footer: none · contrast: pass (40–41) · slop: pass (42–49) · mobile: pass (34,49,50–57) */
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      overflow-x: clip;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-paper-2);
+      color: var(--color-ink);
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button:disabled,
+    input:disabled,
+    label.toggle:has(input:disabled) {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    button,
+    [role="button"],
+    label.toggle,
+    .flatpickr-day {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+
+    .app {
+      position: relative;
+      display: block;
+      block-size: 100dvh;
+      overflow: clip;
+      background: var(--color-paper-2);
+    }
+
+    main {
+      position: absolute;
+      inset: 0;
+      min-inline-size: 0;
+    }
+
+    #map {
+      inline-size: 100%;
+      block-size: 100dvh;
+      background: var(--color-paper-3);
+    }
+
+    aside {
+      position: absolute;
+      inset-block-start: var(--space-md);
+      inset-inline-start: var(--space-md);
+      z-index: var(--z-sticky);
+      inline-size: min(23rem, calc(100% - 2rem));
+      block-size: calc(100dvh - 18.75rem);
+      min-block-size: 25rem;
+      overflow: auto;
+      border: var(--rule-thin) solid var(--color-rule);
+      border-radius: var(--radius-lg);
+      background: var(--color-paper-2);
+      box-shadow: var(--shadow-panel);
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-rule-strong) transparent;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: var(--space-md);
+      border-block-end: var(--rule-thin) solid var(--color-rule);
+      background: var(--color-surface-raised);
+    }
+
+    h1 {
+      position: relative;
+      margin: 0 0 var(--space-2xs);
+      padding-inline-start: var(--space-md);
+      font-family: var(--font-display);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      overflow-wrap: anywhere;
+    }
+
+    h1::before {
+      content: "";
+      position: absolute;
+      inset-block: 0.25rem;
+      inset-inline-start: 0;
+      inline-size: 0.25rem;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+    }
+
+    .sub {
+      color: var(--color-muted);
+      font-size: var(--text-xs);
+      line-height: 1.5;
+    }
+
+    .calendar-card {
+      margin-block-start: var(--space-sm);
+      padding: var(--space-sm);
+      border: 0;
+      border-radius: var(--radius-md);
+      background: var(--color-paper-2);
+    }
+
+    .calendar-label,
+    .selection-label {
+      display: block;
+      margin: 0 0 var(--space-2xs);
+      color: var(--color-muted);
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .selected-date {
+      margin-block-start: var(--space-xs);
+      padding-block-start: var(--space-xs);
+      border-block-start: var(--rule-thin) solid var(--color-rule);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .flatpickr-calendar.inline {
+      inline-size: 100%;
+      max-inline-size: none;
+      padding: var(--space-2xs) 0;
+      border: 0;
+      box-shadow: none;
+      background: transparent;
+      font-family: var(--font-body);
+    }
+
+    .flatpickr-months,
+    .flatpickr-weekdays,
+    .flatpickr-days,
+    .flatpickr-innerContainer,
+    .dayContainer {
+      inline-size: 100%;
+      max-inline-size: none;
+    }
+
+    .flatpickr-current-month,
+    .flatpickr-weekday,
+    .flatpickr-monthDropdown-months,
+    .numInputWrapper {
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-weight: 500;
+    }
+
+    .flatpickr-day {
+      max-inline-size: none;
+      min-block-size: 2.25rem;
+      color: var(--color-ink-2);
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
+      line-height: 2.25rem;
+      transition: color var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .flatpickr-day:hover {
+      border-color: transparent;
+      background: var(--color-paper-3);
+      color: var(--color-ink);
+    }
+
+    .flatpickr-day.selected,
+    .flatpickr-day.selected:hover {
+      border-color: var(--color-accent);
+      background: var(--color-accent);
+      color: var(--color-accent-ink);
+    }
+
+    .flatpickr-day.disabled,
+    .flatpickr-day.disabled:hover {
+      background: transparent;
+      color: var(--color-rule-strong);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      padding: var(--space-sm) var(--space-md);
+      border-block-end: var(--rule-thin) solid var(--color-rule);
+      background: var(--color-surface-raised);
+    }
+
+    .stat {
+      min-block-size: 3.75rem;
+      padding: var(--space-xs);
+      border: 0;
+      border-inline-end: var(--rule-thin) solid var(--color-rule);
+      border-radius: 0;
+      background: transparent;
+      text-align: start;
+    }
+
+    .stat:last-child { border-inline-end: 0; }
+
+    .stat strong {
+      display: block;
+      margin-block-end: var(--space-3xs);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--color-muted);
+      font-size: 0.6875rem;
+      line-height: 1.25;
+    }
+
+    .layer-panel {
+      max-block-size: none;
+      overflow: visible;
+      border-block-end: var(--rule-thin) solid var(--color-rule);
+      background: var(--color-paper-2);
+    }
+
+    .panel-title,
+    .passes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md) var(--space-xs);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .panel-note,
+    .passes-header span {
+      color: var(--color-muted);
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 400;
+      text-transform: none;
+      white-space: nowrap;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      padding: 0 var(--space-md) var(--space-sm);
+    }
+
+    label.toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      min-block-size: 2.75rem;
+      padding: var(--space-xs) var(--space-sm);
+      border: var(--rule-thin) solid var(--color-rule);
+      border-radius: var(--radius-md);
+      background: var(--color-surface-raised);
+      color: var(--color-ink-2);
+      font-size: var(--text-xs);
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+
+    label.toggle:has(input:checked) {
+      border-color: var(--color-accent);
+      background: var(--color-accent-soft);
+      color: var(--color-accent-active);
+    }
+
+    label.toggle:active { transform: translateY(1px); }
+
+    input[type="checkbox"] {
+      inline-size: 1rem;
+      block-size: 1rem;
+      accent-color: var(--color-accent);
+    }
+
+    .selection-panel {
+      margin: var(--space-sm) var(--space-md) var(--space-md);
+      padding: var(--space-sm);
+      border: var(--rule-thin) solid var(--color-rule);
+      border-radius: var(--radius-md);
+      background: var(--color-surface-raised);
+    }
+
+    .selection-title {
+      margin-block-start: var(--space-2xs);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 500;
+    }
+
+    .selection-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-xs) var(--space-sm);
+      margin-block-start: var(--space-xs);
+      color: var(--color-muted);
+      font-size: var(--text-xs);
+      line-height: 1.4;
+    }
+
+    .selection-meta strong {
+      color: var(--color-ink-2);
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mock-badge {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: 1.75rem;
+      margin-block-start: var(--space-xs);
+      padding: var(--space-2xs) var(--space-xs);
+      border-radius: var(--radius-pill);
+      background: var(--color-accent-soft);
+      color: var(--color-accent-active);
+      font-size: var(--text-xs);
+      font-weight: 500;
+    }
+
+    .schedule-panel {
+      position: fixed;
+      inset-inline: var(--space-md);
+      inset-block-end: var(--space-md);
+      z-index: var(--z-sticky);
+      block-size: 16rem;
+      overflow: hidden;
+      border: var(--rule-thin) solid var(--color-rule);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-raised);
+      box-shadow: var(--shadow-panel);
+    }
+
+    .passes-header {
+      min-block-size: 3rem;
+      padding-block: var(--space-sm);
+      border-block-end: var(--rule-thin) solid var(--color-rule);
+    }
+
+    .passes-header strong {
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      text-transform: none;
+    }
+
+    .passes {
+      max-block-size: calc(16rem - 3rem);
+      min-block-size: 0;
+      overflow: auto;
+      padding: 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-rule-strong) transparent;
+    }
+
+    .table-wrap {
+      overflow: visible;
+      border: 0;
+    }
+
+    .pass-table {
+      inline-size: 100%;
+      min-inline-size: 47rem;
+      border-collapse: separate;
+      border-spacing: 0;
+      color: var(--color-ink-2);
+      font-family: var(--font-data);
+      font-size: var(--text-xs);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pass-table thead,
+    .pass-table th {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: var(--z-raised);
+    }
+
+    .pass-table th {
+      padding: var(--space-xs) var(--space-sm);
+      border-block-end: var(--rule-thin) solid var(--color-rule);
+      background: var(--color-paper-2);
+      box-shadow: none;
+      color: var(--color-muted);
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      text-align: start;
+      text-transform: none;
+    }
+
+    .pass-table td {
+      padding: var(--space-sm);
+      border-block-end: var(--rule-thin) solid var(--color-rule);
+      color: var(--color-ink-2);
+      vertical-align: middle;
+    }
+
+    .pass-table tbody tr {
+      cursor: pointer;
+      background: var(--color-surface-raised);
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .pass-table tbody tr:nth-child(even) { background: var(--color-paper); }
+
+    .pass-table tbody tr:hover,
+    .pass-table tbody tr:focus-visible,
+    .pass-table tbody tr.active {
+      background: var(--color-accent-soft);
+      box-shadow: none;
+    }
+
+    .pass-table tbody tr.active td:first-child {
+      box-shadow: inset 0.1875rem 0 var(--color-accent);
+    }
+
+    .pass-table .satellite-cell,
+    .pass-table .time-cell {
+      color: var(--color-ink);
+      font-weight: 500;
+    }
+
+    .direction-badge,
+    .coverage-badge {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: 1.5rem;
+      padding: var(--space-3xs) var(--space-xs);
+      border-radius: var(--radius-pill);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .direction-badge.ascending {
+      background: var(--color-accent-soft);
+      color: var(--color-accent-active);
+    }
+
+    .direction-badge.descending {
+      background: var(--color-paper-3);
+      color: var(--color-map-descending);
+    }
+
+    .coverage-badge.covered {
+      background: var(--color-success-soft);
+      color: var(--color-success);
+    }
+
+    .coverage-badge.not-covered {
+      background: var(--color-warning-soft);
+      color: var(--color-ink-2);
+    }
+
+    .maplibregl-ctrl-group {
+      overflow: hidden;
+      border: var(--rule-thin) solid var(--color-rule);
+      border-radius: var(--radius-md);
+      background: var(--color-surface-raised);
+      box-shadow: var(--shadow-panel);
+    }
+
+    .maplibregl-ctrl-group button { background-color: var(--color-surface-raised); }
+    .maplibregl-ctrl-group button:hover { background-color: var(--color-paper-3); }
+    .maplibregl-ctrl-attrib { background: var(--color-paper) !important; color: var(--color-muted); }
+
+    .maplibregl-popup-content {
+      min-inline-size: 15rem;
+      padding: var(--space-md);
+      border: var(--rule-thin) solid var(--color-rule);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-raised);
+      color: var(--color-ink-2);
+      box-shadow: var(--shadow-popup);
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      line-height: 1.55;
+    }
+
+    .maplibregl-popup-tip {
+      border-block-start-color: var(--color-surface-raised);
+      border-block-end-color: var(--color-surface-raised);
+    }
+
+    .maplibregl-popup-close-button {
+      min-inline-size: 2.75rem;
+      min-block-size: 2.75rem;
+      color: var(--color-muted);
+      font-size: var(--text-md);
+    }
+
+    .maplibregl-popup-close-button:hover {
+      background: var(--color-paper-3);
+      color: var(--color-ink);
+    }
+
+    .maplibregl-popup-content .popup-title {
+      margin-block-end: var(--space-xs);
+      padding-inline-end: var(--space-lg);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 600;
+    }
+
+    .maplibregl-popup-content strong {
+      color: var(--color-muted);
+      font-weight: 500;
+    }
+
+    .legend {
+      position: absolute;
+      inset-inline-end: var(--space-md);
+      inset-block-end: 18rem;
+      z-index: var(--z-raised);
+      min-inline-size: 11.5rem;
+      padding: var(--space-sm);
+      border: var(--rule-thin) solid var(--color-rule);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-raised);
+      box-shadow: var(--shadow-panel);
+      color: var(--color-ink-2);
+      font-size: var(--text-xs);
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin: 0;
+      padding-block: var(--space-2xs);
+    }
+
+    .swatch {
+      inline-size: 1rem;
+      block-size: 0.1875rem;
+      border-radius: var(--radius-pill);
+      background: var(--color-map-track);
+      flex: 0 0 auto;
+    }
+
+    .swath-swatch { background: var(--color-map-swath); }
+    .buffer-swatch { background: var(--color-map-buffer); }
+    .aos-swatch { background: var(--color-map-aos); }
+    .tca-swatch { background: var(--color-map-tca); }
+    .los-swatch { background: var(--color-map-los); }
+    .aoi-swatch { background: var(--color-map-aoi); }
+    .orbit-swatch { background: var(--color-map-orbit); }
+    .corridor-swatch {
+      block-size: 0.625rem;
+      border: var(--rule-thin) solid var(--color-map-orbit);
+      background: var(--color-map-corridor);
+    }
+
+    .error {
+      position: absolute;
+      inset: var(--space-md);
+      z-index: var(--z-modal);
+      padding: var(--space-md);
+      border: var(--rule-thin) solid var(--color-error);
+      border-radius: var(--radius-md);
+      background: var(--color-error-soft);
+      color: var(--color-error);
+      display: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      label.toggle:hover { background: var(--color-paper-3); }
+    }
+
+    @media (max-width: 59.99rem) {
+      aside {
+        inset-block-start: var(--space-xs);
+        inset-inline: var(--space-xs);
+        inline-size: auto;
+        block-size: 44dvh;
+        min-block-size: 0;
+      }
+
+      .schedule-panel {
+        inset-inline: var(--space-xs);
+        inset-block-end: var(--space-xs);
+        block-size: 14rem;
+      }
+
+      .passes { max-block-size: calc(14rem - 3rem); }
+      .legend { display: none; }
+      .stats { grid-template-columns: repeat(4, minmax(5rem, 1fr)); overflow-x: auto; }
+      .selection-meta { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    @media (min-width: 40rem) and (max-width: 59.99rem) {
+      aside {
+        inset-inline-end: auto;
+        inline-size: 23rem;
+      }
+    }
+
+    @media (max-width: 25.875rem) {
+      .panel-note,
+      .passes-header span { display: none; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stat:nth-child(2) { border-inline-end: 0; }
+      .stat:nth-child(-n + 2) { border-block-end: var(--rule-thin) solid var(--color-rule); }
+      .schedule-panel { block-size: 12.5rem; }
+      .passes { max-block-size: calc(12.5rem - 3rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 150ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 150ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="app">
@@ -576,8 +1239,28 @@
       zoom: 5,
       attributionControl: false
     });
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
     map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
+
+    const themeStyles = getComputedStyle(document.documentElement);
+    const themeColor = (name) => themeStyles.getPropertyValue(name).trim();
+    const MAP_COLORS = {
+      track: themeColor('--color-map-track'),
+      descending: themeColor('--color-map-descending'),
+      swath: themeColor('--color-map-swath'),
+      swathCovered: themeColor('--color-map-swath-covered'),
+      swathOutline: themeColor('--color-map-swath-outline'),
+      swathOutlineIdle: themeColor('--color-map-swath-outline-idle'),
+      buffer: themeColor('--color-map-buffer'),
+      aos: themeColor('--color-map-aos'),
+      tca: themeColor('--color-map-tca'),
+      los: themeColor('--color-map-los'),
+      aoi: themeColor('--color-map-aoi'),
+      aoiSoft: themeColor('--color-map-aoi-soft'),
+      station: themeColor('--color-map-station'),
+      orbit: themeColor('--color-map-orbit'),
+      halo: themeColor('--color-map-halo')
+    };
 
     const groups = {
       swath: ['swath-fill', 'swath-line'],
@@ -637,49 +1320,49 @@
     function addDataLayers(geojson) {
       map.addSource('jpss-data', { type: 'geojson', data: geojson });
       map.addLayer({ id: 'swath-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'reference_swath'], paint: {
-        'fill-color': ['case', ['==', ['get', 'station_inside'], true], '#f76707', '#ffd43b'],
+        'fill-color': ['case', ['==', ['get', 'station_inside'], true], MAP_COLORS.swathCovered, MAP_COLORS.swath],
         'fill-opacity': ['case', ['==', ['get', 'station_inside'], true], 0.28, 0.14]
       }});
       map.addLayer({ id: 'swath-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'reference_swath'], paint: {
-        'line-color': ['case', ['==', ['get', 'station_inside'], true], '#d9480f', '#f59f00'],
+        'line-color': ['case', ['==', ['get', 'station_inside'], true], MAP_COLORS.swathOutline, MAP_COLORS.swathOutlineIdle],
         'line-width': ['case', ['==', ['get', 'station_inside'], true], 2, 1]
       }});
       map.addLayer({ id: 'track-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'visible_track'], paint: {
-        'line-color': ['match', ['get', 'direction'], 'descending', '#7f56d9', '#1f77b4'],
+        'line-color': ['match', ['get', 'direction'], 'descending', MAP_COLORS.descending, MAP_COLORS.track],
         'line-width': 3, 'line-opacity': 0.9
       }});
       map.addLayer({ id: 'buffer-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'station_buffer'], paint: {
-        'fill-color': '#7a8798', 'fill-opacity': 0.04
+        'fill-color': MAP_COLORS.buffer, 'fill-opacity': 0.04
       }});
       map.addLayer({ id: 'buffer-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'station_buffer'], paint: {
-        'line-color': '#7a8798', 'line-width': 2, 'line-dasharray': [4, 3]
+        'line-color': MAP_COLORS.buffer, 'line-width': 2, 'line-dasharray': [4, 3]
       }});
       map.addLayer({ id: 'aoi-fill', type: 'fill', source: 'jpss-data', filter: ['==', ['get', 'type'], 'aoi'], paint: {
-        'fill-color': '#ff8787', 'fill-opacity': 0.16
+        'fill-color': MAP_COLORS.aoiSoft, 'fill-opacity': 0.16
       }});
       map.addLayer({ id: 'aoi-line', type: 'line', source: 'jpss-data', filter: ['==', ['get', 'type'], 'aoi'], paint: {
-        'line-color': '#e03131', 'line-width': 3, 'line-dasharray': [2, 2]
+        'line-color': MAP_COLORS.aoi, 'line-width': 3, 'line-dasharray': [2, 2]
       }});
       map.addLayer({ id: 'station-circle', type: 'circle', source: 'jpss-data', filter: ['==', ['get', 'type'], 'station'], paint: {
-        'circle-radius': 7, 'circle-color': '#d92d20', 'circle-stroke-color': '#ffffff', 'circle-stroke-width': 2
+        'circle-radius': 7, 'circle-color': MAP_COLORS.station, 'circle-stroke-color': MAP_COLORS.halo, 'circle-stroke-width': 2
       }});
       map.addLayer({ id: 'event-circle', type: 'circle', source: 'jpss-data', filter: ['in', ['get', 'type'], ['literal', ['aos', 'tca', 'los']]], paint: {
         'circle-radius': 6,
-        'circle-color': ['match', ['get', 'type'], 'aos', '#00a6d6', 'tca', '#f2c94c', 'los', '#2f9e44', '#155eef'],
-        'circle-stroke-color': '#ffffff', 'circle-stroke-width': 2
+        'circle-color': ['match', ['get', 'type'], 'aos', MAP_COLORS.aos, 'tca', MAP_COLORS.tca, 'los', MAP_COLORS.los, MAP_COLORS.track],
+        'circle-stroke-color': MAP_COLORS.halo, 'circle-stroke-width': 2
       }});
       map.addSource('jpss-orbit', {
         type: 'geojson',
         data: { type: 'FeatureCollection', features: [] }
       });
       map.addLayer({ id: 'orbit-corridor-fill', type: 'fill', source: 'jpss-orbit', filter: ['==', ['get', 'type'], 'orbit_corridor'], paint: {
-        'fill-color': '#c2410c', 'fill-opacity': 0.16
+        'fill-color': MAP_COLORS.orbit, 'fill-opacity': 0.16
       }});
       map.addLayer({ id: 'orbit-corridor-line', type: 'line', source: 'jpss-orbit', filter: ['==', ['get', 'type'], 'orbit_corridor'], paint: {
-        'line-color': '#c2410c', 'line-width': 1, 'line-opacity': 0.65
+        'line-color': MAP_COLORS.orbit, 'line-width': 1, 'line-opacity': 0.65
       }});
       map.addLayer({ id: 'orbit-line', type: 'line', source: 'jpss-orbit', filter: ['==', ['get', 'type'], 'orbit'], paint: {
-        'line-color': '#c2410c', 'line-width': 3, 'line-dasharray': [1, 1]
+        'line-color': MAP_COLORS.orbit, 'line-width': 3, 'line-dasharray': [1, 1]
       }});
 
       ['swath-fill', 'swath-line', 'track-line', 'buffer-fill', 'buffer-line', 'aoi-fill', 'aoi-line', 'station-circle', 'event-circle', 'orbit-corridor-fill', 'orbit-corridor-line', 'orbit-line'].forEach((layerId) => {
@@ -844,6 +1527,9 @@
       const body = container.querySelector('tbody');
       rows.forEach((row, index) => {
         const rowElement = document.createElement('tr');
+        rowElement.tabIndex = 0;
+        rowElement.setAttribute('role', 'button');
+        rowElement.setAttribute('aria-label', `${row.satellite} ${fmtTime(row.aos_utc)} ${row.direction}`);
         rowElement.innerHTML = `
           <td class="time-cell">${fmtTime(row.aos_utc)}</td>
           <td class="satellite-cell">${row.satellite}</td>
@@ -867,6 +1553,11 @@
           if (orbitMatch) showOrbit(row, orbitMatch.orbitFeature, orbitMatch.orbitPass);
           else clearOrbit('ไม่พบ Orbit TLE/GIS ของวันถัดไป');
           showSinglePopup([Number(row.closest_lon), Number(row.closest_lat)], popupHtml(row));
+        });
+        rowElement.addEventListener('keydown', (event) => {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          rowElement.click();
         });
         body.appendChild(rowElement);
       });

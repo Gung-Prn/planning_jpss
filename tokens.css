@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600&display=swap");
+
+:root {
+  --color-paper: oklch(99% 0.004 245);
+  --color-paper-2: oklch(97% 0.006 245);
+  --color-paper-3: oklch(94.5% 0.009 245);
+  --color-surface-raised: oklch(99.5% 0.003 245);
+  --color-rule: oklch(89% 0.012 245);
+  --color-rule-strong: oklch(78% 0.018 245);
+  --color-ink: oklch(23% 0.018 245);
+  --color-ink-2: oklch(34% 0.018 245);
+  --color-muted: oklch(48% 0.018 245);
+  --color-accent: oklch(55% 0.17 250);
+  --color-accent-hover: oklch(46% 0.15 250);
+  --color-accent-active: oklch(40% 0.13 250);
+  --color-accent-soft: oklch(94% 0.035 245);
+  --color-accent-ink: oklch(98% 0.005 245);
+  --color-focus: oklch(62% 0.18 240);
+  --color-success: oklch(48% 0.12 155);
+  --color-success-soft: oklch(94% 0.035 155);
+  --color-warning: oklch(68% 0.14 75);
+  --color-warning-soft: oklch(95% 0.035 75);
+  --color-error: oklch(50% 0.18 28);
+  --color-error-soft: oklch(94% 0.035 28);
+
+  /* MapLibre-compatible semantic map colours. */
+  --color-map-track: #0d69ba;
+  --color-map-descending: #7655d9;
+  --color-map-swath: #f4bf38;
+  --color-map-swath-covered: #e86412;
+  --color-map-swath-outline: #d9500f;
+  --color-map-swath-outline-idle: #d99a05;
+  --color-map-buffer: #66758a;
+  --color-map-aos: #00a6d6;
+  --color-map-tca: #e4b52b;
+  --color-map-los: #2f9e44;
+  --color-map-aoi: #d92d20;
+  --color-map-aoi-soft: #ff8787;
+  --color-map-station: #c92319;
+  --color-map-orbit: #c2410c;
+  --color-map-corridor: #d47842;
+  --color-map-halo: #ffffff;
+
+  --font-display: "Kanit", "Noto Sans Thai", ui-sans-serif, sans-serif;
+  --font-body: "Noto Sans Thai", "Kanit", ui-sans-serif, sans-serif;
+  --font-data: "Kanit", "Noto Sans Thai", ui-sans-serif, sans-serif;
+
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.5625rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+  --rule-thin: 1px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+
+  --shadow-panel: 0 0.5rem 1.75rem oklch(23% 0.018 245 / 0.14);
+  --shadow-popup: 0 0.75rem 2rem oklch(23% 0.018 245 / 0.18);
+
+  --z-base: 1;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 400;
+  --z-tooltip: 600;
+}
