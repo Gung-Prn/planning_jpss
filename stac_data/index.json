@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source": "Vallaris STAC jpss_planning",
   "source_endpoint": "https://beta.vallarismaps.com/core/api/stac/1.0/jpss_planning/search",
-  "generated_at": "2026-08-23T16:13:16.807669Z",
+  "generated_at": "2026-08-23T16:29:02.302882Z",
   "crs": "OGC:CRS84",
   "axis_order": [
     "longitude",
@@ -44,7 +44,25 @@
         36.12174738872259
       ],
       "datetime": "2026-08-24T12:36:49.5Z"
+    },
+    {
+      "id": "jpss_planning_20260825",
+      "date": "2026-08-25",
+      "stac_item_id": "jpss_planning_20260825_item",
+      "stac_collection_id": "jpss_planning_20260825",
+      "feature_path": "stac_data/2026-08-25/jpss_passes.geojson",
+      "passes_path": "stac_data/2026-08-25/jpss_passes.json",
+      "metadata_path": "stac_data/2026-08-25/stac_item.json",
+      "feature_count": 44,
+      "pass_count": 11,
+      "bbox": [
+        77.63514904878627,
+        -10.123788553168236,
+        124.30883450888217,
+        36.16034159685153
+      ],
+      "datetime": "2026-08-25T12:48:22.5Z"
     }
   ],
-  "default_dataset_id": "jpss_planning_20260824"
+  "default_dataset_id": "jpss_planning_20260825"
 }
