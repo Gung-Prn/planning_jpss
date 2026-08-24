@@ -2,7 +2,7 @@
 
 เว็บแผนการรับสัญญาณและติดตามตำแหน่งดาวเทียม **Suomi-NPP, NOAA 20 (JPSS-1) และ NOAA 21 (JPSS-2)** ด้วยข้อมูล Vallaris STAC, CelesTrak OMM, SGP4 และ MapLibre
 
-[เปิดเว็บไซต์](https://gung-prn.github.io/planning_jpss/) · [ภาษาไทย](#ภาษาไทย) · [English](#english) · [Live JPSS ฉบับเต็ม](live_jpss.md) · [Full English guide](live_jpss_en.md)
+[เปิดเว็บไซต์](https://gung-prn.github.io/planning_jpss/) · [ภาษาไทย](#ภาษาไทย) · [English](#english) · [Map Layers & Colors](MAP_LAYERS.md) · [Live JPSS ฉบับเต็ม](live_jpss.md) · [Full English guide](live_jpss_en.md)
 
 ---
 
