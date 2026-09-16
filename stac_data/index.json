@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source": "Vallaris STAC jpss_planning",
   "source_endpoint": "https://beta.vallarismaps.com/core/api/stac/1.0/jpss_planning/search",
-  "generated_at": "2026-09-15T05:08:15.198826Z",
+  "generated_at": "2026-09-16T05:03:29.446346Z",
   "crs": "OGC:CRS84",
   "axis_order": [
     "longitude",
@@ -62,7 +62,61 @@
         36.16034159685153
       ],
       "datetime": "2026-08-25T12:48:22.5Z"
+    },
+    {
+      "id": "jpss_planning_20260914",
+      "date": "2026-09-14",
+      "stac_item_id": "jpss_planning_20260914_item",
+      "stac_collection_id": "jpss_planning_20260914",
+      "feature_path": "stac_data/2026-09-14/jpss_passes.geojson",
+      "passes_path": "stac_data/2026-09-14/jpss_passes.json",
+      "metadata_path": "stac_data/2026-09-14/stac_item.json",
+      "feature_count": 44,
+      "pass_count": 11,
+      "bbox": [
+        82.00756058169333,
+        -9.38070146868195,
+        123.85080130930396,
+        35.47655430614333
+      ],
+      "datetime": "2026-09-14T12:43:02Z"
+    },
+    {
+      "id": "jpss_planning_20260915",
+      "date": "2026-09-15",
+      "stac_item_id": "jpss_planning_20260915_item",
+      "stac_collection_id": "jpss_planning_20260915",
+      "feature_path": "stac_data/2026-09-15/jpss_passes.geojson",
+      "passes_path": "stac_data/2026-09-15/jpss_passes.json",
+      "metadata_path": "stac_data/2026-09-15/stac_item.json",
+      "feature_count": 40,
+      "pass_count": 10,
+      "bbox": [
+        79.16304287439516,
+        -9.29969591069181,
+        123.21651805060577,
+        35.58392924561279
+      ],
+      "datetime": "2026-09-15T12:34:05Z"
+    },
+    {
+      "id": "jpss_planning_20260916",
+      "date": "2026-09-16",
+      "stac_item_id": "jpss_planning_20260916_item",
+      "stac_collection_id": "jpss_planning_20260916",
+      "feature_path": "stac_data/2026-09-16/jpss_passes.geojson",
+      "passes_path": "stac_data/2026-09-16/jpss_passes.json",
+      "metadata_path": "stac_data/2026-09-16/stac_item.json",
+      "feature_count": 44,
+      "pass_count": 11,
+      "bbox": [
+        78.35905242321473,
+        -9.357507571886725,
+        124.02177890290704,
+        35.57457433308543
+      ],
+      "datetime": "2026-09-16T12:37:47.5Z"
     }
   ],
-  "default_dataset_id": "jpss_planning_20260825"
+  "default_dataset_id": "jpss_planning_20260916"
 }

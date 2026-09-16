@@ -1,0 +1,2984 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d7853593",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.62798174234274,
+            6.16307788911235
+          ],
+          [
+            122.51461910735765,
+            6.660666631652716
+          ],
+          [
+            122.11317257470955,
+            8.414002578796795
+          ],
+          [
+            121.7091902341993,
+            10.167275644765807
+          ],
+          [
+            121.30210720479027,
+            11.920439768798452
+          ],
+          [
+            120.89133446183189,
+            13.673446896952388
+          ],
+          [
+            120.47625376369933,
+            15.426246590245144
+          ],
+          [
+            120.0562120880927,
+            17.178785593480516
+          ],
+          [
+            119.63051545945814,
+            18.93100735600755
+          ],
+          [
+            119.19842204710324,
+            20.68285149419221
+          ],
+          [
+            118.75913438105567,
+            22.434253183519214
+          ],
+          [
+            118.31179050757612,
+            24.185142465933378
+          ],
+          [
+            117.85545387031704,
+            25.93544345513313
+          ],
+          [
+            117.3891016587732,
+            27.685073418877653
+          ],
+          [
+            116.91161131003639,
+            29.433941712784986
+          ],
+          [
+            116.69372670659754,
+            30.21142649687958
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 105.7,
+        "aos_lat": 6.163078,
+        "aos_lon": 122.627982,
+        "aos_utc": "2026-09-14T05:22:51Z",
+        "closest_lat": 18.931007,
+        "closest_lon": 119.630515,
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 6.86,
+        "los_azimuth_deg": 37.82,
+        "los_lat": 30.211426,
+        "los_lon": 116.693727,
+        "los_utc": "2026-09-14T05:29:43Z",
+        "max_elevation_deg": 10.66,
+        "max_elevation_utc": "2026-09-14T05:26:30Z",
+        "min_distance_km": 2099.61,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_ascending_20260914T052630Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 69.37,
+        "tca_elevation_deg": 10.66,
+        "tca_slant_range_km": 2375.72,
+        "tca_utc": "2026-09-14T05:26:30Z",
+        "tle_age_hours": -15.2,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d7853594",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.62798174234274,
+          6.16307788911235
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 105.7,
+        "aos_lat": 6.163078,
+        "aos_lon": 122.627982,
+        "aos_utc": "2026-09-14T05:22:51Z",
+        "closest_lat": 18.931007,
+        "closest_lon": 119.630515,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 6.86,
+        "los_azimuth_deg": 37.82,
+        "los_lat": 30.211426,
+        "los_lon": 116.693727,
+        "los_utc": "2026-09-14T05:29:43Z",
+        "max_elevation_deg": 10.66,
+        "max_elevation_utc": "2026-09-14T05:26:30Z",
+        "min_distance_km": 2099.61,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_ascending_20260914T052630Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 69.37,
+        "tca_elevation_deg": 10.66,
+        "tca_slant_range_km": 2375.72,
+        "tca_utc": "2026-09-14T05:26:30Z",
+        "tle_age_hours": -15.2,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d7853595",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.63051545945814,
+          18.93100735600755
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 105.7,
+        "aos_lat": 6.163078,
+        "aos_lon": 122.627982,
+        "aos_utc": "2026-09-14T05:22:51Z",
+        "closest_lat": 18.931007,
+        "closest_lon": 119.630515,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 6.86,
+        "los_azimuth_deg": 37.82,
+        "los_lat": 30.211426,
+        "los_lon": 116.693727,
+        "los_utc": "2026-09-14T05:29:43Z",
+        "max_elevation_deg": 10.66,
+        "max_elevation_utc": "2026-09-14T05:26:30Z",
+        "min_distance_km": 2099.61,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_ascending_20260914T052630Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 69.37,
+        "tca_elevation_deg": 10.66,
+        "tca_slant_range_km": 2375.72,
+        "tca_utc": "2026-09-14T05:26:30Z",
+        "tle_age_hours": -15.2,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d7853596",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.69372670659754,
+          30.21142649687958
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 105.7,
+        "aos_lat": 6.163078,
+        "aos_lon": 122.627982,
+        "aos_utc": "2026-09-14T05:22:51Z",
+        "closest_lat": 18.931007,
+        "closest_lon": 119.630515,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 6.86,
+        "los_azimuth_deg": 37.82,
+        "los_lat": 30.211426,
+        "los_lon": 116.693727,
+        "los_utc": "2026-09-14T05:29:43Z",
+        "max_elevation_deg": 10.66,
+        "max_elevation_utc": "2026-09-14T05:26:30Z",
+        "min_distance_km": 2099.61,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_ascending_20260914T052630Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 69.37,
+        "tca_elevation_deg": 10.66,
+        "tca_slant_range_km": 2375.72,
+        "tca_utc": "2026-09-14T05:26:30Z",
+        "tle_age_hours": -15.2,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a3",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            117.91393760045759,
+            -1.772440326853748
+          ],
+          [
+            117.7161376235714,
+            -0.8973637512813233
+          ],
+          [
+            117.32010104023658,
+            0.8559309933490931
+          ],
+          [
+            116.92379728130106,
+            2.609330286131214
+          ],
+          [
+            116.5267165379147,
+            4.362792884749259
+          ],
+          [
+            116.12834316728726,
+            6.116276978966258
+          ],
+          [
+            115.72815180379848,
+            7.869739893043609
+          ],
+          [
+            115.32560314831892,
+            9.623137776086038
+          ],
+          [
+            114.92014037825817,
+            11.376425275069192
+          ],
+          [
+            114.5111835846979,
+            13.12955518480699
+          ],
+          [
+            114.09812551898017,
+            14.882478068493292
+          ],
+          [
+            113.68032603371597,
+            16.63514184155473
+          ],
+          [
+            113.25710612971227,
+            18.387491310540156
+          ],
+          [
+            112.82774131040014,
+            20.13946765732117
+          ],
+          [
+            112.39145410857009,
+            21.891007857242457
+          ],
+          [
+            111.94740561402358,
+            23.642044017641584
+          ],
+          [
+            111.49468580100535,
+            25.392502620524937
+          ],
+          [
+            111.03230241257859,
+            27.142303649763164
+          ],
+          [
+            110.55916810741212,
+            28.891359578978108
+          ],
+          [
+            110.07408550945604,
+            30.639574190871624
+          ],
+          [
+            109.57572971934468,
+            32.386841192035924
+          ],
+          [
+            109.06262773896822,
+            34.133042578526165
+          ],
+          [
+            108.99431595017336,
+            34.35817155540826
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 130.02,
+        "aos_lat": -1.77244,
+        "aos_lon": 117.913938,
+        "aos_utc": "2026-09-14T05:40:15Z",
+        "closest_lat": 16.635142,
+        "closest_lon": 113.680326,
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 10.31,
+        "los_azimuth_deg": 17.59,
+        "los_lat": 34.358172,
+        "los_lon": 108.994316,
+        "los_utc": "2026-09-14T05:50:33Z",
+        "max_elevation_deg": 22.04,
+        "max_elevation_utc": "2026-09-14T05:45:30Z",
+        "min_distance_km": 1425.2,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_ascending_20260914T054530Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 72.1,
+        "tca_elevation_deg": 22.04,
+        "tca_slant_range_km": 1727.37,
+        "tca_utc": "2026-09-14T05:45:30Z",
+        "tle_age_hours": -13.54,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a4",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.91393760045759,
+          -1.772440326853748
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 130.02,
+        "aos_lat": -1.77244,
+        "aos_lon": 117.913938,
+        "aos_utc": "2026-09-14T05:40:15Z",
+        "closest_lat": 16.635142,
+        "closest_lon": 113.680326,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 10.31,
+        "los_azimuth_deg": 17.59,
+        "los_lat": 34.358172,
+        "los_lon": 108.994316,
+        "los_utc": "2026-09-14T05:50:33Z",
+        "max_elevation_deg": 22.04,
+        "max_elevation_utc": "2026-09-14T05:45:30Z",
+        "min_distance_km": 1425.2,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_ascending_20260914T054530Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 72.1,
+        "tca_elevation_deg": 22.04,
+        "tca_slant_range_km": 1727.37,
+        "tca_utc": "2026-09-14T05:45:30Z",
+        "tle_age_hours": -13.54,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a5",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.68032603371597,
+          16.63514184155473
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 130.02,
+        "aos_lat": -1.77244,
+        "aos_lon": 117.913938,
+        "aos_utc": "2026-09-14T05:40:15Z",
+        "closest_lat": 16.635142,
+        "closest_lon": 113.680326,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 10.31,
+        "los_azimuth_deg": 17.59,
+        "los_lat": 34.358172,
+        "los_lon": 108.994316,
+        "los_utc": "2026-09-14T05:50:33Z",
+        "max_elevation_deg": 22.04,
+        "max_elevation_utc": "2026-09-14T05:45:30Z",
+        "min_distance_km": 1425.2,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_ascending_20260914T054530Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 72.1,
+        "tca_elevation_deg": 22.04,
+        "tca_slant_range_km": 1727.37,
+        "tca_utc": "2026-09-14T05:45:30Z",
+        "tle_age_hours": -13.54,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.99431595017336,
+          34.35817155540826
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 130.02,
+        "aos_lat": -1.77244,
+        "aos_lon": 117.913938,
+        "aos_utc": "2026-09-14T05:40:15Z",
+        "closest_lat": 16.635142,
+        "closest_lon": 113.680326,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 10.31,
+        "los_azimuth_deg": 17.59,
+        "los_lat": 34.358172,
+        "los_lon": 108.994316,
+        "los_utc": "2026-09-14T05:50:33Z",
+        "max_elevation_deg": 22.04,
+        "max_elevation_utc": "2026-09-14T05:45:30Z",
+        "min_distance_km": 1425.2,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_ascending_20260914T054530Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 72.1,
+        "tca_elevation_deg": 22.04,
+        "tca_slant_range_km": 1727.37,
+        "tca_utc": "2026-09-14T05:45:30Z",
+        "tle_age_hours": -13.54,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b3",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            106.79746980180067,
+            -8.613003547967987
+          ],
+          [
+            106.72776572911084,
+            -8.308204140509917
+          ],
+          [
+            106.32941345478287,
+            -6.555349843627265
+          ],
+          [
+            105.93295964253906,
+            -4.802235624684525
+          ],
+          [
+            105.53788112175926,
+            -3.0489029679648922
+          ],
+          [
+            105.14366497412425,
+            -1.2953926844577857
+          ],
+          [
+            104.74980465269539,
+            0.458254793398744
+          ],
+          [
+            104.35579620513198,
+            2.2119991249054847
+          ],
+          [
+            103.96113453234238,
+            3.965799777549321
+          ],
+          [
+            103.56530963121759,
+            5.7196157421345335
+          ],
+          [
+            103.16780275983024,
+            7.473405241959279
+          ],
+          [
+            102.76808229658621,
+            9.227125431245561
+          ],
+          [
+            102.3656002373707,
+            10.98073207773871
+          ],
+          [
+            101.95978673905773,
+            12.734179223966061
+          ],
+          [
+            101.5500459938616,
+            14.487418821006461
+          ],
+          [
+            101.13575082597998,
+            16.240400327884245
+          ],
+          [
+            100.71623691627758,
+            17.99307026864369
+          ],
+          [
+            100.29079637786242,
+            19.74537173792847
+          ],
+          [
+            99.85867053723109,
+            21.497243844243638
+          ],
+          [
+            99.41904176697733,
+            23.248621078098434
+          ],
+          [
+            98.97102417510638,
+            24.99943258968018
+          ],
+          [
+            98.51365292028731,
+            26.749601357597275
+          ],
+          [
+            98.04587187311108,
+            28.49904322621374
+          ],
+          [
+            97.56651928207987,
+            30.247665784132366
+          ],
+          [
+            97.0743110256551,
+            31.99536705002881
+          ],
+          [
+            96.56782093403797,
+            33.74203392396674
+          ],
+          [
+            96.14207369269582,
+            35.16469207604117
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 164.62,
+        "aos_lat": -8.613004,
+        "aos_lon": 106.79747,
+        "aos_utc": "2026-09-14T06:23:24Z",
+        "closest_lat": 12.734179,
+        "closest_lon": 101.959787,
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 12.49,
+        "los_azimuth_deg": 349.76,
+        "los_lat": 35.164692,
+        "los_lon": 96.142074,
+        "los_utc": "2026-09-14T06:35:54Z",
+        "max_elevation_deg": 80.96,
+        "max_elevation_utc": "2026-09-14T06:29:30Z",
+        "min_distance_km": 118.95,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_ascending_20260914T062930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 106.1,
+        "tca_elevation_deg": 80.96,
+        "tca_slant_range_km": 837.6,
+        "tca_utc": "2026-09-14T06:29:30Z",
+        "tle_age_hours": -13.57,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b4",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.79746980180067,
+          -8.613003547967987
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 164.62,
+        "aos_lat": -8.613004,
+        "aos_lon": 106.79747,
+        "aos_utc": "2026-09-14T06:23:24Z",
+        "closest_lat": 12.734179,
+        "closest_lon": 101.959787,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 12.49,
+        "los_azimuth_deg": 349.76,
+        "los_lat": 35.164692,
+        "los_lon": 96.142074,
+        "los_utc": "2026-09-14T06:35:54Z",
+        "max_elevation_deg": 80.96,
+        "max_elevation_utc": "2026-09-14T06:29:30Z",
+        "min_distance_km": 118.95,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_ascending_20260914T062930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 106.1,
+        "tca_elevation_deg": 80.96,
+        "tca_slant_range_km": 837.6,
+        "tca_utc": "2026-09-14T06:29:30Z",
+        "tle_age_hours": -13.57,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b5",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.95978673905773,
+          12.734179223966061
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 164.62,
+        "aos_lat": -8.613004,
+        "aos_lon": 106.79747,
+        "aos_utc": "2026-09-14T06:23:24Z",
+        "closest_lat": 12.734179,
+        "closest_lon": 101.959787,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 12.49,
+        "los_azimuth_deg": 349.76,
+        "los_lat": 35.164692,
+        "los_lon": 96.142074,
+        "los_utc": "2026-09-14T06:35:54Z",
+        "max_elevation_deg": 80.96,
+        "max_elevation_utc": "2026-09-14T06:29:30Z",
+        "min_distance_km": 118.95,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_ascending_20260914T062930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 106.1,
+        "tca_elevation_deg": 80.96,
+        "tca_slant_range_km": 837.6,
+        "tca_utc": "2026-09-14T06:29:30Z",
+        "tle_age_hours": -13.57,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          96.14207369269582,
+          35.16469207604117
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 164.62,
+        "aos_lat": -8.613004,
+        "aos_lon": 106.79747,
+        "aos_utc": "2026-09-14T06:23:24Z",
+        "closest_lat": 12.734179,
+        "closest_lon": 101.959787,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 12.49,
+        "los_azimuth_deg": 349.76,
+        "los_lat": 35.164692,
+        "los_lon": 96.142074,
+        "los_utc": "2026-09-14T06:35:54Z",
+        "max_elevation_deg": 80.96,
+        "max_elevation_utc": "2026-09-14T06:29:30Z",
+        "min_distance_km": 118.95,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_ascending_20260914T062930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 106.1,
+        "tca_elevation_deg": 80.96,
+        "tca_slant_range_km": 837.6,
+        "tca_utc": "2026-09-14T06:29:30Z",
+        "tle_age_hours": -13.57,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d7853597",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            100.78760057506389,
+            -9.38070146868195
+          ],
+          [
+            100.72525994251708,
+            -9.111002512914455
+          ],
+          [
+            100.32307918777877,
+            -7.359003739756351
+          ],
+          [
+            99.92305695696353,
+            -5.606689417264095
+          ],
+          [
+            99.5246591538907,
+            -3.854102008298394
+          ],
+          [
+            99.12736364707848,
+            -2.1012831813079136
+          ],
+          [
+            98.730656965457,
+            -0.34827411635677197
+          ],
+          [
+            98.3340294401126,
+            1.404884199129941
+          ],
+          [
+            97.93697209378752,
+            3.158150680074228
+          ],
+          [
+            97.53897269752076,
+            4.911483854203964
+          ],
+          [
+            97.1395119441928,
+            6.664841568586552
+          ],
+          [
+            96.73805951064128,
+            8.418180687448084
+          ],
+          [
+            96.3340699456146,
+            10.171456776244485
+          ],
+          [
+            95.92697831285966,
+            11.924623766572
+          ],
+          [
+            95.51619552178204,
+            13.677633595987674
+          ],
+          [
+            95.10110325299377,
+            15.430435816066183
+          ],
+          [
+            94.68104839094639,
+            17.182977161123397
+          ],
+          [
+            94.25533685159286,
+            18.935201068849338
+          ],
+          [
+            93.82322667808364,
+            20.687047142623545
+          ],
+          [
+            93.38392025427356,
+            22.438450543438385
+          ],
+          [
+            92.93655545741382,
+            24.189341297013737
+          ],
+          [
+            92.4801955359211,
+            25.939643498820935
+          ],
+          [
+            92.01381745421554,
+            27.689274396063723
+          ],
+          [
+            91.53629838769518,
+            29.43814332109076
+          ],
+          [
+            91.04639999060657,
+            31.18615044490453
+          ],
+          [
+            90.54274995464073,
+            32.93318531208446
+          ],
+          [
+            90.39406838803427,
+            33.43342470243867
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 180.38,
+        "aos_lat": -9.380701,
+        "aos_lon": 100.787601,
+        "aos_utc": "2026-09-14T06:59:55Z",
+        "closest_lat": 11.924624,
+        "closest_lon": 95.926978,
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 12.22,
+        "los_azimuth_deg": 336.55,
+        "los_lat": 33.433425,
+        "los_lon": 90.394068,
+        "los_utc": "2026-09-14T07:12:08Z",
+        "max_elevation_deg": 51.86,
+        "max_elevation_utc": "2026-09-14T07:06:00Z",
+        "min_distance_km": 558.51,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_ascending_20260914T070600Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 257.84,
+        "tca_elevation_deg": 51.86,
+        "tca_slant_range_km": 1018.1,
+        "tca_utc": "2026-09-14T07:06:00Z",
+        "tle_age_hours": -13.58,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d7853598",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.78760057506389,
+          -9.38070146868195
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 180.38,
+        "aos_lat": -9.380701,
+        "aos_lon": 100.787601,
+        "aos_utc": "2026-09-14T06:59:55Z",
+        "closest_lat": 11.924624,
+        "closest_lon": 95.926978,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 12.22,
+        "los_azimuth_deg": 336.55,
+        "los_lat": 33.433425,
+        "los_lon": 90.394068,
+        "los_utc": "2026-09-14T07:12:08Z",
+        "max_elevation_deg": 51.86,
+        "max_elevation_utc": "2026-09-14T07:06:00Z",
+        "min_distance_km": 558.51,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_ascending_20260914T070600Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 257.84,
+        "tca_elevation_deg": 51.86,
+        "tca_slant_range_km": 1018.1,
+        "tca_utc": "2026-09-14T07:06:00Z",
+        "tle_age_hours": -13.58,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d7853599",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95.92697831285966,
+          11.924623766572
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 180.38,
+        "aos_lat": -9.380701,
+        "aos_lon": 100.787601,
+        "aos_utc": "2026-09-14T06:59:55Z",
+        "closest_lat": 11.924624,
+        "closest_lon": 95.926978,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 12.22,
+        "los_azimuth_deg": 336.55,
+        "los_lat": 33.433425,
+        "los_lon": 90.394068,
+        "los_utc": "2026-09-14T07:12:08Z",
+        "max_elevation_deg": 51.86,
+        "max_elevation_utc": "2026-09-14T07:06:00Z",
+        "min_distance_km": 558.51,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_ascending_20260914T070600Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 257.84,
+        "tca_elevation_deg": 51.86,
+        "tca_slant_range_km": 1018.1,
+        "tca_utc": "2026-09-14T07:06:00Z",
+        "tle_age_hours": -13.58,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d785359a",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.39406838803427,
+          33.43342470243867
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 180.38,
+        "aos_lat": -9.380701,
+        "aos_lon": 100.787601,
+        "aos_utc": "2026-09-14T06:59:55Z",
+        "closest_lat": 11.924624,
+        "closest_lon": 95.926978,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 12.22,
+        "los_azimuth_deg": 336.55,
+        "los_lat": 33.433425,
+        "los_lon": 90.394068,
+        "los_utc": "2026-09-14T07:12:08Z",
+        "max_elevation_deg": 51.86,
+        "max_elevation_utc": "2026-09-14T07:06:00Z",
+        "min_distance_km": 558.51,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_ascending_20260914T070600Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 257.84,
+        "tca_elevation_deg": 51.86,
+        "tca_slant_range_km": 1018.1,
+        "tca_utc": "2026-09-14T07:06:00Z",
+        "tle_age_hours": -13.58,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a7",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            94.02485339672114,
+            -8.306984960055148
+          ],
+          [
+            93.93286421261678,
+            -7.906446180599878
+          ],
+          [
+            93.53278464290452,
+            -6.153978818640068
+          ],
+          [
+            93.1344939395807,
+            -4.401241903034439
+          ],
+          [
+            92.73746769913544,
+            -2.6482773085677818
+          ],
+          [
+            92.341190909754,
+            -0.8951263124215928
+          ],
+          [
+            91.94515407455754,
+            0.8581701086498142
+          ],
+          [
+            91.54884942016196,
+            2.611570988090248
+          ],
+          [
+            91.15176713166079,
+            4.3650350815286565
+          ],
+          [
+            90.75339155535482,
+            6.118520576340399
+          ],
+          [
+            90.35319714159158,
+            7.871984794054245
+          ],
+          [
+            89.95064507435785,
+            9.625383880676305
+          ],
+          [
+            89.54517800042038,
+            11.37867247969538
+          ],
+          [
+            89.13621614520184,
+            13.131803382019598
+          ],
+          [
+            88.72315222063912,
+            14.884727146468606
+          ],
+          [
+            88.30534603363014,
+            16.637391683585356
+          ],
+          [
+            87.88211852982556,
+            18.389741794452796
+          ],
+          [
+            87.452745148943,
+            20.141718654825304
+          ],
+          [
+            87.01644834986377,
+            21.893259233182768
+          ],
+          [
+            86.57238913687377,
+            23.644295629140167
+          ],
+          [
+            86.11965738540277,
+            25.394754315988035
+          ],
+          [
+            85.65726072436257,
+            27.144555267728258
+          ],
+          [
+            85.18411168094804,
+            28.893610946759495
+          ],
+          [
+            84.88090433252478,
+            29.986318689946103
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 198.21,
+        "aos_lat": -8.306985,
+        "aos_lon": 94.024853,
+        "aos_utc": "2026-09-14T07:19:53Z",
+        "closest_lat": 11.378672,
+        "closest_lon": 89.545178,
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 10.93,
+        "los_azimuth_deg": 321.32,
+        "los_lat": 29.986319,
+        "los_lon": 84.880904,
+        "los_utc": "2026-09-14T07:30:48Z",
+        "max_elevation_deg": 26.15,
+        "max_elevation_utc": "2026-09-14T07:25:30Z",
+        "min_distance_km": 1251.65,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_ascending_20260914T072530Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 262.82,
+        "tca_elevation_deg": 26.15,
+        "tca_slant_range_km": 1565.52,
+        "tca_utc": "2026-09-14T07:25:30Z",
+        "tle_age_hours": -11.88,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a8",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          94.02485339672114,
+          -8.306984960055148
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 198.21,
+        "aos_lat": -8.306985,
+        "aos_lon": 94.024853,
+        "aos_utc": "2026-09-14T07:19:53Z",
+        "closest_lat": 11.378672,
+        "closest_lon": 89.545178,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 10.93,
+        "los_azimuth_deg": 321.32,
+        "los_lat": 29.986319,
+        "los_lon": 84.880904,
+        "los_utc": "2026-09-14T07:30:48Z",
+        "max_elevation_deg": 26.15,
+        "max_elevation_utc": "2026-09-14T07:25:30Z",
+        "min_distance_km": 1251.65,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_ascending_20260914T072530Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 262.82,
+        "tca_elevation_deg": 26.15,
+        "tca_slant_range_km": 1565.52,
+        "tca_utc": "2026-09-14T07:25:30Z",
+        "tle_age_hours": -11.88,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a9",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.54517800042038,
+          11.37867247969538
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 198.21,
+        "aos_lat": -8.306985,
+        "aos_lon": 94.024853,
+        "aos_utc": "2026-09-14T07:19:53Z",
+        "closest_lat": 11.378672,
+        "closest_lon": 89.545178,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 10.93,
+        "los_azimuth_deg": 321.32,
+        "los_lat": 29.986319,
+        "los_lon": 84.880904,
+        "los_utc": "2026-09-14T07:30:48Z",
+        "max_elevation_deg": 26.15,
+        "max_elevation_utc": "2026-09-14T07:25:30Z",
+        "min_distance_km": 1251.65,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_ascending_20260914T072530Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 262.82,
+        "tca_elevation_deg": 26.15,
+        "tca_slant_range_km": 1565.52,
+        "tca_utc": "2026-09-14T07:25:30Z",
+        "tle_age_hours": -11.88,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535aa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          84.88090433252478,
+          29.986318689946103
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 198.21,
+        "aos_lat": -8.306985,
+        "aos_lon": 94.024853,
+        "aos_utc": "2026-09-14T07:19:53Z",
+        "closest_lat": 11.378672,
+        "closest_lon": 89.545178,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "ascending",
+        "duration_minutes": 10.93,
+        "los_azimuth_deg": 321.32,
+        "los_lat": 29.986319,
+        "los_lon": 84.880904,
+        "los_utc": "2026-09-14T07:30:48Z",
+        "max_elevation_deg": 26.15,
+        "max_elevation_utc": "2026-09-14T07:25:30Z",
+        "min_distance_km": 1251.65,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_ascending_20260914T072530Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 262.82,
+        "tca_elevation_deg": 26.15,
+        "tca_slant_range_km": 1565.52,
+        "tca_utc": "2026-09-14T07:25:30Z",
+        "tle_age_hours": -11.88,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b7",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.85080130930396,
+            17.075062877182425
+          ],
+          [
+            123.57520380238037,
+            15.920986385525572
+          ],
+          [
+            123.161896755513,
+            14.168627237211181
+          ],
+          [
+            122.7530249131645,
+            12.416024703105123
+          ],
+          [
+            122.3479677906804,
+            10.663228132853598
+          ],
+          [
+            121.9461352521123,
+            8.910284458126505
+          ],
+          [
+            121.54696236814698,
+            7.157238586526103
+          ],
+          [
+            121.14990469434798,
+            5.404133762492257
+          ],
+          [
+            120.75443388484723,
+            3.6510119019261604
+          ],
+          [
+            120.36003356276751,
+            1.8979139065393063
+          ],
+          [
+            120.2185382399719,
+            1.2680965906668253
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 76.77,
+        "aos_lat": 17.075063,
+        "aos_lon": 123.850801,
+        "aos_utc": "2026-09-14T17:20:40Z",
+        "closest_lat": 8.910284,
+        "closest_lon": 121.946135,
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 4.51,
+        "los_azimuth_deg": 120.02,
+        "los_lat": 1.268097,
+        "los_lon": 120.218538,
+        "los_utc": "2026-09-14T17:25:10Z",
+        "max_elevation_deg": 7.7,
+        "max_elevation_utc": "2026-09-14T17:23:00Z",
+        "min_distance_km": 2339.85,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_descending_20260914T172300Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 99.12,
+        "tca_elevation_deg": 7.7,
+        "tca_slant_range_km": 2609.97,
+        "tca_utc": "2026-09-14T17:23:00Z",
+        "tle_age_hours": -2.62,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b8",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.85080130930396,
+          17.075062877182425
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 76.77,
+        "aos_lat": 17.075063,
+        "aos_lon": 123.850801,
+        "aos_utc": "2026-09-14T17:20:40Z",
+        "closest_lat": 8.910284,
+        "closest_lon": 121.946135,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 4.51,
+        "los_azimuth_deg": 120.02,
+        "los_lat": 1.268097,
+        "los_lon": 120.218538,
+        "los_utc": "2026-09-14T17:25:10Z",
+        "max_elevation_deg": 7.7,
+        "max_elevation_utc": "2026-09-14T17:23:00Z",
+        "min_distance_km": 2339.85,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_descending_20260914T172300Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 99.12,
+        "tca_elevation_deg": 7.7,
+        "tca_slant_range_km": 2609.97,
+        "tca_utc": "2026-09-14T17:23:00Z",
+        "tle_age_hours": -2.62,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b9",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.9461352521123,
+          8.910284458126505
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 76.77,
+        "aos_lat": 17.075063,
+        "aos_lon": 123.850801,
+        "aos_utc": "2026-09-14T17:20:40Z",
+        "closest_lat": 8.910284,
+        "closest_lon": 121.946135,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 4.51,
+        "los_azimuth_deg": 120.02,
+        "los_lat": 1.268097,
+        "los_lon": 120.218538,
+        "los_utc": "2026-09-14T17:25:10Z",
+        "max_elevation_deg": 7.7,
+        "max_elevation_utc": "2026-09-14T17:23:00Z",
+        "min_distance_km": 2339.85,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_descending_20260914T172300Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 99.12,
+        "tca_elevation_deg": 7.7,
+        "tca_slant_range_km": 2609.97,
+        "tca_utc": "2026-09-14T17:23:00Z",
+        "tle_age_hours": -2.62,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535ba",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.2185382399719,
+          1.2680965906668253
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 76.77,
+        "aos_lat": 17.075063,
+        "aos_lon": 123.850801,
+        "aos_utc": "2026-09-14T17:20:40Z",
+        "closest_lat": 8.910284,
+        "closest_lon": 121.946135,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 4.51,
+        "los_azimuth_deg": 120.02,
+        "los_lat": 1.268097,
+        "los_lon": 120.218538,
+        "los_utc": "2026-09-14T17:25:10Z",
+        "max_elevation_deg": 7.7,
+        "max_elevation_utc": "2026-09-14T17:23:00Z",
+        "min_distance_km": 2339.85,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_descending_20260914T172300Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 99.12,
+        "tca_elevation_deg": 7.7,
+        "tca_slant_range_km": 2609.97,
+        "tca_utc": "2026-09-14T17:23:00Z",
+        "tle_age_hours": -2.62,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d785359b",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            120.09430684586886,
+            26.620163829370597
+          ],
+          [
+            119.77973302882185,
+            25.432291050863565
+          ],
+          [
+            119.32616513911432,
+            23.682258744287054
+          ],
+          [
+            118.88130934065742,
+            21.931666883215854
+          ],
+          [
+            118.44425216372264,
+            20.18058907743718
+          ],
+          [
+            118.0141516418214,
+            18.429093246933263
+          ],
+          [
+            117.59022759146745,
+            16.677242385105544
+          ],
+          [
+            117.17175309958657,
+            14.925095225337895
+          ],
+          [
+            116.75804701579187,
+            13.172706827289357
+          ],
+          [
+            116.34846727996052,
+            11.420129096554687
+          ],
+          [
+            115.94240494263181,
+            9.667411249201475
+          ],
+          [
+            115.53927875379532,
+            7.914600230919716
+          ],
+          [
+            115.13853022244888,
+            6.161741099176141
+          ],
+          [
+            114.7396190465206,
+            4.408877375639616
+          ],
+          [
+            114.34201883965602,
+            2.6560513753066033
+          ],
+          [
+            113.9452130797489,
+            0.9033045180956115
+          ],
+          [
+            113.54869121340045,
+            -0.8493223718229277
+          ],
+          [
+            113.1519448542158,
+            -2.601788774009352
+          ],
+          [
+            112.75446401534793,
+            -4.354054182321848
+          ],
+          [
+            112.35573331761054,
+            -6.106077813392942
+          ],
+          [
+            112.30418657739045,
+            -6.331534340501707
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 50.03,
+        "aos_lat": 26.620164,
+        "aos_lon": 120.094307,
+        "aos_utc": "2026-09-14T17:54:39Z",
+        "closest_lat": 9.667411,
+        "closest_lon": 115.942405,
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 9.4,
+        "los_azimuth_deg": 149.04,
+        "los_lat": -6.331534,
+        "los_lon": 112.304187,
+        "los_utc": "2026-09-14T18:04:03Z",
+        "max_elevation_deg": 17.19,
+        "max_elevation_utc": "2026-09-14T17:59:30Z",
+        "min_distance_km": 1680.08,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_descending_20260914T175930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 101.29,
+        "tca_elevation_deg": 17.19,
+        "tca_slant_range_km": 1964.44,
+        "tca_utc": "2026-09-14T17:59:30Z",
+        "tle_age_hours": -2.67,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d785359c",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.09430684586886,
+          26.620163829370597
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 50.03,
+        "aos_lat": 26.620164,
+        "aos_lon": 120.094307,
+        "aos_utc": "2026-09-14T17:54:39Z",
+        "closest_lat": 9.667411,
+        "closest_lon": 115.942405,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 9.4,
+        "los_azimuth_deg": 149.04,
+        "los_lat": -6.331534,
+        "los_lon": 112.304187,
+        "los_utc": "2026-09-14T18:04:03Z",
+        "max_elevation_deg": 17.19,
+        "max_elevation_utc": "2026-09-14T17:59:30Z",
+        "min_distance_km": 1680.08,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_descending_20260914T175930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 101.29,
+        "tca_elevation_deg": 17.19,
+        "tca_slant_range_km": 1964.44,
+        "tca_utc": "2026-09-14T17:59:30Z",
+        "tle_age_hours": -2.67,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d785359d",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.94240494263181,
+          9.667411249201475
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 50.03,
+        "aos_lat": 26.620164,
+        "aos_lon": 120.094307,
+        "aos_utc": "2026-09-14T17:54:39Z",
+        "closest_lat": 9.667411,
+        "closest_lon": 115.942405,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 9.4,
+        "los_azimuth_deg": 149.04,
+        "los_lat": -6.331534,
+        "los_lon": 112.304187,
+        "los_utc": "2026-09-14T18:04:03Z",
+        "max_elevation_deg": 17.19,
+        "max_elevation_utc": "2026-09-14T17:59:30Z",
+        "min_distance_km": 1680.08,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_descending_20260914T175930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 101.29,
+        "tca_elevation_deg": 17.19,
+        "tca_slant_range_km": 1964.44,
+        "tca_utc": "2026-09-14T17:59:30Z",
+        "tle_age_hours": -2.67,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d785359e",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.30418657739045,
+          -6.331534340501707
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 50.03,
+        "aos_lat": 26.620164,
+        "aos_lon": 120.094307,
+        "aos_utc": "2026-09-14T17:54:39Z",
+        "closest_lat": 9.667411,
+        "closest_lon": 115.942405,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 9.4,
+        "los_azimuth_deg": 149.04,
+        "los_lat": -6.331534,
+        "los_lon": 112.304187,
+        "los_utc": "2026-09-14T18:04:03Z",
+        "max_elevation_deg": 17.19,
+        "max_elevation_utc": "2026-09-14T17:59:30Z",
+        "min_distance_km": 1680.08,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_descending_20260914T175930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 101.29,
+        "tca_elevation_deg": 17.19,
+        "tca_slant_range_km": 1964.44,
+        "tca_utc": "2026-09-14T17:59:30Z",
+        "tle_age_hours": -2.67,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535ab",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            114.92160963466449,
+            31.546218470888483
+          ],
+          [
+            114.84133824752837,
+            31.267725480794255
+          ],
+          [
+            114.35176510464635,
+            29.520427112924853
+          ],
+          [
+            113.87459491224934,
+            27.77226130844271
+          ],
+          [
+            113.40858751310839,
+            26.023327076584888
+          ],
+          [
+            112.9526186550329,
+            24.273714261734845
+          ],
+          [
+            112.50566420277318,
+            22.523504792346873
+          ],
+          [
+            112.06678658807743,
+            20.772773749486266
+          ],
+          [
+            111.63512311855027,
+            19.021590286392932
+          ],
+          [
+            111.2098756586418,
+            17.270018424692715
+          ],
+          [
+            110.79030243209314,
+            15.518117748236076
+          ],
+          [
+            110.37570920918614,
+            13.765944011925342
+          ],
+          [
+            109.9654430614587,
+            12.013549679940365
+          ],
+          [
+            109.55888601151389,
+            10.260984405482066
+          ],
+          [
+            109.1554494590859,
+            8.50829546225859
+          ],
+          [
+            108.75456910286454,
+            6.755528136491873
+          ],
+          [
+            108.35570027003047,
+            5.002726087007805
+          ],
+          [
+            107.95831356065253,
+            3.249931680082222
+          ],
+          [
+            107.5618907392992,
+            1.4971863049631149
+          ],
+          [
+            107.16592080314132,
+            -0.2554693245164527
+          ],
+          [
+            106.76989616384986,
+            -2.007994877235869
+          ],
+          [
+            106.37330888317177,
+            -3.7603501162094677
+          ],
+          [
+            105.97564690348844,
+            -5.512494609489808
+          ],
+          [
+            105.5763902145402,
+            -7.2643874358815586
+          ],
+          [
+            105.18305547945312,
+            -8.980863610776012
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 32.52,
+        "aos_lat": 31.546218,
+        "aos_lon": 114.92161,
+        "aos_utc": "2026-09-14T18:12:55Z",
+        "closest_lat": 12.01355,
+        "closest_lon": 109.965443,
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 11.57,
+        "los_azimuth_deg": 168.91,
+        "los_lat": -8.980864,
+        "los_lon": 105.183055,
+        "los_utc": "2026-09-14T18:24:29Z",
+        "max_elevation_deg": 33.75,
+        "max_elevation_utc": "2026-09-14T18:18:30Z",
+        "min_distance_km": 988.14,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_descending_20260914T181830Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 95.55,
+        "tca_elevation_deg": 33.75,
+        "tca_slant_range_km": 1337.83,
+        "tca_utc": "2026-09-14T18:18:30Z",
+        "tle_age_hours": -1,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535ac",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.92160963466449,
+          31.546218470888483
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 32.52,
+        "aos_lat": 31.546218,
+        "aos_lon": 114.92161,
+        "aos_utc": "2026-09-14T18:12:55Z",
+        "closest_lat": 12.01355,
+        "closest_lon": 109.965443,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 11.57,
+        "los_azimuth_deg": 168.91,
+        "los_lat": -8.980864,
+        "los_lon": 105.183055,
+        "los_utc": "2026-09-14T18:24:29Z",
+        "max_elevation_deg": 33.75,
+        "max_elevation_utc": "2026-09-14T18:18:30Z",
+        "min_distance_km": 988.14,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_descending_20260914T181830Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 95.55,
+        "tca_elevation_deg": 33.75,
+        "tca_slant_range_km": 1337.83,
+        "tca_utc": "2026-09-14T18:18:30Z",
+        "tle_age_hours": -1,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535ad",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.9654430614587,
+          12.013549679940365
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 32.52,
+        "aos_lat": 31.546218,
+        "aos_lon": 114.92161,
+        "aos_utc": "2026-09-14T18:12:55Z",
+        "closest_lat": 12.01355,
+        "closest_lon": 109.965443,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 11.57,
+        "los_azimuth_deg": 168.91,
+        "los_lat": -8.980864,
+        "los_lon": 105.183055,
+        "los_utc": "2026-09-14T18:24:29Z",
+        "max_elevation_deg": 33.75,
+        "max_elevation_utc": "2026-09-14T18:18:30Z",
+        "min_distance_km": 988.14,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_descending_20260914T181830Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 95.55,
+        "tca_elevation_deg": 33.75,
+        "tca_slant_range_km": 1337.83,
+        "tca_utc": "2026-09-14T18:18:30Z",
+        "tle_age_hours": -1,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535ae",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.18305547945312,
+          -8.980863610776012
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 32.52,
+        "aos_lat": 31.546218,
+        "aos_lon": 114.92161,
+        "aos_utc": "2026-09-14T18:12:55Z",
+        "closest_lat": 12.01355,
+        "closest_lon": 109.965443,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 11.57,
+        "los_azimuth_deg": 168.91,
+        "los_lat": -8.980864,
+        "los_lon": 105.183055,
+        "los_utc": "2026-09-14T18:24:29Z",
+        "max_elevation_deg": 33.75,
+        "max_elevation_utc": "2026-09-14T18:18:30Z",
+        "min_distance_km": 988.14,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_descending_20260914T181830Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 95.55,
+        "tca_elevation_deg": 33.75,
+        "tca_slant_range_km": 1337.83,
+        "tca_utc": "2026-09-14T18:18:30Z",
+        "tle_age_hours": -1,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535bb",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.36528041072341,
+            35.47655430614333
+          ],
+          [
+            103.2664195210674,
+            35.15512990288717
+          ],
+          [
+            102.74733804475113,
+            33.40996597710795
+          ],
+          [
+            102.24380555143603,
+            31.6636791587159
+          ],
+          [
+            101.75426511260957,
+            29.91639221807671
+          ],
+          [
+            101.27732023162957,
+            28.168215345398416
+          ],
+          [
+            100.81171235134946,
+            26.41924792574966
+          ],
+          [
+            100.35630179760301,
+            24.66958003854933
+          ],
+          [
+            99.91005154093182,
+            22.9192937314766
+          ],
+          [
+            99.4720132879051,
+            21.168464108943517
+          ],
+          [
+            99.04131549070104,
+            19.417160267539067
+          ],
+          [
+            98.61715278574417,
+            17.665446104840864
+          ],
+          [
+            98.19877759776966,
+            15.913381023178996
+          ],
+          [
+            97.78549116545895,
+            14.161020546176287
+          ],
+          [
+            97.37663716524696,
+            12.408416862839845
+          ],
+          [
+            96.97159525612813,
+            10.655619311601674
+          ],
+          [
+            96.5697754223749,
+            8.902674814749194
+          ],
+          [
+            96.17061283396333,
+            7.149628272183043
+          ],
+          [
+            95.77356312458204,
+            5.396522922185178
+          ],
+          [
+            95.3780980089382,
+            3.6434006759499598
+          ],
+          [
+            94.98370115414741,
+            1.8903024318486208
+          ],
+          [
+            94.58986424341418,
+            0.13726837486361612
+          ],
+          [
+            94.19608316556241,
+            -1.6156617338134969
+          ],
+          [
+            93.801854270626,
+            -3.3684482722635276
+          ],
+          [
+            93.40667063299401,
+            -5.1210514738115895
+          ],
+          [
+            93.01001826381685,
+            -6.873431138901183
+          ],
+          [
+            92.78224911782485,
+            -7.874514134299897
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 5.17,
+        "aos_lat": 35.476554,
+        "aos_lon": 103.36528,
+        "aos_utc": "2026-09-14T18:56:54Z",
+        "closest_lat": 14.161021,
+        "closest_lon": 97.785491,
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 12.38,
+        "los_azimuth_deg": 201.62,
+        "los_lat": -7.874514,
+        "los_lon": 92.782249,
+        "los_utc": "2026-09-14T19:09:17Z",
+        "max_elevation_deg": 63.4,
+        "max_elevation_utc": "2026-09-14T19:03:00Z",
+        "min_distance_km": 359.54,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_descending_20260914T190300Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 290.74,
+        "tca_elevation_deg": 63.4,
+        "tca_slant_range_km": 915.02,
+        "tca_utc": "2026-09-14T19:03:00Z",
+        "tle_age_hours": -1.02,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535bc",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.36528041072341,
+          35.47655430614333
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 5.17,
+        "aos_lat": 35.476554,
+        "aos_lon": 103.36528,
+        "aos_utc": "2026-09-14T18:56:54Z",
+        "closest_lat": 14.161021,
+        "closest_lon": 97.785491,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 12.38,
+        "los_azimuth_deg": 201.62,
+        "los_lat": -7.874514,
+        "los_lon": 92.782249,
+        "los_utc": "2026-09-14T19:09:17Z",
+        "max_elevation_deg": 63.4,
+        "max_elevation_utc": "2026-09-14T19:03:00Z",
+        "min_distance_km": 359.54,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_descending_20260914T190300Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 290.74,
+        "tca_elevation_deg": 63.4,
+        "tca_slant_range_km": 915.02,
+        "tca_utc": "2026-09-14T19:03:00Z",
+        "tle_age_hours": -1.02,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535bd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.78549116545895,
+          14.161020546176287
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 5.17,
+        "aos_lat": 35.476554,
+        "aos_lon": 103.36528,
+        "aos_utc": "2026-09-14T18:56:54Z",
+        "closest_lat": 14.161021,
+        "closest_lon": 97.785491,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 12.38,
+        "los_azimuth_deg": 201.62,
+        "los_lat": -7.874514,
+        "los_lon": 92.782249,
+        "los_utc": "2026-09-14T19:09:17Z",
+        "max_elevation_deg": 63.4,
+        "max_elevation_utc": "2026-09-14T19:03:00Z",
+        "min_distance_km": 359.54,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_descending_20260914T190300Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 290.74,
+        "tca_elevation_deg": 63.4,
+        "tca_slant_range_km": 915.02,
+        "tca_utc": "2026-09-14T19:03:00Z",
+        "tle_age_hours": -1.02,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535be",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.78224911782485,
+          -7.874514134299897
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 5.17,
+        "aos_lat": 35.476554,
+        "aos_lon": 103.36528,
+        "aos_utc": "2026-09-14T18:56:54Z",
+        "closest_lat": 14.161021,
+        "closest_lon": 97.785491,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 12.38,
+        "los_azimuth_deg": 201.62,
+        "los_lat": -7.874514,
+        "los_lon": 92.782249,
+        "los_utc": "2026-09-14T19:09:17Z",
+        "max_elevation_deg": 63.4,
+        "max_elevation_utc": "2026-09-14T19:03:00Z",
+        "min_distance_km": 359.54,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_2_2026-09-14_descending_20260914T190300Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 21 (JPSS-2)",
+        "satellite_id": "jpss_2",
+        "tca_azimuth_deg": 290.74,
+        "tca_elevation_deg": 63.4,
+        "tca_slant_range_km": 915.02,
+        "tca_utc": "2026-09-14T19:03:00Z",
+        "tle_age_hours": -1.02,
+        "tle_epoch_utc": "2026-09-14T19:57:51Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d785359f",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            97.19430372159133,
+            35.327081915168534
+          ],
+          [
+            96.84139618121736,
+            34.166779990451786
+          ],
+          [
+            96.32721050275018,
+            32.42091968279724
+          ],
+          [
+            95.82783344262373,
+            30.6740103869725
+          ],
+          [
+            95.34178591186134,
+            28.92617061720426
+          ],
+          [
+            94.86773749823755,
+            27.177507068176617
+          ],
+          [
+            94.40448646070314,
+            25.428116262116074
+          ],
+          [
+            93.95094114055695,
+            23.678085944646124
+          ],
+          [
+            93.50610560935377,
+            21.9274962744395
+          ],
+          [
+            93.06906658496973,
+            20.176420842996254
+          ],
+          [
+            92.63898226328149,
+            18.424927553984084
+          ],
+          [
+            92.21507260115402,
+            16.673079386208705
+          ],
+          [
+            91.79661080653244,
+            14.920935059965203
+          ],
+          [
+            91.38291583341851,
+            13.168549623155995
+          ],
+          [
+            90.97334570944224,
+            11.415974970806714
+          ],
+          [
+            90.56729156012682,
+            9.66326030948459
+          ],
+          [
+            90.16417219894288,
+            7.91045257635035
+          ],
+          [
+            89.76342918556958,
+            6.157596821234939
+          ],
+          [
+            89.36452225850326,
+            4.404736559000161
+          ],
+          [
+            88.96692506202123,
+            2.651914098622443
+          ],
+          [
+            88.57012109518803,
+            0.8991708547456333
+          ],
+          [
+            88.17359981663805,
+            -0.8534523530036943
+          ],
+          [
+            87.77685284305022,
+            -2.605915008016671
+          ],
+          [
+            87.37937018173034,
+            -4.358176607261598
+          ],
+          [
+            87.27274224986297,
+            -4.826695380285767
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 352,
+        "aos_lat": 35.327082,
+        "aos_lon": 97.194304,
+        "aos_utc": "2026-09-14T19:33:40Z",
+        "closest_lat": 14.920935,
+        "closest_lon": 91.796611,
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 11.47,
+        "los_azimuth_deg": 218.12,
+        "los_lat": -4.826695,
+        "los_lon": 87.272742,
+        "los_utc": "2026-09-14T19:45:08Z",
+        "max_elevation_deg": 33.08,
+        "max_elevation_utc": "2026-09-14T19:39:30Z",
+        "min_distance_km": 1005.72,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_descending_20260914T193930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 283.15,
+        "tca_elevation_deg": 33.08,
+        "tca_slant_range_km": 1354.41,
+        "tca_utc": "2026-09-14T19:39:30Z",
+        "tle_age_hours": -1.02,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a0",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.19430372159133,
+          35.327081915168534
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 352,
+        "aos_lat": 35.327082,
+        "aos_lon": 97.194304,
+        "aos_utc": "2026-09-14T19:33:40Z",
+        "closest_lat": 14.920935,
+        "closest_lon": 91.796611,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 11.47,
+        "los_azimuth_deg": 218.12,
+        "los_lat": -4.826695,
+        "los_lon": 87.272742,
+        "los_utc": "2026-09-14T19:45:08Z",
+        "max_elevation_deg": 33.08,
+        "max_elevation_utc": "2026-09-14T19:39:30Z",
+        "min_distance_km": 1005.72,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_descending_20260914T193930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 283.15,
+        "tca_elevation_deg": 33.08,
+        "tca_slant_range_km": 1354.41,
+        "tca_utc": "2026-09-14T19:39:30Z",
+        "tle_age_hours": -1.02,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.79661080653244,
+          14.920935059965203
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 352,
+        "aos_lat": 35.327082,
+        "aos_lon": 97.194304,
+        "aos_utc": "2026-09-14T19:33:40Z",
+        "closest_lat": 14.920935,
+        "closest_lon": 91.796611,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 11.47,
+        "los_azimuth_deg": 218.12,
+        "los_lat": -4.826695,
+        "los_lon": 87.272742,
+        "los_utc": "2026-09-14T19:45:08Z",
+        "max_elevation_deg": 33.08,
+        "max_elevation_utc": "2026-09-14T19:39:30Z",
+        "min_distance_km": 1005.72,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_descending_20260914T193930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 283.15,
+        "tca_elevation_deg": 33.08,
+        "tca_slant_range_km": 1354.41,
+        "tca_utc": "2026-09-14T19:39:30Z",
+        "tle_age_hours": -1.02,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535a2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          87.27274224986297,
+          -4.826695380285767
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 352,
+        "aos_lat": 35.327082,
+        "aos_lon": 97.194304,
+        "aos_utc": "2026-09-14T19:33:40Z",
+        "closest_lat": 14.920935,
+        "closest_lon": 91.796611,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 11.47,
+        "los_azimuth_deg": 218.12,
+        "los_lat": -4.826695,
+        "los_lon": 87.272742,
+        "los_utc": "2026-09-14T19:45:08Z",
+        "max_elevation_deg": 33.08,
+        "max_elevation_utc": "2026-09-14T19:39:30Z",
+        "min_distance_km": 1005.72,
+        "min_elevation_deg": 5,
+        "pass_id": "suomi_npp_2026-09-14_descending_20260914T193930Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "SUOMI NPP",
+        "satellite_id": "suomi_npp",
+        "tca_azimuth_deg": 283.15,
+        "tca_elevation_deg": 33.08,
+        "tca_slant_range_km": 1354.41,
+        "tca_utc": "2026-09-14T19:39:30Z",
+        "tle_age_hours": -1.02,
+        "tle_epoch_utc": "2026-09-14T20:34:35Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535af",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            90.04716271989065,
+            33.27283672983167
+          ],
+          [
+            89.96960009603572,
+            33.01183784140654
+          ],
+          [
+            89.46626819218392,
+            31.26551711785959
+          ],
+          [
+            88.97671194949953,
+            29.518219455244136
+          ],
+          [
+            88.49955698214751,
+            27.770054479158162
+          ],
+          [
+            88.03356329270923,
+            26.021121184261556
+          ],
+          [
+            87.57760676957355,
+            24.271509402116077
+          ],
+          [
+            87.1306633973715,
+            22.521301049857012
+          ],
+          [
+            86.69179571199618,
+            20.770571198521587
+          ],
+          [
+            86.26014111118133,
+            19.019388992441325
+          ],
+          [
+            85.83490153730469,
+            17.267818445308382
+          ],
+          [
+            85.41533528134596,
+            15.515919133895322
+          ],
+          [
+            85.00074817139364,
+            13.763746806784965
+          ],
+          [
+            84.59048732840728,
+            12.011353922514001
+          ],
+          [
+            84.1839348173591,
+            10.258790129248426
+          ],
+          [
+            83.78050207168803,
+            8.506102696215498
+          ],
+          [
+            83.37962482036494,
+            6.7533369056655
+          ],
+          [
+            82.9807584132418,
+            5.000536412925651
+          ],
+          [
+            82.58337346814676,
+            3.2477435812194626
+          ],
+          [
+            82.18695176230904,
+            1.494999797167139
+          ],
+          [
+            82.00756058169333,
+            0.7009722138171846
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 335.67,
+        "aos_lat": 33.272837,
+        "aos_lon": 90.047163,
+        "aos_utc": "2026-09-14T19:53:55Z",
+        "closest_lat": 17.267818,
+        "closest_lon": 85.834902,
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 9.3,
+        "los_azimuth_deg": 238.23,
+        "los_lat": 0.700972,
+        "los_lon": 82.007561,
+        "los_utc": "2026-09-14T20:03:13Z",
+        "max_elevation_deg": 17.06,
+        "max_elevation_utc": "2026-09-14T19:58:30Z",
+        "min_distance_km": 1684.01,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_descending_20260914T195830Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 288.13,
+        "tca_elevation_deg": 17.06,
+        "tca_slant_range_km": 1972.3,
+        "tca_utc": "2026-09-14T19:58:30Z",
+        "tle_age_hours": 0.69,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "visible_track"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b0",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.04716271989065,
+          33.27283672983167
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 335.67,
+        "aos_lat": 33.272837,
+        "aos_lon": 90.047163,
+        "aos_utc": "2026-09-14T19:53:55Z",
+        "closest_lat": 17.267818,
+        "closest_lon": 85.834902,
+        "color": "cyan",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 9.3,
+        "los_azimuth_deg": 238.23,
+        "los_lat": 0.700972,
+        "los_lon": 82.007561,
+        "los_utc": "2026-09-14T20:03:13Z",
+        "max_elevation_deg": 17.06,
+        "max_elevation_utc": "2026-09-14T19:58:30Z",
+        "min_distance_km": 1684.01,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_descending_20260914T195830Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 288.13,
+        "tca_elevation_deg": 17.06,
+        "tca_slant_range_km": 1972.3,
+        "tca_utc": "2026-09-14T19:58:30Z",
+        "tle_age_hours": 0.69,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "aos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.83490153730469,
+          17.267818445308382
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 335.67,
+        "aos_lat": 33.272837,
+        "aos_lon": 90.047163,
+        "aos_utc": "2026-09-14T19:53:55Z",
+        "closest_lat": 17.267818,
+        "closest_lon": 85.834902,
+        "color": "yellow",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 9.3,
+        "los_azimuth_deg": 238.23,
+        "los_lat": 0.700972,
+        "los_lon": 82.007561,
+        "los_utc": "2026-09-14T20:03:13Z",
+        "max_elevation_deg": 17.06,
+        "max_elevation_utc": "2026-09-14T19:58:30Z",
+        "min_distance_km": 1684.01,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_descending_20260914T195830Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 288.13,
+        "tca_elevation_deg": 17.06,
+        "tca_slant_range_km": 1972.3,
+        "tca_utc": "2026-09-14T19:58:30Z",
+        "tle_age_hours": 0.69,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "tca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "6aa8f00ece1e2818d78535b2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          82.00756058169333,
+          0.7009722138171846
+        ]
+      },
+      "properties": {
+        "aoi_covered": false,
+        "aoi_points_inside": 0,
+        "aos_azimuth_deg": 335.67,
+        "aos_lat": 33.272837,
+        "aos_lon": 90.047163,
+        "aos_utc": "2026-09-14T19:53:55Z",
+        "closest_lat": 17.267818,
+        "closest_lon": 85.834902,
+        "color": "green",
+        "confidence": "medium",
+        "direction": "descending",
+        "duration_minutes": 9.3,
+        "los_azimuth_deg": 238.23,
+        "los_lat": 0.700972,
+        "los_lon": 82.007561,
+        "los_utc": "2026-09-14T20:03:13Z",
+        "max_elevation_deg": 17.06,
+        "max_elevation_utc": "2026-09-14T19:58:30Z",
+        "min_distance_km": 1684.01,
+        "min_elevation_deg": 5,
+        "pass_id": "jpss_1_2026-09-14_descending_20260914T195830Z",
+        "planning_date": "2026-09-14",
+        "planning_method": "ground_track_buffer_access",
+        "satellite": "NOAA 20 (JPSS-1)",
+        "satellite_id": "jpss_1",
+        "tca_azimuth_deg": 288.13,
+        "tca_elevation_deg": 17.06,
+        "tca_slant_range_km": 1972.3,
+        "tca_utc": "2026-09-14T19:58:30Z",
+        "tle_age_hours": 0.69,
+        "tle_epoch_utc": "2026-09-14T19:12:45Z",
+        "tle_quality": "good",
+        "type": "los"
+      }
+    }
+  ]
+}
