@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source": "Vallaris STAC jpss_planning",
   "source_endpoint": "https://beta.vallarismaps.com/core/api/stac/1.0/jpss_planning/search",
-  "generated_at": "2026-10-02T05:58:53.456441Z",
+  "generated_at": "2026-10-03T05:34:17.306685Z",
   "crs": "OGC:CRS84",
   "axis_order": [
     "longitude",
